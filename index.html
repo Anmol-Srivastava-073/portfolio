@@ -188,6 +188,47 @@
       z-index: 1;
       animation: fadeInUp 1s ease both;
     }
+    .sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.9);
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 2000;
+}
+
+.sidebar a {
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ddd;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: #444;
+  color: white;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+}
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px); }
@@ -342,14 +383,21 @@
 
   <!-- Navbar -->
   <header>
-    <h1>Anmol Srivastava</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="logo-name">
+      <img src="photos/AS (2).png" alt="Logo" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
+      <h1>Anmol Srivastava</h1>
+    </div>
+    <span class="hamburger" onclick="openSidebar()">☰</span>
   </header>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -511,6 +559,15 @@
     const form = document.querySelector('.contact-form');
     const successMsg = document.getElementById('form-success');
 
+    function openSidebar() {
+  document.getElementById("mySidebar").style.width = "250px";
+}
+
+function closeSidebar() {
+  document.getElementById("mySidebar").style.width = "0";
+}
+
+    
     form.addEventListener('submit', function(e){
       e.preventDefault();
       const formData = new FormData(form);
