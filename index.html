@@ -121,26 +121,48 @@
     .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -12px; left: 14px; font-size: 0.82rem; color: #00f5d4; background: #0d0d12; border-radius: 6px; }
     .contact-form button { width: 100%; padding: 16px; background: linear-gradient(135deg, #00f5d4, #00bbf9, #9b5de5); background-size: 300% 300%; border: none; border-radius: 14px; font-size: 1.22rem; font-weight: 600; cursor: pointer; transition: 0.4s; color: #fff; animation: gradientFlow 6s ease infinite; }
     .contact-form button:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 28px rgba(0, 245, 212, 0.65); }
-    .social-links a {
-  display: flex;                /* Center icon inside */
+    .social-links {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;                  /* Circle size */
-  height: 60px;
-  font-size: 1.5rem;            /* Icon size */
-  color: #fff;
-  border-radius: 50%;           /* Makes it circular */
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  position: relative;
   overflow: hidden;
-  text-decoration: none;
-  padding: 0;                   /* remove old padding */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
-    .social-links a { display: inline-block; padding: 14px 32px; border-radius: 50px; margin-top: 35px; background: rgba(255,255,255,0.08); color: #fff; font-weight: 600; text-decoration: none; transition: 0.4s ease; backdrop-filter: blur(10px); position: relative; overflow: hidden; }
-    .social-links a::before { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255,255,255,0.2); transition: 0.4s; }
-    .social-links a:hover::before { left: 100%; }
-    .social-links a:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.5); background: linear-gradient(135deg, #00f5d4, #9b5de5); }
+
+.social-btn img {
+  width: 40%; /* logo size inside button */
+  transition: transform 0.3s ease;
+}
+
+.social-btn:hover img {
+  transform: scale(1.2);
+}
+
+.social-btn.github { background: #333; }
+.social-btn.linkedin { background: #0a66c2; }
+.social-btn.instagram {
+  background: radial-gradient(circle at 30% 107%, 
+                              #fdf497 0%, #fdf497 5%, 
+                              #fd5949 45%, #d6249f 60%, 
+                              #285AEB 90%);
+}
+
+.social-btn:hover {
+  transform: translateY(-5px) scale(1.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
 
     /* Footer */
     footer { background: rgba(0,0,0,0.5); padding: 15px; text-align: center; margin-top: 40px; }
@@ -323,13 +345,13 @@ When I’m not coding, you’ll probably find me exploring new frameworks, refin
 
       <div class="social-links">
   <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-    <i class="fab fa-github"></i>
+    <img src="icons/github-white.png" alt="GitHub">
   </a>
   <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-    <i class="fab fa-linkedin-in"></i>
+    <img src="icons/linkedin-white.png" alt="LinkedIn">
   </a>
   <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-    <i class="fab fa-instagram"></i>
+    <img src="icons/instagram-white.png" alt="Instagram">
   </a>
 </div>
     </div>
