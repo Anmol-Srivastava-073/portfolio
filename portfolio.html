@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Anmol Srivastava</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4b6c2b1d6f.js" crossorigin="anonymous"></script>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif;}
+    body {color: #fff; overflow-x: hidden;}
+
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
+      background: #0f2027; /* fallback */
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+    }
+
+    /* Navbar */
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      color: #fff; display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px; z-index: 1000;
+    }
+    header h1 {font-size: 1.5rem; font-weight: 700;}
+    nav a {
+      color: #fff; margin-left: 20px; text-decoration: none; font-weight: 500;
+      position: relative; transition: 0.3s;
+    }
+    nav a::after {
+      content: ""; position: absolute; bottom: -5px; left: 0;
+      width: 0%; height: 2px; background: #ffcc70;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {width: 100%;}
+    
+    /* Certificates */
+    .certificate-viewer {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 0; /* remove fixed height */
+    }
+
+    .certificate-viewer img {
+      max-width: 90%;
+      max-height: 500px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      opacity: 0;
+      position: absolute;
+      transition: all 0.6s ease;
+      transform: scale(0.95);
+      pointer-events: none;
+      display: none; /* hides from layout */
+    }
+
+    .certificate-viewer img.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      position: relative;
+      display: block; /* only show when active */
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      flex-direction: column; text-align: center; padding: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .hero h2 {font-size: 3.2rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0,0,0,0.6);}
+    .hero p {margin: 15px 0; font-size: 1.4rem; font-weight: 300;}
+    .hero button {
+      padding: 12px 25px; background: #ffcc70; color: #111;
+      border: none; border-radius: 30px; font-size: 1rem;
+      cursor: pointer; transition: 0.3s; font-weight: 600;
+    }
+    .hero button:hover {transform: scale(1.1); background: #fff;}
+
+    /* Sections */
+    section {padding: 80px 20px; max-width: 1200px; margin: auto; opacity: 0; transform: translateY(40px); transition: 1s;}
+    section.show {opacity: 1; transform: translateY(0);}
+    h2 {margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700;}
+
+    /* About */
+    #about p {text-align: center; max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.6; font-weight: 300;}
+
+    /* Skills */
+    .skills {display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;}
+    .skill {
+      background: #8a9092; /* deep purple */
+      color: #fff;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .skill:hover {
+      background: #78757b; /* brighter purple */
+      transform: scale(1.05);
+    }
+
+    /* Projects */
+    .projects {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;}
+    .project {
+      background: rgba(255,255,255,0.1); border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      overflow: hidden; transition: transform 0.4s; backdrop-filter: blur(8px);
+    }
+    .project:hover {transform: translateY(-10px) rotateX(5deg) scale(1.05);}
+    .project img {width: 100%; height: 200px; object-fit: cover;}
+    .project-content {padding: 20px;}
+    .project-content h3 {margin-bottom: 10px;}
+    .project-content p {font-size: 0.95rem; opacity: 0.9;}
+    .project-content a {display: inline-block; margin-top: 12px; color: #ffcc70; text-decoration: none; font-weight: 600; transition: 0.3s;}
+    .project-content a:hover {color: #fff;}
+
+    /* Contact */
+    #contact {
+      padding: 100px 20px;
+      text-align: center;
+      background: radial-gradient(circle at top left, #1e1e2f, #0d0d12);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      background: #00f5d4;
+      filter: blur(120px);
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    #contact::after {
+      content: "";
+      position: absolute;
+      bottom: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: #ff3cac;
+      filter: blur(120px);
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    #contact h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 1px;
+    }
+
+    /* Contact Card */
+    .contact-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      padding: 45px 40px; 
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating Inputs */
+    .contact-form .input-group {
+      position: relative;
+      margin-bottom: 28px; /* space between each input box */
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 16px 14px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+      margin: 0; /* spacing handled by input-group */
+    }
+
+    .contact-form textarea {
+      min-height: 170px; 
+      resize: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 0 14px #00f5d4;
+    }
+
+    .contact-form label {
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
+      color: #bbb;
+      font-size: 1rem;
+      pointer-events: none;
+      transition: 0.3s ease;
+      background: transparent;
+      padding: 0 6px;
+    }
+
+    .contact-form input:focus + label,
+    .contact-form input:not(:placeholder-shown) + label,
+    .contact-form textarea:focus + label,
+    .contact-form textarea:not(:placeholder-shown) + label {
+      top: -12px;
+      left: 14px;
+      font-size: 0.82rem;
+      color: #00f5d4;
+      background: #0d0d12;
+      border-radius: 6px;
+    }
+
+    /* Submit Button */
+    .contact-form button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #00f5d4, #00bbf9, #9b5de5);
+      background-size: 300% 300%;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.22rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.4s;
+      color: #fff;
+      animation: gradientFlow 6s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 28px rgba(0, 245, 212, 0.65);
+    }
+
+    /* Social Buttons */
+    .social-links {
+      margin-top: 35px;
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px; 
+    }
+
+    .social-links a {
+      display: inline-block;
+      padding: 14px 32px; 
+      border-radius: 50px;
+      margin-top: 35px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.4s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-links a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: 0.4s;
+    }
+
+    .social-links a:hover::before {
+      left: 100%;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #00f5d4, #9b5de5);
+    }
+
+    /* Copyright */
+    #copyright {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: none;   
+      box-shadow: none;   
+    }
+
+    footer {background: rgba(0,0,0,0.5); padding: 15px; text-align: center; margin-top: 40px;}
+    @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+  </style>
+</head>
+<body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <header>
+    <h1>Anmol Srivastava</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Hello, I'm Anmol Srivastava!</h2>
+    <p>Crafting Modern, Responsive, and Scalable Web Experiences</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a dedicated developer skilled in creating responsive and modern websites. 
+       My focus is on delivering high-quality designs and seamless user experiences.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Java</div>
+      <div class="skill">C++</div>
+      <div class="skill">SQL</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
+  
+  <!-- Certificates -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
+    
+    <div class="skills">
+      <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+      <div class="skill" onclick="showCertificate('java-cert')">Java</div>
+      <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
+      <div class="skill" onclick="showCertificate('python-cert')">Python</div>
+    </div>
+
+    <div class="certificate-viewer">
+      <img id="js-cert" src="jscert.png" alt="JavaScript Certificate">
+      <img id="java-cert" src="javacert.png" alt="Java Certificate">
+      <img id="sql-cert" src="sqlcert.png" alt="SQL Certificate">
+      <img id="python-cert" src="pythoncert.png" alt="Python Certificate">
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="Screenshot 2025-08-27 at 12.49.28 PM.png" alt="Project 1">
+        <div class="project-content">
+          <h3>Flipping A Coin</h3>
+          <p>A website which flips as many coins as you want and generates random result.</p>
+          <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
+        </div>
+      </div>
+      
+      <div class="project">
+        <img src="Screenshot 2025-08-27 at 12.50.58 PM.png" alt="Project 2">
+        <div class="project-content">
+          <h3>Manipal UniNav Map</h3>
+          <p>A website made for manipal students to navigate through their campus.</p>
+          <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="Screenshot 2025-08-27 at 12.52.45 PM.png" alt="Project 3">
+        <div class="project-content">
+          <h3>Spin Roulette</h3>
+          <p>A website where you can spin the roulette and try to win in the least number of chances</p>
+          <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p style="text-align:center; margin-bottom:20px;">
+      Have a project idea or just want to say hi? Fill out the form or reach me on social media.
+    </p>
+
+    <div class="contact-container">
+      <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
+        <div class="input-group">
+          <input type="text" name="name" placeholder=" " required>
+          <label for="name">Your Name</label>
+        </div>
+        <div class="input-group">
+          <input type="email" name="email" placeholder=" " required>
+          <label for="email">Your Email</label>
+        </div>
+        <div class="input-group">
+          <textarea name="message" placeholder=" " rows="5" required></textarea>
+          <label for="message">Your Message</label>
+        </div>
+        <button type="submit">Send Message</button>
+        <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+      </form>
+
+      <div class="social-links">
+           <a href="https://github.com/Anmol-Srivastava-073" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+
+        <footer>
+      <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
+    </footer>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* Animate sections on scroll */
+    const sections = document.querySelectorAll("section");
+    const showSection = () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) sec.classList.add("show");
+      });
+    };
+    window.addEventListener("scroll", showSection);
+    showSection();
+
+    /* Particles.js config */
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 3 }
+      }
+    });
+
+    function showCertificate(certId) {
+      const certs = document.querySelectorAll(".certificate-viewer img");
+      const clickedCert = document.getElementById(certId);
+
+      if (clickedCert.classList.contains("active")) {
+        clickedCert.classList.remove("active");
+        return;
+      }
+
+      certs.forEach(cert => cert.classList.remove("active"));
+      clickedCert.classList.add("active");
+    }
+
+    const form = document.querySelector('.contact-form');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if(response.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          alert('Oops! There was a problem.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
