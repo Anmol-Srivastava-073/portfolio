@@ -389,6 +389,47 @@
   animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
   letter-spacing: 0.3px;
 }
+    .hero h2 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  background: linear-gradient(90deg, #ffffff, #dbeafe, #38bdf8, #ffffff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;                    
+  animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
+  letter-spacing: 0.3px;
+}
+
+/* Reuse shimmer and glow keyframes */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 8px rgba(56, 189, 248, 0.25),
+      0 0 14px rgba(255, 255, 255, 0.15);
+  }
+  to {
+    text-shadow:
+      0 0 14px rgba(56, 189, 248, 0.45),
+      0 0 28px rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* Pause shimmer on hover */
+.hero h2:hover {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero h2 { animation: none; color: #fff; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+}
 
 /* Shimmer animation */
 @keyframes shimmer {
