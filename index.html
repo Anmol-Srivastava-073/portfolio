@@ -144,25 +144,35 @@
   background: #222; /* fallback background */
 }
 
-/* Fill the entire circle */
+/* Logo images centered and scaled */
 .social-btn img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* Fills the circle completely */
+  width: 60%;              /* scale logos to fit nicely */
+  height: 60%;
+  object-fit: contain;      /* preserve aspect ratio */
+  display: block;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Hover effect */
+/* Hover effects */
 .social-btn:hover {
   transform: translateY(-5px) scale(1.15);
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .social-btn:hover img {
-  transform: scale(1.1);
+  transform: scale(1.2);
   filter: brightness(1.2);
 }
-    /* Footer */
+
+/* Optional brand colors */
+.social-btn.github { background: #333; }
+.social-btn.linkedin { background: #0a66c2; }
+.social-btn.instagram {
+  background: radial-gradient(circle at 30% 107%, 
+                              #fdf497 0%, #fdf497 5%, 
+                              #fd5949 45%, #d6249f 60%, 
+                              #285AEB 90%);
+}
     footer { background: rgba(0,0,0,0.5); padding: 15px; text-align: center; margin-top: 40px; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
