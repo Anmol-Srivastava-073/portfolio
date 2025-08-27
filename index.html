@@ -211,12 +211,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.9);
   overflow-x: hidden;
   transition: 0.3s;
-  padding-top: 60px;
+  padding-top: 90px; /* already moved 30px down */
   z-index: 2000;
-      padding-top: 90px;
 }
 
 .sidebar a {
@@ -233,16 +232,6 @@
   color: white;
 }
 
-.sidebar .closebtn {
-  position: absolute;
-  top: 55px;
-  right: 25px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-}
-
-/* Hamburger */
 .hamburger {
   font-size: 26px;
   cursor: pointer;
@@ -410,12 +399,11 @@
 
   <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</div>
 
   <!-- Hero -->
   <section class="hero">
@@ -577,14 +565,14 @@
     const form = document.querySelector('.contact-form');
     const successMsg = document.getElementById('form-success');
 
-    function openSidebar() {
-  document.getElementById("mySidebar").style.width = "250px";
+    function toggleSidebar() {
+  const sidebar = document.getElementById("mySidebar");
+  if (sidebar.style.width === "250px") {
+    sidebar.style.width = "0";
+  } else {
+    sidebar.style.width = "250px";
+  }
 }
-
-function closeSidebar() {
-  document.getElementById("mySidebar").style.width = "0";
-}
-
     
     form.addEventListener('submit', function(e){
       e.preventDefault();
