@@ -21,6 +21,23 @@
       background: #0f2027; /* fallback */
       background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
     }
+    .logo-name {
+  display: flex;
+  align-items: center; /* keeps image + text in same line */
+}
+
+.logo {
+  height: 50px;   /* adjust until it matches title height */
+  width: 50px;
+  margin-right: 12px;
+  border-radius: 50%; /* circular logo */
+}
+
+.title {
+  font-size: 28px;  /* your heading size */
+  margin: 0;
+  line-height: 1;   /* prevents extra spacing */
+}
 
     /* Navbar */
     header {
@@ -383,12 +400,12 @@
 
   <!-- Navbar -->
   <header>
-    <div class="logo-name">
-      <img src="photos/AS (2).png" alt="Logo" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
-      <h1>Anmol Srivastava</h1>
-    </div>
-    <span class="hamburger" onclick="openSidebar()">☰</span>
-  </header>
+  <div class="logo-name">
+    <img src="photos/AS (2).png" alt="Logo" class="logo">
+    <h1 class="title">Anmol Srivastava</h1>
+  </div>
+  <span class="hamburger" onclick="openSidebar()">☰</span>
+</header>
 
   <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
