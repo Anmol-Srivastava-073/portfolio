@@ -379,47 +379,48 @@
       background: none;   
       box-shadow: none;   
     }
-
     header h1 {
   position: relative;
-  background: linear-gradient(90deg, #ffffff, #ffcc70, #00f5d4, #9b5de5, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #dbeafe, #38bdf8, #ffffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;                    /* shows animated gradient inside text */
-  animation: shimmer 6s linear infinite, glow 2.6s ease-in-out infinite alternate;
-  letter-spacing: 0.3px;                 /* tiny polish */
+  color: transparent;                    
+  animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
+  letter-spacing: 0.3px;
 }
 
-/* Shimmer across the text */
+/* Shimmer animation */
 @keyframes shimmer {
   0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
-/* Soft breathing glow for readability on dark header */
+/* Gentle glow */
 @keyframes glow {
   from {
     text-shadow:
-      0 0 6px rgba(255,255,255,0.18),
-      0 0 12px rgba(255,204,112,0.16);
+      0 0 8px rgba(56, 189, 248, 0.25),  /* cyan glow */
+      0 0 14px rgba(255, 255, 255, 0.15);
   }
   to {
     text-shadow:
-      0 0 14px rgba(255,255,255,0.35),
-      0 0 26px rgba(255,204,112,0.25);
+      0 0 14px rgba(56, 189, 248, 0.45),
+      0 0 28px rgba(255, 255, 255, 0.25);
   }
 }
 
-/* Optional: pause animation on hover if you want */
+/* Pause shimmer on hover */
 header h1:hover {
   animation-play-state: paused;
 }
 
-/* Accessibility: respect reduced motion */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   header h1 { animation: none; color: #fff; text-shadow: none; }
 }
+    
+
 
     footer {background: rgba(0,0,0,0.5); padding: 15px; text-align: center; margin-top: 40px;}
     @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
