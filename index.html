@@ -202,15 +202,14 @@
     #contact { 
   padding: 60px 20px; 
   text-align: center; 
-  background: radial-gradient(circle at top left, #1e1e2f, #0d0d12); 
+  background: linear-gradient(45deg, #0c1924, #1a2c3c, #0c1924); /* darker version of site background */
   color: #fff; 
   position: relative; 
   overflow: hidden; 
 }
 
 #contact::before, #contact::after {
-  width: 150px; 
-  height: 150px; 
+  display: none; /* removed decorative blobs */
 }
 
 #contact h2 { 
@@ -225,16 +224,17 @@
 .contact-container { 
   max-width: 500px; 
   margin: 0 auto; 
-  background: rgba(255, 255, 255, 0.05); /* very light transparent, matches site bg */
-  backdrop-filter: blur(12px);           /* glassy effect */
+  background: rgba(15, 32, 39, 0.7); 
+  backdrop-filter: blur(12px); 
   padding: 25px 20px; 
   border-radius: 20px; 
-  border: 1px solid rgba(255,255,255,0.05); /* subtle border */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);   /* softer shadow */
+  border: 1px solid rgba(255,255,255,0.1); 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
   position: relative; 
   z-index: 1; 
   animation: fadeInUp 1s ease both; 
 }
+
 .contact-form .input-group { 
   position: relative; 
   margin-bottom: 16px; 
@@ -246,7 +246,7 @@
   padding: 10px 12px; 
   border: 1px solid rgba(255,255,255,0.15); 
   border-radius: 10px; 
-  background: rgba(255,255,255,0.03); /* more transparent */
+  background: rgba(255,255,255,0.05); 
   color: #fff; 
   font-size: 0.95rem; 
   outline: none; 
@@ -260,7 +260,7 @@
 
 .contact-form input:focus, 
 .contact-form textarea:focus { 
-  background: rgba(255,255,255,0.07); 
+  background: rgba(255,255,255,0.1); 
   box-shadow: 0 0 12px #00f5d4; 
   border-color: #00f5d4;
 }
@@ -282,14 +282,19 @@
 .contact-form input:not(:placeholder-shown) + label, 
 .contact-form textarea:focus + label, 
 .contact-form textarea:not(:placeholder-shown) + label { 
-  background: rgba(255,255,255,0.05); /* subtle label bg, blends with site */
+  top: -10px; 
+  left: 10px; 
+  font-size: 0.78rem; 
+  color: #00f5d4; 
+  background: rgba(15, 32, 39, 0.8); 
+  border-radius: 6px; 
 }
 
 .contact-form button { 
   width: 100%; 
   padding: 12px; 
   font-size: 1rem; 
-  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #6366f1); /* modern gradient */
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #6366f1); 
   background-size: 300% 300%; 
   border: none; 
   border-radius: 12px; 
