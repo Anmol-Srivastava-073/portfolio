@@ -23,62 +23,65 @@
     }
 
     /* Intro overlay */
-#intro-overlay {
+    #intro-overlay {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  backdrop-filter: blur(8px);
   z-index: 5000;
   transition: opacity 1s ease, visibility 1s ease;
-  text-align: center;
 }
 
+/* Hide overlay */
 #intro-overlay.hidden {
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
 }
 
-/* Title shimmer & glow */
+/* Neon glowing shimmer for title */
 .intro-content h1 {
-  font-size: 3rem;
-  margin-bottom: 30px;
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
   background: linear-gradient(90deg, #ffffff, #38bdf8, #0ea5e9, #38bdf8, #ffffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 40px rgba(14, 165, 233, 0.3);
+  letter-spacing: 2px;
 }
 
-/* Button - premium glassy blue */
+/* Glassmorphic button */
 #enter-btn {
-  padding: 16px 50px;
-  border: 2px;
+  padding: 18px 55px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  border: none;
   border-radius: 50px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb, #38bdf8);
-  color: #e0f2fe;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
   cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(56,189,248,0.4);
-  transition: all 0.3s ease-in-out;
+  background: rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(56,189,248,0.3);
+  transition: all 0.4s ease-in-out;
   position: relative;
   overflow: hidden;
 }
 
-/* Hover effect */
+/* Button hover effect */
 #enter-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 30px rgba(56,189,248,0.7);
+  box-shadow: 0 10px 40px rgba(56,189,248,0.5);
 }
 
-/* Pulse ripple */
+/* Ripple effect */
 #enter-btn::after {
   content: "";
   position: absolute;
@@ -86,7 +89,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56,189,248,0.3) 0%, transparent 70%);
   transform: scale(0);
   opacity: 0;
   transition: transform 0.6s, opacity 0.6s;
@@ -97,16 +100,33 @@
   opacity: 1;
 }
 
-/* Shimmer animation */
+/* Shimmer animation for text */
 @keyframes shimmer {
   0% { background-position: -100% 0; }
   100% { background-position: 200% 0; }
 }
 
-/* Glow animation */
+/* Glow animation for text */
 @keyframes glow {
   from { text-shadow: 0 0 15px rgba(56,189,248,0.3), 0 0 30px rgba(14,165,233,0.2); }
   to   { text-shadow: 0 0 30px rgba(56,189,248,0.6), 0 0 60px rgba(14,165,233,0.4); }
+}
+
+/* Optional: small floating particles animation in overlay */
+#intro-overlay::before {
+  content: '';
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: floatParticles 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes floatParticles {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
 }
 
     .logo-name { display: flex; align-items: center; }
