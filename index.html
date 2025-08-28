@@ -35,6 +35,7 @@
   backdrop-filter: blur(8px);
   z-index: 5000;
   transition: opacity 1s ease, visibility 1s ease;
+  text-align: center;
 }
 
 /* Hide overlay */
@@ -47,41 +48,42 @@
 .intro-content h1 {
   font-size: 4rem;
   font-weight: 800;
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   background: linear-gradient(90deg, #ffffff, #38bdf8, #0ea5e9, #38bdf8, #ffffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 0 40px rgba(14, 165, 233, 0.3);
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.4), 0 0 50px rgba(14, 165, 233, 0.3);
   letter-spacing: 2px;
 }
 
-/* Glassmorphic button */
+/* Glassy gradient button centered under title */
 #enter-btn {
-  padding: 18px 55px;
-  font-size: 1.3rem;
+  padding: 18px 60px;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  background: rgba(56, 189, 248, 0.2);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #6366f1);
+  background-size: 200% 200%;
   box-shadow: 0 8px 30px rgba(56,189,248,0.3);
   transition: all 0.4s ease-in-out;
   position: relative;
   overflow: hidden;
+  margin-top: 20px; /* spacing from title */
 }
 
-/* Button hover effect */
+/* Hover effect: brighter and scale up */
 #enter-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 10px 40px rgba(56,189,248,0.5);
+  background-position: right center;
 }
 
-/* Ripple effect */
+/* Ripple effect on hover */
 #enter-btn::after {
   content: "";
   position: absolute;
@@ -89,7 +91,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(56,189,248,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%);
   transform: scale(0);
   opacity: 0;
   transition: transform 0.6s, opacity 0.6s;
@@ -111,24 +113,6 @@
   from { text-shadow: 0 0 15px rgba(56,189,248,0.3), 0 0 30px rgba(14,165,233,0.2); }
   to   { text-shadow: 0 0 30px rgba(56,189,248,0.6), 0 0 60px rgba(14,165,233,0.4); }
 }
-
-/* Optional: small floating particles animation in overlay */
-#intro-overlay::before {
-  content: '';
-  position: absolute;
-  width: 200%; height: 200%;
-  top: -50%; left: -50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: floatParticles 20s linear infinite;
-  z-index: -1;
-}
-
-@keyframes floatParticles {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
-}
-
     .logo-name { display: flex; align-items: center; }
     .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
     .title { font-size: 28px; margin: 0; line-height: 1; }
