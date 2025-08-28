@@ -573,7 +573,7 @@ const bgMusic = document.getElementById("bg-music");
 enterBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
   bgMusic.muted = false;  
-  bgMusic.currentTime = 4.5;// unmute on user click
+  bgMusic.currentTime = 2;// unmute on user click
   bgMusic.volume = 0.3;    // set volume to 30%
   bgMusic.play().then(() => {
     console.log("Music started at 30% volume!");
