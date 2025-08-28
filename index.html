@@ -22,7 +22,8 @@
       background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
     }
 
-    #intro-overlay {
+    /* Intro overlay */
+#intro-overlay {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -37,43 +38,47 @@
 }
 
 #intro-overlay.hidden {
-  opacity: 0; visibility: hidden;
+  opacity: 0; 
+  visibility: hidden;
 }
 
+/* Title shimmer & glow */
 .intro-content h1 {
-  font-size: 2.8rem;
-  margin-bottom: 25px;
-  background: linear-gradient(90deg, #ffffff, #38bdf8, #ffffff);
+  font-size: 3rem;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #ffffff, #38bdf8, #0ea5e9, #38bdf8, #ffffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
 }
 
+/* Button - premium glassy blue */
 #enter-btn {
-  padding: 16px 45px;
+  padding: 16px 50px;
   border: none;
   border-radius: 50px;
-  background: linear-gradient(135deg, #ff9a8b, #ff6a00);
-  color: #fff;
-  font-size: 1.3rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb, #38bdf8);
+  color: #e0f2fe;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(255,106,0,0.5);
+  box-shadow: 0 6px 20px rgba(56,189,248,0.4);
   transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
 }
 
-/* Glowing hover */
+/* Hover effect */
 #enter-btn:hover {
-  transform: scale(1.12);
-  box-shadow: 0 8px 30px rgba(255,106,0,0.8);
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(56,189,248,0.7);
 }
 
-/* Small pulse effect */
+/* Pulse ripple */
 #enter-btn::after {
   content: "";
   position: absolute;
@@ -81,15 +86,27 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%);
   transform: scale(0);
   opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.6s, opacity 0.6s;
 }
 
 #enter-btn:hover::after {
   transform: scale(1);
   opacity: 1;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Glow animation */
+@keyframes glow {
+  from { text-shadow: 0 0 15px rgba(56,189,248,0.3), 0 0 30px rgba(14,165,233,0.2); }
+  to   { text-shadow: 0 0 30px rgba(56,189,248,0.6), 0 0 60px rgba(14,165,233,0.4); }
 }
 
     .logo-name { display: flex; align-items: center; }
