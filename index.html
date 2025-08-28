@@ -469,10 +469,10 @@ const bgMusic = document.getElementById("bg-music");
 
 enterBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
-  
-  // Start music on user interaction
+  bgMusic.muted = false;   // unmute on user click
+  bgMusic.volume = 0.3;    // set volume to 30%
   bgMusic.play().then(() => {
-    console.log("Music started!");
+    console.log("Music started at 30% volume!");
   }).catch((err) => {
     console.log("Music play failed:", err);
   });
