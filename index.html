@@ -445,6 +445,22 @@ When I’m not coding, you’ll probably find me exploring new frameworks, refin
   </footer>
 
   <script>
+
+    const overlay = document.getElementById("intro-overlay");
+const enterBtn = document.getElementById("enter-btn");
+const bgMusic = document.getElementById("bg-music");
+
+enterBtn.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  
+  // Start music on user interaction
+  bgMusic.play().then(() => {
+    console.log("Music started!");
+  }).catch((err) => {
+    console.log("Music play failed:", err);
+  });
+});
+    
     // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const showSection = () => { sections.forEach(sec => { if (sec.getBoundingClientRect().top < window.innerHeight - 100) sec.classList.add("show"); }); };
@@ -464,15 +480,7 @@ When I’m not coding, you’ll probably find me exploring new frameworks, refin
       }
     });
 
-    const overlay = document.getElementById("intro-overlay");
-const enterBtn = document.getElementById("enter-btn");
-const bgMusic = document.getElementById("bg-music");
-
-enterBtn.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-  bgMusic.play().catch(() => {}); // start music
-});
-
+    
     // Certificates viewer
     function showCertificate(certId) {
       const certs = document.querySelectorAll(".certificate-viewer img");
