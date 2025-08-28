@@ -274,7 +274,7 @@
 <!-- Intro Overlay -->
 <div id="intro-overlay">
   <div class="intro-content">
-    <h1>Welcome to My Portfolio</h1>
+    <h1>Welcome to My Portfolio!</h1>
     <button id="enter-btn">Enter Website</button>
   </div>
 </div>
@@ -474,7 +474,7 @@ const bgMusic = document.getElementById("bg-music");
 enterBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
   bgMusic.muted = false;   // unmute on user click
-  bgMusic.volume = 0.3;    // set volume to 30%
+  bgMusic.volume = 0.15;    // set volume to 30%
   bgMusic.play().then(() => {
     console.log("Music started at 30% volume!");
   }).catch((err) => {
