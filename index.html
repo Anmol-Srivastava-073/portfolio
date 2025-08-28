@@ -225,17 +225,16 @@
 .contact-container { 
   max-width: 500px; 
   margin: 0 auto; 
-  background: rgba(15, 32, 39, 0.85); /* slightly darker to match site bg */
-  backdrop-filter: blur(12px);        /* glassy effect */
+  background: rgba(255, 255, 255, 0.05); /* very light transparent, matches site bg */
+  backdrop-filter: blur(12px);           /* glassy effect */
   padding: 25px 20px; 
   border-radius: 20px; 
   border: 1px solid rgba(255,255,255,0.05); /* subtle border */
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);   /* softer shadow */
   position: relative; 
   z-index: 1; 
   animation: fadeInUp 1s ease both; 
 }
-
 .contact-form .input-group { 
   position: relative; 
   margin-bottom: 16px; 
@@ -247,7 +246,7 @@
   padding: 10px 12px; 
   border: 1px solid rgba(255,255,255,0.15); 
   border-radius: 10px; 
-  background: rgba(15, 32, 39, 0.6); /* darker input bg */
+  background: rgba(255,255,255,0.03); /* more transparent */
   color: #fff; 
   font-size: 0.95rem; 
   outline: none; 
@@ -261,7 +260,7 @@
 
 .contact-form input:focus, 
 .contact-form textarea:focus { 
-  background: rgba(15, 32, 39, 0.8); 
+  background: rgba(255,255,255,0.07); 
   box-shadow: 0 0 12px #00f5d4; 
   border-color: #00f5d4;
 }
@@ -283,12 +282,7 @@
 .contact-form input:not(:placeholder-shown) + label, 
 .contact-form textarea:focus + label, 
 .contact-form textarea:not(:placeholder-shown) + label { 
-  top: -10px; 
-  left: 10px; 
-  font-size: 0.78rem; 
-  color: #00f5d4; 
-  background: rgba(15, 32, 39, 0.85); 
-  border-radius: 6px; 
+  background: rgba(255,255,255,0.05); /* subtle label bg, blends with site */
 }
 
 .contact-form button { 
