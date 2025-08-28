@@ -22,6 +22,44 @@
       background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
     }
 
+    #intro-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex; justify-content: center; align-items: center;
+  flex-direction: column;
+  z-index: 5000;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#intro-overlay.hidden {
+  opacity: 0; visibility: hidden;
+}
+
+.intro-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, #ffffff, #38bdf8, #ffffff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
+}
+
+#enter-btn {
+  padding: 14px 35px;
+  border: none; border-radius: 30px;
+  background: linear-gradient(135deg, #ffcc70, #ff9a8b);
+  color: #111; font-size: 1.1rem; font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#enter-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
     .logo-name { display: flex; align-items: center; }
     .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
     .title { font-size: 28px; margin: 0; line-height: 1; }
@@ -177,8 +215,21 @@
   </style>
 </head>
 <body>
-  <!-- Particle Background -->
-  <div id="particles-js"></div>
+<!-- Particle Background -->
+<div id="particles-js"></div>
+
+<!-- Intro Overlay -->
+<div id="intro-overlay">
+  <div class="intro-content">
+    <h1>Welcome to My Portfolio</h1>
+    <button id="enter-btn">Enter Website</button>
+  </div>
+</div>
+
+<!-- Background Music -->
+<audio id="bg-music" loop>
+  <source src="music/.mp3" type="audio/mpeg">
+</audio>
 
   <!-- Navbar -->
   <header>
@@ -380,6 +431,15 @@ When I’m not coding, you’ll probably find me exploring new frameworks, refin
         move: { enable: true, speed: 3 }
       }
     });
+
+    const overlay = document.getElementById("intro-overlay");
+const enterBtn = document.getElementById("enter-btn");
+const bgMusic = document.getElementById("bg-music");
+
+enterBtn.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  bgMusic.play().catch(() => {}); // start music
+});
 
     // Certificates viewer
     function showCertificate(certId) {
