@@ -166,7 +166,34 @@
     h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; }
 
     /* About */
-    #about p { text-align: center; max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.6; font-weight: 300; }
+    #about {
+  display: flex;
+  align-items: center;       /* vertically align text + photo */
+  justify-content: center;   /* center the whole section */
+  gap: 40px;                 /* space between text and photo */
+  flex-wrap: wrap;           /* allow stacking on small screens */
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+#about p {
+  flex: 1;
+  text-align: left;          /* left-align for readability */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #333;
+  max-width: 600px;
+}
+
+#about .photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;        /* circular */
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
 
     /* Skills */
     .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -416,6 +443,8 @@
 I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning, improving, and creating impactful solutions.
 
 When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or brainstorming fresh ideas to challenge myself.</p>
+  
+  <img src="photos/anmol.jpeg" alt="Photo" class="photo">
   </section>
 
   <!-- Education -->
