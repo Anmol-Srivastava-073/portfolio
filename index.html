@@ -521,18 +521,18 @@
     }
 
     /* Add to your CSS */
-#content {
-    /* Initially hide and move the content down and to the side */
-    opacity: 0;
-    transform: translateY(20px) translateX(-20px);
-    transition: opacity 1s ease-out, transform 1s ease-out; /* Smoothly transition both properties */
-}
+    #content {
+      /* Initially hide and move the content down and to the side */
+      opacity: 0;
+      transform: translateY(20px) translateX(-20px);
+      transition: opacity 1s ease-out, transform 1s ease-out; /* Smoothly transition both properties */
+    }
 
-#content.show {
-    /* When the 'show' class is added, the content becomes visible and moves to its final position */
-    opacity: 1;
-    transform: translateY(0) translateX(0);
-}
+    #content.show {
+      /* When the 'show' class is added, the content becomes visible and moves to its final position */
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
 
     #contact::before,
     #contact::after {
@@ -779,226 +779,231 @@
     <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
   </audio>
 
-  <header>
-    <div class="logo-name">
-      <img src="photos/AS (2).png" alt="Logo" class="logo">
-      <h1 class="title">Anmol Srivastava</h1>
+  <div id="content">
+    <header>
+      <div class="logo-name">
+        <img src="photos/AS (2).png" alt="Logo" class="logo">
+        <h1 class="title">Anmol Srivastava</h1>
+      </div>
+      <span class="hamburger" onclick="toggleSidebar()">☰</span>
+    </header>
+
+    <div id="mySidebar" class="sidebar">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-    <span class="hamburger" onclick="toggleSidebar()">☰</span>
-  </header>
 
-  <div id="mySidebar" class="sidebar">
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+    <section class="hero">
+      <h2>Hello, I'm Anmol Srivastava!</h2>
+      <p>Curious developer passionate about building projects and learning new technologies!</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+    </section>
 
-  <section class="hero">
-    <h2>Hello, I'm Anmol Srivastava!</h2>
-    <p>Curious developer passionate about building projects and learning new technologies!</p>
-    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-  </section>
+    <div id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>
+          Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
+          I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
+          exploring new technologies to expand my skillset.
 
-  <div id="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <p>
-        Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
-        I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
-        exploring new technologies to expand my skillset.
+          I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
+          tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
+          improving, and creating impactful solutions.
 
-        I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
-        tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
-        improving, and creating impactful solutions.
+          When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
+          brainstorming fresh ideas to challenge myself.
+        </p>
+        <img src="photos/anmol.jpeg" alt="Photo" class="photo">
+      </div>
+    </div>
 
-        When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
-        brainstorming fresh ideas to challenge myself.
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-container">
+        <div class="education-item">
+          <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
+          <div class="education-text">
+            <h3>Manipal University</h3>
+            <p>📍Jaipur, Rajasthan</p><br>
+            <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
+            <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
+
+
+          </div>
+        </div>
+        <div class="education-item">
+          <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
+          <div class="education-text">
+            <h3>Maharshi Patanjali Vidya Mandir</h3>
+            <p>📍Prayagraj, Uttar Pradesh</p><br>
+            <p>Intermediate(2018 - 2025)</p>
+            <p>Achieved excellent results throughout my school years,
+              with a strong foundation in core subjects.</p>
+
+            </p>
+          </div>
+        </div>
+        <div class="education-item">
+          <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
+          <div class="education-text">
+            <h3>Patanjali Rishikul</h3>
+            <p>📍Prayagraj, Uttar Pradesh
+            </p><br>
+            <p>Junior and Middle School(2014 - 2018)</p>
+            <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Java</div>
+        <div class="skill">C++</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Python</div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <h2>Certificates</h2>
+      <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
+      <div class="skills">
+        <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+        <div class="skill" onclick="showCertificate('java-cert')">Java</div>
+        <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
+        <div class="skill" onclick="showCertificate('python-cert')">Python</div>
+      </div>
+      <div class="certificate-viewer">
+        <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
+        <img id="java-cert" src="photos/javacert.png" alt="Java Certificate">
+        <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
+        <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <img src="photos/a1.png" alt="Project 1">
+          <div class="project-content">
+            <h3>Flipping A Coin</h3>
+            <p>A website which flips as many coins as you want and generates random result.</p>
+            <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
+          </div>
+        </div>
+        <div class="project">
+          <img src="photos/uninav.png" alt="Project 2">
+          <div class="project-content">
+            <h3>Manipal UniNav Map</h3>
+            <p>A website made for manipal students to navigate through their campus.</p>
+            <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
+          </div>
+        </div>
+        <div class="project">
+          <img src="photos/s2.png" alt="Project 3">
+          <div class="project-content">
+            <h3>Spin Roulette</h3>
+            <p>A website where you can spin the roulette and try to win in the least number of chances</p>
+            <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p style="text-align:center; margin-bottom:20px;">
+        Have a project idea or just want to say hi? Fill out the form or reach me on social media.
       </p>
-      <img src="photos/anmol.jpeg" alt="Photo" class="photo">
-    </div>
+      <div class="contact-container">
+        <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
+          <div class="input-group">
+            <input type="text" name="name" placeholder=" " required>
+            <label for="name">Your Name</label>
+          </div>
+          <div class="input-group">
+            <input type="email" name="email" placeholder=" " required>
+            <label for="email">Your Email</label>
+          </div>
+          <div class="input-group">
+            <textarea name="message" placeholder=" " rows="5" required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <button type="submit">Send Message</button>
+          <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+        </form>
+
+        <div class="social-links">
+          <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
+            <img src="photos/gtb.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
+            <img src="photos/lkd.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
+            <img src="photos/insta.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
+    </footer>
   </div>
-
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="education-container">
-      <div class="education-item">
-        <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
-        <div class="education-text">
-          <h3>Manipal University</h3>
-          <p>📍Jaipur, Rajasthan</p><br>
-          <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
-          <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
-
-
-        </div>
-      </div>
-      <div class="education-item">
-        <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
-        <div class="education-text">
-          <h3>Maharshi Patanjali Vidya Mandir</h3>
-          <p>📍Prayagraj, Uttar Pradesh</p><br>
-          <p>Intermediate(2018 - 2025)</p>
-          <p>Achieved excellent results throughout my school years,
-            with a strong foundation in core subjects.</p>
-
-          </p>
-        </div>
-      </div>
-      <div class="education-item">
-        <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
-        <div class="education-text">
-          <h3>Patanjali Rishikul</h3>
-          <p>📍Prayagraj, Uttar Pradesh
-          </p><br>
-          <p>Junior and Middle School(2014 - 2018)</p>
-          <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">Java</div>
-      <div class="skill">C++</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Python</div>
-    </div>
-  </section>
-
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
-    <div class="skills">
-      <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
-      <div class="skill" onclick="showCertificate('java-cert')">Java</div>
-      <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
-      <div class="skill" onclick="showCertificate('python-cert')">Python</div>
-    </div>
-    <div class="certificate-viewer">
-      <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
-      <img id="java-cert" src="photos/javacert.png" alt="Java Certificate">
-      <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
-      <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <img src="photos/a1.png" alt="Project 1">
-        <div class="project-content">
-          <h3>Flipping A Coin</h3>
-          <p>A website which flips as many coins as you want and generates random result.</p>
-          <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
-        </div>
-      </div>
-      <div class="project">
-        <img src="photos/uninav.png" alt="Project 2">
-        <div class="project-content">
-          <h3>Manipal UniNav Map</h3>
-          <p>A website made for manipal students to navigate through their campus.</p>
-          <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
-        </div>
-      </div>
-      <div class="project">
-        <img src="photos/s2.png" alt="Project 3">
-        <div class="project-content">
-          <h3>Spin Roulette</h3>
-          <p>A website where you can spin the roulette and try to win in the least number of chances</p>
-          <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p style="text-align:center; margin-bottom:20px;">
-      Have a project idea or just want to say hi? Fill out the form or reach me on social media.
-    </p>
-    <div class="contact-container">
-      <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
-        <div class="input-group">
-          <input type="text" name="name" placeholder=" " required>
-          <label for="name">Your Name</label>
-        </div>
-        <div class="input-group">
-          <input type="email" name="email" placeholder=" " required>
-          <label for="email">Your Email</label>
-        </div>
-        <div class="input-group">
-          <textarea name="message" placeholder=" " rows="5" required></textarea>
-          <label for="message">Your Message</label>
-        </div>
-        <button type="submit">Send Message</button>
-        <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
-      </form>
-
-      <div class="social-links">
-        <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-          <img src="photos/gtb.png" alt="GitHub">
-        </a>
-        <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-          <img src="photos/lkd.png" alt="LinkedIn">
-        </a>
-        <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-          <img src="photos/insta.png" alt="Instagram">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
-  </footer>
 
   <script>
     const overlay = document.getElementById("intro-overlay");
     const enterBtn = document.getElementById("enter-btn");
     const bgMusic = document.getElementById("bg-music");
+    const mainContent = document.getElementById("content");
 
-    // Add this line after the 'enter-btn' and 'bg-music' declarations
-const mainContent = document.getElementById("content");
+    // Add event listener to the "Enter Website" button
+    enterBtn.addEventListener("click", () => {
+      // Hide the intro overlay
+      overlay.classList.add("hidden");
 
-// Modify the event listener for the 'enter-btn'
-enterBtn.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-  bgMusic.muted = false;
-  bgMusic.currentTime = 2;
-  bgMusic.volume = 0.3;
-  bgMusic.play().then(() => {
-    console.log("Music started at 30% volume!");
-  }).catch((err) => {
-    console.log("Music play failed:", err);
-  });
+      // Play background music
+      bgMusic.muted = false;
+      bgMusic.currentTime = 2;
+      bgMusic.volume = 0.3;
+      bgMusic.play().then(() => {
+        console.log("Music started at 30% volume!");
+      }).catch((err) => {
+        console.log("Music play failed:", err);
+      });
 
-  // Wait for the intro overlay to start its fade-out before showing the content
-  setTimeout(() => {
-    mainContent.classList.add("show");
-  }, 500); // This delay (in milliseconds) can be adjusted for timing
-});
+      // Animate in the main content after a slight delay
+      setTimeout(() => {
+        mainContent.classList.add("show");
+      }, 500); // Wait for 500ms before showing the main content
+    });
+
     // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const showSection = () => {
       sections.forEach(sec => {
+        // Check if the section's top is within the viewport
         if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
           sec.classList.add("show");
         }
       });
     };
     window.addEventListener("scroll", showSection);
-    showSection();
+    showSection(); // Call once on page load to check initial positions
 
     // Particles.js config
     particlesJS("particles-js", {
@@ -1037,10 +1042,14 @@ enterBtn.addEventListener("click", () => {
     function showCertificate(certId) {
       const certs = document.querySelectorAll(".certificate-viewer img");
       const clickedCert = document.getElementById(certId);
+
+      // If the clicked certificate is already active, hide it
       if (clickedCert.classList.contains("active")) {
         clickedCert.classList.remove("active");
         return;
       }
+
+      // Hide all certificates and then show the one that was clicked
       certs.forEach(cert => cert.classList.remove("active"));
       clickedCert.classList.add("active");
     }
