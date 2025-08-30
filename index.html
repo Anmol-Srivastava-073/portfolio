@@ -520,6 +520,20 @@
       overflow: hidden;
     }
 
+    /* Add to your CSS */
+#content {
+    /* Initially hide and move the content down and to the side */
+    opacity: 0;
+    transform: translateY(20px) translateX(-20px);
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smoothly transition both properties */
+}
+
+#content.show {
+    /* When the 'show' class is added, the content becomes visible and moves to its final position */
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
     #contact::before,
     #contact::after {
       display: none;
@@ -954,18 +968,26 @@
     const enterBtn = document.getElementById("enter-btn");
     const bgMusic = document.getElementById("bg-music");
 
-    enterBtn.addEventListener("click", () => {
-      overlay.classList.add("hidden");
-      bgMusic.muted = false;
-      bgMusic.currentTime = 2; // unmute on user click
-      bgMusic.volume = 0.3; // set volume to 30%
-      bgMusic.play().then(() => {
-        console.log("Music started at 30% volume!");
-      }).catch((err) => {
-        console.log("Music play failed:", err);
-      });
-    });
+    // Add this line after the 'enter-btn' and 'bg-music' declarations
+const mainContent = document.getElementById("content");
 
+// Modify the event listener for the 'enter-btn'
+enterBtn.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  bgMusic.muted = false;
+  bgMusic.currentTime = 2;
+  bgMusic.volume = 0.3;
+  bgMusic.play().then(() => {
+    console.log("Music started at 30% volume!");
+  }).catch((err) => {
+    console.log("Music play failed:", err);
+  });
+
+  // Wait for the intro overlay to start its fade-out before showing the content
+  setTimeout(() => {
+    mainContent.classList.add("show");
+  }, 500); // This delay (in milliseconds) can be adjusted for timing
+});
     // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const showSection = () => {
