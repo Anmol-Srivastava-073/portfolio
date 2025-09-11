@@ -74,21 +74,11 @@
 
         /* Main content */
         #content {
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.95);
-            transition: opacity 1s ease-out, transform 1s ease-out;
             min-height: 100vh;
             padding-top: 80px;
             overflow-y: auto;
         }
-
-        body.loaded #content {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
-
+        
         /* --- Rest of your existing CSS, adapted for new color palette --- */
         .logo-name { display: flex; align-items: center; }
         .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
@@ -392,10 +382,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Immediately show the main content
-            document.body.classList.add('loaded');
-            document.body.style.overflowY = 'auto';
-            
             // Typing effect logic
             const typedTextElement = document.getElementById("typed-text");
             const textToType = "Curious developer passionate about building projects and learning new technologies!";
