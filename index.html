@@ -35,7 +35,8 @@
         body {
             color: var(--text-light);
             background-color: var(--bg-dark);
-            overflow: hidden; /* Hide scrollbars initially */
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* Animated Grid Background */
@@ -71,146 +72,12 @@
             background-color: var(--bg-dark);
         }
 
-        /* Intro Overlay */
-        #intro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-            z-index: 5000;
-            transition: transform var(--transition-speed) ease-out, opacity var(--transition-speed) ease-out;
-        }
-
-        /* Transition effects for intro overlay */
-        #intro-overlay.fade-out {
-            opacity: 0;
-            transform: scale(0.9);
-            pointer-events: none;
-        }
-
-        /* Main Intro Content Box */
-        .intro-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 80px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            text-align: center;
-            transition: all var(--transition-speed) ease-in-out;
-        }
-
-        .intro-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
-        }
-
-        /* Professional Neon Title */
-        .intro-box h1 {
-            font-family: var(--font-mono);
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            position: relative;
-            color: transparent;
-            text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow), 0 0 40px var(--cyan-glow), 0 0 80px var(--cyan-glow);
-            animation: text-glow 2s ease-in-out infinite alternate;
-        }
-
-        /* Professional Glitch Effect */
-        .intro-box h1::after {
-            content: attr(data-glitch);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-dark);
-            text-shadow: 0 0 5px var(--cyan-accent);
-            opacity: 0;
-            animation: glitch-text 4s infinite;
-        }
-
-        @keyframes text-glow {
-            from { text-shadow: 0 0 5px var(--cyan-glow), 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow); }
-            to { text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow), 0 0 40px var(--cyan-glow); }
-        }
-
-        @keyframes glitch-text {
-            0% { transform: skewX(0deg); opacity: 0; }
-            10% { transform: skewX(-5deg); opacity: 1; }
-            20% { transform: skewX(5deg); opacity: 1; }
-            30% { transform: skewX(0deg); opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        /* "Powered Up" Button */
-        #enter-btn {
-            padding: 18px 60px;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-light);
-            border: 2px solid var(--cyan-accent);
-            border-radius: 50px;
-            cursor: pointer;
-            background: transparent;
-            transition: all 0.3s ease-in-out;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        #enter-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            width: calc(100% + 4px);
-            height: calc(100% + 4px);
-            background: linear-gradient(45deg, var(--cyan-glow), var(--cyan-accent), transparent, var(--cyan-glow));
-            background-size: 400% 400%;
-            border-radius: 50px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-            animation: powered-up 5s infinite;
-        }
-
-        #enter-btn:hover {
-            color: var(--bg-dark);
-            background: var(--cyan-accent);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--cyan-glow);
-        }
-
-        #enter-btn:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes powered-up {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Main content - hidden by default */
+        /* Main content */
         #content {
             opacity: 0;
             visibility: hidden;
             transform: scale(0.95);
-            transition: opacity var(--transition-speed) ease-out, transform var(--transition-speed) ease-out;
+            transition: opacity 1s ease-out, transform 1s ease-out;
             min-height: 100vh;
             padding-top: 80px;
             overflow-y: auto;
@@ -236,7 +103,16 @@
         .sidebar a:hover { background: var(--charcoal); color: var(--cyan-glow); }
         .hamburger { font-size: 26px; cursor: pointer; color: var(--cyan-glow); }
         .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; }
-        .hero h2 { font-size: 3.2rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); color: var(--cyan-glow); animation: text-glow 2s ease-in-out infinite alternate; }
+        .hero h1 { 
+            font-family: var(--font-mono);
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: transparent;
+            text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow), 0 0 40px var(--cyan-glow);
+            animation: text-glow 2s ease-in-out infinite alternate;
+        }
+        .hero h2 { font-size: 2.5rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); color: var(--cyan-glow); }
         .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; color: var(--text-light); }
         .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
         .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
@@ -292,8 +168,7 @@
 
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            .intro-box h1 { font-size: 3rem; margin-bottom: 30px; }
-            #enter-btn { padding: 15px 60px; font-size: 1.2rem; }
+            .hero h1 { font-size: 3rem; margin-bottom: 30px; }
             .hero h2 { font-size: 2.5rem; }
             .hero p { font-size: 1.2rem; }
             header { padding: 15px 20px; }
@@ -304,9 +179,7 @@
         }
 
         @media (max-width: 480px) {
-            .intro-box { padding: 30px 40px; }
-            .intro-box h1 { font-size: 2rem; margin-bottom: 20px; }
-            #enter-btn { padding: 12px 40px; font-size: 1rem; }
+            .hero h1 { font-size: 2rem; margin-bottom: 20px; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             h2 { font-size: 1.8rem; }
@@ -317,13 +190,6 @@
 <body>
     <div id="grid-bg"></div>
     <div id="particles-js"></div>
-
-    <div id="intro-overlay">
-        <div class="intro-box">
-            <h1 data-glitch="Welcome">Welcome to My Portfolio!</h1>
-            <button id="enter-btn">Enter Website</button>
-        </div>
-    </div>
 
     <audio id="bg-music" loop>
         <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
@@ -355,6 +221,7 @@
         </div>
 
         <section class="hero">
+            <h1>Welcome to My Portfolio!</h1>
             <h2>Hello, I'm Anmol Srivastava!</h2>
             <p><span id="typed-text"></span></p>
             <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
@@ -524,35 +391,11 @@
     </div>
 
     <script>
-        const introOverlay = document.getElementById("intro-overlay");
-        const enterBtn = document.getElementById("enter-btn");
-        const bgMusic = document.getElementById("bg-music");
-        const mainContent = document.getElementById("content");
-
-        // --- Event Listener for "Enter Website" button ---
-        enterBtn.addEventListener("click", () => {
-            // Start the fade-out and scale-down transition
-            introOverlay.classList.add("fade-out");
-
-            // After a short delay, transition to main content
-            setTimeout(() => {
-                document.body.classList.add('loaded'); // Trigger main content fade-in
-                document.body.style.overflowY = 'auto'; // Re-enable scroll for main content
-
-                // Start background music
-                bgMusic.muted = false;
-                bgMusic.currentTime = 2; // Start a bit into the song
-                bgMusic.volume = 0.2; // Keep volume subtle
-                bgMusic.play().then(() => {
-                    console.log("Music started!");
-                }).catch((err) => {
-                    console.log("Music play failed:", err);
-                });
-            }, 600); // This delay should match the transition-speed CSS variable
-        });
-
-        // --- Initialize particles.js and other effects on page load ---
         document.addEventListener("DOMContentLoaded", () => {
+            // Immediately show the main content
+            document.body.classList.add('loaded');
+            document.body.style.overflowY = 'auto';
+            
             // Typing effect logic
             const typedTextElement = document.getElementById("typed-text");
             const textToType = "Curious developer passionate about building projects and learning new technologies!";
@@ -591,19 +434,20 @@
                 },
                 retina_detect: true
             });
-
-            // Observe when main content becomes visible to start typing effect
-            const observer = new MutationObserver((mutationsList, observer) => {
-                for (const mutation of mutationsList) {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                        if (document.body.classList.contains('loaded')) {
-                            typeText(); // Start typing only when main content is loaded
-                            observer.disconnect(); // Disconnect observer once typing started
-                        }
-                    }
-                }
+            
+            // Start typing effect immediately
+            typeText();
+            
+            // Play background music
+            const bgMusic = document.getElementById("bg-music");
+            bgMusic.muted = false;
+            bgMusic.currentTime = 2; // Start a bit into the song
+            bgMusic.volume = 0.2; // Keep volume subtle
+            bgMusic.play().then(() => {
+                console.log("Music started!");
+            }).catch((err) => {
+                console.log("Music play failed:", err);
             });
-            observer.observe(document.body, { attributes: true });
         });
 
         // Other functions from your original code
