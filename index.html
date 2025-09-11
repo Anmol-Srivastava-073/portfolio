@@ -6,17 +6,21 @@
     <title>Portfolio | Anmol Srivastava</title>
     <link rel="icon" type="image/png" href="photos/AS (2).png" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4b6c2b1d6f.js" crossorigin="anonymous"></script>
     <style>
         /* CSS Custom Properties for easy customization */
         :root {
-            --bg-gradient-1: #0f2027;
-            --bg-gradient-2: #203a43;
-            --bg-gradient-3: #2c5364;
-            --neon-color: #38bdf8;
-            --main-font: "Poppins", sans-serif;
-            --transition-speed: 0.8s;
+            --primary-neon: #00f0ff; /* Bright cyan */
+            --secondary-neon: #aaff00; /* Bright green */
+            --bg-dark-blue: #02041a;
+            --bg-deep-purple: #1a022b;
+            --bg-light-blue: #0a113a;
+            --text-color: #e0e0e0;
+            --glow-intensity: 0.8;
+            --transition-duration: 0.8s;
+            --font-orbitron: 'Orbitron', sans-serif;
+            --font-poppins: 'Poppins', sans-serif;
         }
 
         /* General styles */
@@ -24,44 +28,67 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--main-font);
+            font-family: var(--font-poppins);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            color: #fff;
-            overflow-x: hidden;
-            background: var(--bg-gradient-1);
+            color: var(--text-color);
+            overflow: hidden; /* Hide scrollbars initially for intro */
+            background-color: var(--bg-dark-blue);
         }
-        
-        /* Loading spinner */
-        .loading {
+
+        /* Preloader/Loading Spinner */
+        .loading-spinner {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            border: 5px solid #fff;
-            border-top: 5px solid var(--neon-color);
+            width: 60px;
+            height: 60px;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            border-top: 6px solid var(--primary-neon);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            z-index: 6000;
+            z-index: 9999;
             opacity: 1;
             transition: opacity 0.5s ease-out;
         }
 
-        .loading.hidden {
+        .loading-spinner.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
         @keyframes spin {
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Particle and background effects */
+        /* Deep Space Nebula Background */
+        #space-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2; /* Below particles */
+            background: radial-gradient(circle at 15% 50%, var(--bg-deep-purple) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 60%, var(--bg-light-blue) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 10%, var(--primary-neon) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 80%, var(--secondary-neon) 0%, transparent 70%),
+                        linear-gradient(135deg, var(--bg-dark-blue), var(--bg-light-blue));
+            background-size: 300% 300%;
+            filter: blur(1px); /* Soften the nebula */
+            animation: nebula-shift 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes nebula-shift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* Particles (Stars) */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -69,24 +96,10 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background: linear-gradient(45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
-            background-size: 300% 300%;
-            animation: bg-shift 10s ease-in-out infinite;
+            transition: transform 0.5s ease-out; /* For warp effect */
         }
         
-        @keyframes bg-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Intro overlay - Glassmorphism style */
+        /* Intro Overlay */
         #intro-overlay {
             position: fixed;
             top: 0;
@@ -97,91 +110,135 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            background: rgba(0, 0, 0, 0.2); /* Slight overlay on nebula */
             z-index: 5000;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition: opacity var(--transition-duration) ease-out, visibility var(--transition-duration) ease-out;
             text-align: center;
-            /* Added for the new transition effect */
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-        }
-        
-        /* Intro container - with 3D hover effect */
-        .intro-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            padding: 40px 60px;
-            text-align: center;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .intro-container:hover {
-            transform: perspective(1000px) rotateY(5deg) rotateX(5deg);
-        }
-
-        /* Hide intro overlay */
-        #intro-overlay.fade-out {
+        /* Warp transition effect for intro-overlay */
+        #intro-overlay.warp-out {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
-
-        /* Neon shimmering title */
-        .intro-container h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 50px;
-            background: linear-gradient(90deg, #ffffff, var(--neon-color), #0ea5e9, var(--neon-color), #ffffff);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate;
-            text-shadow: 0 0 25px rgba(56, 189, 248, 0.4), 0 0 50px rgba(14, 165, 233, 0.3);
-            letter-spacing: 2px;
+        
+        /* Orbital Ring Container */
+        .orbital-ring {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 70px;
+            background: rgba(255, 255, 255, 0.08); /* Frosted glass */
+            backdrop-filter: blur(12px);
+            border-radius: 50px; /* More rounded */
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon), var(--primary-neon)) 1;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.3); /* Inner and outer glow */
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: orbital-pulse 5s infinite alternate ease-in-out;
+            transform-style: preserve-3d; /* For 3D hover */
         }
 
-        /* Neon flickering button */
+        @keyframes orbital-pulse {
+            0% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(0, 240, 255, 0.7), inset 0 0 30px rgba(0, 240, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.3); }
+        }
+
+        .orbital-ring:hover {
+            transform: perspective(1000px) rotateY(3deg) rotateX(3deg) scale(1.02);
+            box-shadow: 0 0 60px rgba(0, 240, 255, 0.8), inset 0 0 30px rgba(0, 240, 255, 0.6);
+        }
+
+        /* Pulsating Neon Title */
+        .orbital-ring h1 {
+            font-family: var(--font-orbitron);
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #fff, var(--primary-neon), #fff, var(--secondary-neon), #fff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer 8s linear infinite, text-glow 4s infinite alternate;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--primary-neon), 0 0 40px var(--primary-neon), 0 0 60px var(--secondary-neon);
+        }
+
+        @keyframes text-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes text-glow {
+            0% { text-shadow: 0 0 20px var(--primary-neon), 0 0 40px var(--primary-neon), 0 0 60px var(--secondary-neon); }
+            50% { text-shadow: 0 0 30px var(--primary-neon), 0 0 60px var(--primary-neon), 0 0 90px var(--secondary-neon); }
+            100% { text-shadow: 0 0 20px var(--primary-neon), 0 0 40px var(--primary-neon), 0 0 60px var(--secondary-neon); }
+        }
+
+        /* Electric Arc Button */
         #enter-btn {
-            padding: 18px 60px;
-            font-size: 1.25rem;
+            padding: 20px 80px;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
             border: none;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
-            background: linear-gradient(135deg, var(--neon-color), #0ea5e9, #6366f1);
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
             background-size: 200% 200%;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
             transition: all 0.4s ease-in-out;
             position: relative;
             overflow: hidden;
-            margin-top: 20px;
-            animation: neon-flicker 2s infinite alternate;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        
+
         #enter-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.8), 0 0 50px rgba(56, 189, 248, 0.6);
-            animation: pulse-border 1.5s infinite, neon-flicker 2s infinite alternate;
+            background-position: right center;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), 0 0 60px rgba(0, 240, 255, 0.6);
         }
 
-        @keyframes neon-flicker {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
-            }
+        /* Electric arc effect */
+        #enter-btn::before, #enter-btn::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            top: -25%;
+            left: -25%;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            z-index: 1;
         }
 
-        /* Main content section transitions */
+        #enter-btn:hover::before {
+            animation: electric-spark 1s ease-out forwards;
+        }
+
+        @keyframes electric-spark {
+            0% { opacity: 0; transform: scale(0); }
+            20% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+
+        /* Main content - hidden by default, visible on 'loaded' */
         #content {
             opacity: 0;
             visibility: hidden;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+            min-height: 100vh; /* Ensure it takes full height for content */
+            padding-top: 80px; /* Account for fixed header */
+            overflow-y: auto; /* Enable scroll for main content */
         }
         
         body.loaded #content {
@@ -189,411 +246,69 @@
             visibility: visible;
             transform: translateY(0);
         }
-    
-        /* --- Rest of your existing CSS --- */
+
+        /* Warp effect for particles on transition */
+        #particles-js.warp-effect {
+            animation: warp-starfield 0.8s ease-in forwards;
+        }
+
+        @keyframes warp-starfield {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scaleX(20) translateY(-50%) ; opacity: 0.5; } /* Stretch horizontally, move up */
+            100% { transform: scaleX(0) translateY(-100%); opacity: 0; } /* Disappear quickly upwards */
+        }
+
+        /* --- Rest of your existing CSS, adapted slightly for consistency --- */
         .logo-name { display: flex; align-items: center; }
         .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
-        .title { font-size: 28px; margin: 0; line-height: 1; }
-        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; z-index: 1000; }
-        header h1 { position: relative; background: linear-gradient(90deg, #ffffff, #dbeafe, #38bdf8, #ffffff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate; letter-spacing: 0.3px; }
-        nav a { color: #fff; margin-left: 20px; text-decoration: none; font-weight: 500; position: relative; transition: 0.3s; }
-        nav a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: #ffcc70; transition: width 0.3s; }
+        .title { font-size: 28px; margin: 0; line-height: 1; font-family: var(--font-orbitron); }
+        header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; z-index: 1000; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); }
+        header h1 { background: linear-gradient(90deg, #ffffff, var(--primary-neon), #dbeafe, var(--secondary-neon), #ffffff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: text-shimmer 6s linear infinite, text-glow 3s ease-in-out infinite alternate; letter-spacing: 0.3px; }
+        nav a { color: var(--text-color); margin-left: 20px; text-decoration: none; font-weight: 500; position: relative; transition: color 0.3s; }
+        nav a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: var(--secondary-neon); transition: width 0.3s; }
+        nav a:hover { color: var(--primary-neon); }
         nav a:hover::after { width: 100%; }
-        .sidebar { height: 100%; width: 0; position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.5); overflow-x: hidden; transition: 0.3s; padding-top: 90px; z-index: 2000; }
+        .sidebar { height: 100%; width: 0; position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); overflow-x: hidden; transition: 0.3s; padding-top: 90px; z-index: 2000; }
         .sidebar a { padding: 12px 24px; text-decoration: none; font-size: 18px; color: #ddd; display: block; transition: 0.2s; }
-        .sidebar a:hover { background: #444; color: white; }
-        .hamburger { font-size: 26px; cursor: pointer; }
+        .sidebar a:hover { background: #444; color: var(--primary-neon); }
+        .hamburger { font-size: 26px; cursor: pointer; color: var(--primary-neon); }
         .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; }
-        .hero h2 { font-size: 3.2rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); background: linear-gradient(90deg, #ffffff, #dbeafe, #38bdf8, #ffffff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 6s linear infinite, glow 3s ease-in-out infinite alternate; letter-spacing: 0.3px; }
-        .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; }
-        .hero button { padding: 12px 25px; background: #ffcc70; color: #111; border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
-        .hero button:hover { transform: scale(1.1); background: #fff; }
+        .hero h2 { font-size: 3.2rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); background: linear-gradient(90deg, #ffffff, var(--primary-neon), #dbeafe, var(--secondary-neon), #ffffff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: text-shimmer 6s linear infinite, text-glow 3s ease-in-out infinite alternate; letter-spacing: 0.3px; }
+        .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; color: var(--text-color); }
+        .hero button { padding: 12px 25px; background: var(--secondary-neon); color: var(--bg-dark-blue); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .hero button:hover { transform: scale(1.1); background: var(--primary-neon); color: #fff; }
         section { padding: 80px 20px; max-width: 1200px; margin: auto; opacity: 0; transform: translateY(40px); transition: 1s; }
         section.show { opacity: 1; transform: translateY(0); }
-        h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; }
+        h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; color: var(--primary-neon); text-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
         .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
-        .skill { background: #8a9092; color: #fff; padding: 10px 20px; margin: 5px; border-radius: 8px; transition: background 0.3s ease, transform 0.2s ease; display: inline-block; cursor: pointer; font-weight: 500; }
-        .skill:hover { background: #78757b; transform: scale(1.05); }
+        .skill { background: rgba(255, 255, 255, 0.1); border: 1px solid var(--primary-neon); color: var(--text-color); padding: 10px 20px; margin: 5px; border-radius: 8px; transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s; display: inline-block; cursor: pointer; font-weight: 500; }
+        .skill:hover { background: rgba(0, 240, 255, 0.2); transform: scale(1.05); border-color: var(--secondary-neon); }
         .certificate-viewer { margin-top: 30px; display: flex; justify-content: center; align-items: center; position: relative; min-height: 0; }
         .certificate-viewer img { max-width: 90%; max-height: 500px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); opacity: 0; position: absolute; transition: all 0.6s ease; transform: scale(0.95); pointer-events: none; display: none; }
         .certificate-viewer img.active { opacity: 1; transform: scale(1); pointer-events: auto; position: relative; display: block; }
         .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .project { background: rgba(255, 255, 255, 0.1); border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.4s; backdrop-filter: blur(8px); }
-        .project:hover { transform: translateY(-10px) rotateX(5deg) scale(1.05); }
+        .project { background: rgba(255, 255, 255, 0.05); border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.4s; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .project:hover { transform: translateY(-10px) rotateX(2deg) scale(1.03); }
         .project img { width: 100%; height: 200px; object-fit: cover; }
         .project-content { padding: 20px; }
-        .project-content h3 { margin-bottom: 10px; }
-        .project-content p { font-size: 0.95rem; opacity: 0.9; }
-        .project-content a { display: inline-block; margin-top: 12px; color: #ffcc70; text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .project-content a:hover { color: #fff; }
+        .project-content h3 { margin-bottom: 10px; color: var(--primary-neon); }
+        .project-content p { font-size: 0.95rem; opacity: 0.8; }
+        .project-content a { display: inline-block; margin-top: 12px; color: var(--secondary-neon); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .project-content a:hover { color: var(--primary-neon); }
         #education { padding: 80px 20px; max-width: 1000px; margin: auto; }
         .education-container { display: flex; flex-direction: column; gap: 20px; }
-        .education-item { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 20px 25px; border-left: 4px solid #ffcc70; border-radius: 10px; gap: 20px; transition: transform 0.3s, background 0.3s; }
-        .education-item:hover { background: rgba(255, 204, 112, 0.1); }
+        .education-item { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 20px 25px; border-left: 4px solid var(--secondary-neon); border-radius: 10px; gap: 20px; transition: transform 0.3s, background 0.3s; }
+        .education-item:hover { background: rgba(170, 255, 0, 0.1); transform: translateX(5px); }
         .education-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 50%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
-        .education-text h3 { margin-bottom: 6px; }
-        .education-text p { font-size: 0.95rem; opacity: 0.9; }
+        .education-text h3 { margin-bottom: 6px; color: var(--primary-neon); }
+        .education-text p { font-size: 0.95rem; opacity: 0.8; }
         #about { max-width: 1000px; margin: auto; padding: 40px 20px; text-align: center; }
-        #about h2 { font-size: 2rem; font-weight: 600; margin-bottom: 30px; color: #fff; }
+        #about h2 { font-size: 2rem; font-weight: 600; margin-bottom: 30px; color: var(--primary-neon); }
         .about-content { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .about-content p { flex: 1; text-align: left; font-size: 1.1rem; line-height: 1.6; font-weight: 300; color: #fff; max-width: 600px; }
-        .about-content .photo { width: 300px; height: 300px; border-radius: 5%; object-fit: cover; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
-        #contact { padding: 60px 20px; text-align: center; background: linear-gradient(45deg, #0c1924, #1a2c3c, #0c1924); color: #fff; position: relative; overflow: hidden; }
-        #contact::before, #contact::after { display: none; }
-        #contact h2 { font-size: 2.4rem; margin-bottom: 18px; font-weight: 700; position: relative; z-index: 1; letter-spacing: 1px; }
-        .contact-container { max-width: 500px; margin: 0 auto; background: rgba(15, 32, 39, 0.7); backdrop-filter: blur(12px); padding: 25px 20px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); position: relative; z-index: 1; animation: fadeInUp 1s ease both; }
+        .about-content p { flex: 1; text-align: left; font-size: 1.1rem; line-height: 1.6; font-weight: 300; color: var(--text-color); max-width: 600px; }
+        .about-content .photo { width: 300px; height: 300px; border-radius: 5%; object-fit: cover; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border: 3px solid var(--primary-neon); }
+        #contact { padding: 60px 20px; text-align: center; background: linear-gradient(45deg, var(--bg-dark-blue), var(--bg-light-blue), var(--bg-dark-blue)); color: var(--text-color); position: relative; overflow: hidden; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        #contact h2 { font-size: 2.4rem; margin-bottom: 18px; font-weight: 700; position: relative; z-index: 1; letter-spacing: 1px; color: var(--primary-neon); text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+        .contact-container { max-width: 500px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); position: relative; z-index: 1; animation: fadeInUp 1s ease both; }
         .contact-form .input-group { position: relative; margin-bottom: 16px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; background: rgba(255, 255, 255, 0.05); color: #fff; font-size: 0.95rem; outline: none; transition: all 0.3s ease; }
-        .contact-form textarea { min-height: 120px; resize: none; }
-        .contact-form input:focus, .contact-form textarea:focus { background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 12px #00f5d4; border-color: #00f5d4; }
-        .contact-form label { position: absolute; top: 50%; left: 12px; transform: translateY(-50%); color: #bbb; font-size: 0.95rem; pointer-events: none; transition: 0.3s ease; background: transparent; padding: 0 5px; }
-        .contact-form input:focus+label, .contact-form input:not(:placeholder-shown)+label, .contact-form textarea:focus+label, .contact-form textarea:not(:placeholder-shown)+label { top: -10px; left: 10px; font-size: 0.78rem; color: #00f5d4; background: rgba(15, 32, 39, 0.8); border-radius: 6px; }
-        .contact-form button { width: 100%; padding: 12px; font-size: 1rem; background: linear-gradient(135deg, #38bdf8, #0ea5e9, #6366f1); background-size: 300% 300%; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.4s; color: #fff; animation: gradientFlow 6s ease infinite; }
-        .contact-form button:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 22px rgba(14, 165, 233, 0.6); }
-        .social-links { margin-top: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-        .social-btn { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); background: #222; }
-        .social-btn img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease, filter 0.3s ease; }
-        .social-btn:hover { transform: translateY(-5px) scale(1.15); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
-        .social-btn:hover img { transform: scale(1.1); filter: brightness(1.2); }
-        footer { background: rgba(0, 0, 0, 0.5); padding: 15px; text-align: center; margin-top: 40px; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes shimmer { 0% { background-position: -100% 0; } 100% { background-position: 200% 0; } }
-        @keyframes glow { from { text-shadow: 0 0 15px rgba(56, 189, 248, 0.3), 0 0 30px rgba(14, 165, 233, 0.2); } to { text-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 60px rgba(14, 165, 233, 0.4); } }
-        .hero h2:hover, header h1:hover { animation-play-state: paused; }
-        @media (prefers-reduced-motion: reduce) { .hero h2, header h1 { animation: none; color: #fff; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); } }
-        #typed-text { border-right: 2px solid; animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; }
-        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #ffcc70; } }
-    </style>
-</head>
-
-<body>
-    <div class="loading"></div>
-
-    <div id="particles-js"></div>
-
-    <div id="intro-overlay">
-        <div class="intro-container">
-            <h1>Welcome to My Portfolio!</h1>
-            <button id="enter-btn">Enter Website</button>
-        </div>
-    </div>
-
-    <audio id="bg-music" loop>
-        <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
-    </audio>
-
-    <div id="content">
-        <header>
-            <div class="logo-name">
-                <img src="photos/AS (2).png" alt="Logo" class="logo">
-                <h1 class="title">Anmol Srivastava</h1>
-            </div>
-            <span class="hamburger" onclick="toggleSidebar()">☰</span>
-        </header>
-
-        <div id="mySidebar" class="sidebar">
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <section class="hero">
-            <h2>Hello, I'm Anmol Srivastava!</h2>
-            <p><span id="typed-text"></span></p>
-            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-        </section>
-
-        <div id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>
-                    Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
-                    I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
-                    exploring new technologies to expand my skillset.
-
-                    I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
-                    tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
-                    improving, and creating impactful solutions.
-
-                    When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
-                    brainstorming fresh ideas to challenge myself.
-                </p>
-                <img src="photos/anmol.jpeg" alt="Photo" class="photo">
-            </div>
-        </div>
-
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-container">
-                <div class="education-item">
-                    <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Manipal University</h3>
-                        <p>📍Jaipur, Rajasthan</p><br>
-                        <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
-                        <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
-
-
-                    </div>
-                </div>
-                <div class="education-item">
-                    <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Maharshi Patanjali Vidya Mandir</h3>
-                        <p>📍Prayagraj, Uttar Pradesh</p><br>
-                        <p>Intermediate(2018 - 2025)</p>
-                        <p>Achieved excellent results throughout my school years,
-                            with a strong foundation in core subjects.</p>
-
-                        </p>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Patanjali Rishikul</h3>
-                        <p>📍Prayagraj, Uttar Pradesh
-                        </p><br>
-                        <p>Junior and Middle School(2014 - 2018)</p>
-                        <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Java</div>
-                <div class="skill">C++</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Python</div>
-            </div>
-        </section>
-
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
-            <div class="skills">
-                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
-                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
-                <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
-                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
-            </div>
-            <div class="certificate-viewer">
-                <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
-                <img id="java-cert" src="photos/javacert.png" alt="Java Certificate">
-                <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
-                <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <img src="photos/a1.png" alt="Project 1">
-                    <div class="project-content">
-                        <h3>Flipping A Coin</h3>
-                        <p>A website which flips as many coins as you want and generates random result.</p>
-                        <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="photos/uninav.png" alt="Project 2">
-                    <div class="project-content">
-                        <h3>Manipal UniNav Map</h3>
-                        <p>A website made for manipal students to navigate through their campus.</p>
-                        <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="photos/s2.png" alt="Project 3">
-                    <div class="project-content">
-                        <h3>Spin Roulette</h3>
-                        <p>A website where you can spin the roulette and try to win in the least number of chances</p>
-                        <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p style="text-align:center; margin-bottom:20px;">
-                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
-            </p>
-            <div class="contact-container">
-                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
-                    <div class="input-group">
-                        <input type="text" name="name" placeholder=" " required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder=" " required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="input-group">
-                        <textarea name="message" placeholder=" " rows="5" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit">Send Message</button>
-                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
-                </form>
-
-                <div class="social-links">
-                    <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-                        <img src="photos/gtb.png" alt="GitHub">
-                    </a>
-                    <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-                        <img src="photos/lkd.png" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-                        <img src="photos/insta.png" alt="Instagram">
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <script>
-        const overlay = document.getElementById("intro-overlay");
-        const enterBtn = document.getElementById("enter-btn");
-        const bgMusic = document.getElementById("bg-music");
-        const mainContent = document.getElementById("content");
-        const loadingSpinner = document.querySelector(".loading");
-
-        // Event listener for "Enter Website" button
-        enterBtn.addEventListener("click", () => {
-            // Start the transition sequence
-            loadingSpinner.classList.remove("hidden"); // Show loading spinner
-            overlay.classList.add("fade-out"); // Fade out the intro overlay
-
-            // Play music and fade in main content after the overlay is mostly gone
-            setTimeout(() => {
-                document.body.classList.add('loaded'); // This triggers the main content animation
-                loadingSpinner.classList.add("hidden"); // Hide the loading spinner
-
-                // Start music
-                bgMusic.muted = false;
-                bgMusic.currentTime = 2;
-                bgMusic.volume = 0.3;
-                bgMusic.play().then(() => {
-                    console.log("Music started at 30% volume!");
-                }).catch((err) => {
-                    console.log("Music play failed:", err);
-                });
-            }, 800);
-        });
-
-        // Initialize particles.js and other effects on page load
-        document.addEventListener("DOMContentLoaded", () => {
-            // Typing effect logic
-            const typedTextElement = document.getElementById("typed-text");
-            const textToType = "Curious developer passionate about building projects and learning new technologies!";
-            let charIndex = 0;
-            const typingSpeed = 70;
-
-            function typeText() {
-                if (charIndex < textToType.length) {
-                    typedTextElement.textContent += textToType.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeText, typingSpeed);
-                }
-            }
-
-            typeText();
-
-            // Particles.js configuration for a starfield effect
-            particlesJS("particles-js", {
-                particles: {
-                    number: { value: 100 },
-                    color: { value: "#ffffff" },
-                    shape: { type: "circle" },
-                    opacity: { value: 0.8 },
-                    size: { value: 2 },
-                    line_linked: { enable: false },
-                    move: {
-                        enable: true,
-                        speed: 1,
-                        direction: "top",
-                        random: true,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: { enable: false }
-                    }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: { onhover: { enable: true, mode: "repulse" } }
-                }
-            });
-
-            // Show sections on scroll
-            const sections = document.querySelectorAll("section");
-            const showSection = () => {
-                sections.forEach(sec => {
-                    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-                        sec.classList.add("show");
-                    }
-                });
-            };
-            window.addEventListener("scroll", showSection);
-        });
-
-        // Other functions from your original code
-        function showCertificate(certId) {
-            const certs = document.querySelectorAll(".certificate-viewer img");
-            const clickedCert = document.getElementById(certId);
-
-            if (clickedCert.classList.contains("active")) {
-                clickedCert.classList.remove("active");
-                return;
-            }
-
-            certs.forEach(cert => cert.classList.remove("active"));
-            clickedCert.classList.add("active");
-        }
-
-        const form = document.querySelector('.contact-form');
-        const successMsg = document.getElementById('form-success');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    successMsg.style.display = 'block';
-                    form.reset();
-                } else {
-                    alert('Oops! There was a problem.');
-                }
-            });
-        });
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("mySidebar");
-            sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
-        }
-    </script>
-</body>
-</html>
+        .contact-form input
