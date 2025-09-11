@@ -515,20 +515,6 @@
       overflow: hidden;
     }
 
-    /* Add to your CSS */
-    #content {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    
-    body.loaded #content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
     #contact::before,
     #contact::after {
       display: none;
@@ -976,7 +962,7 @@
       const typedTextElement = document.getElementById("typed-text");
       const textToType = "Curious developer passionate about building projects and learning new technologies!";
       let charIndex = 0;
-      const typingSpeed = 60;
+      const typingSpeed = 50;
       const erasingSpeed = 40;
       const newTextDelay = 2000;
 
