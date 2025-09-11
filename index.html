@@ -87,13 +87,16 @@ body {
     margin: 0;
     line-height: 1;
     font-family: var(--font-mono);
-    color: var(--text-light);
-    position: relative;
-    overflow: hidden;
+    
+    /* Fallback for older browsers */
+    color: var(--text-light); 
+    
+    /* The key properties for the shimmer effect */
     background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    
     background-size: 200% 100%;
     animation: gradient-shine 3s linear infinite;
 }
