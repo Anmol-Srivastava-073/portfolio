@@ -56,7 +56,7 @@
       opacity: 0;
       visibility: hidden;
     }
-
+    
     /* Neon glowing shimmer for title */
     .intro-content h1 {
       font-size: 4rem;
@@ -87,7 +87,6 @@
       position: relative;
       overflow: hidden;
       margin-top: 20px;
-      /* spacing from title */
     }
 
     /* Hover effect: brighter and scale up */
@@ -121,7 +120,6 @@
       0% {
         background-position: -100% 0;
       }
-
       100% {
         background-position: 200% 0;
       }
@@ -132,7 +130,6 @@
       from {
         text-shadow: 0 0 15px rgba(56, 189, 248, 0.3), 0 0 30px rgba(14, 165, 233, 0.2);
       }
-
       to {
         text-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 60px rgba(14, 165, 233, 0.4);
       }
@@ -249,7 +246,6 @@
       flex-direction: column;
       text-align: center;
       padding: 20px;
-      animation: fadeIn 1.5s ease-in-out;
     }
 
     .hero h2 {
@@ -466,7 +462,6 @@
       opacity: 0.9;
     }
 
-
     #about {
       max-width: 1000px;
       margin: auto;
@@ -522,17 +517,16 @@
 
     /* Add to your CSS */
     #content {
-      /* Initially hide and move the content down and to the side */
       opacity: 0;
-      transform: translateY(20px) translateX(-20px);
+      visibility: hidden;
+      transform: translateY(20px);
       transition: opacity 1s ease-out, transform 1s ease-out;
-      /* Smoothly transition both properties */
     }
-
-    #content.show {
-      /* When the 'show' class is added, the content becomes visible and moves to its final position */
+    
+    body.loaded #content {
       opacity: 1;
-      transform: translateY(0) translateX(0);
+      visibility: visible;
+      transform: translateY(0);
     }
 
     #contact::before,
@@ -587,6 +581,26 @@
       resize: none;
     }
 
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 12px #00f5d4;
+      border-color: #00f5d4;
+    }
+
+    .contact-form label {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: #bbb;
+      font-size: 0.95rem;
+      pointer-events: none;
+      transition: 0.3s ease;
+      background: transparent;
+      padding: 0 5px;
+    }
+
     .contact-form input:focus+label,
     .contact-form input:not(:placeholder-shown)+label,
     .contact-form textarea:focus+label,
@@ -618,7 +632,6 @@
       transform: translateY(-2px) scale(1.03);
       box-shadow: 0 6px 22px rgba(14, 165, 233, 0.6);
     }
-
 
     /* Container */
     .social-links {
@@ -665,7 +678,6 @@
       filter: brightness(1.2);
     }
 
-
     footer {
       background: rgba(0, 0, 0, 0.5);
       padding: 15px;
@@ -677,7 +689,6 @@
       from {
         opacity: 0;
       }
-
       to {
         opacity: 1;
       }
@@ -688,7 +699,6 @@
         opacity: 0;
         transform: translateY(40px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -699,11 +709,9 @@
       0% {
         background-position: 0% 50%;
       }
-
       50% {
         background-position: 100% 50%;
       }
-
       100% {
         background-position: 0% 50%;
       }
@@ -713,7 +721,6 @@
       0% {
         background-position: 0% 50%;
       }
-
       100% {
         background-position: 100% 50%;
       }
@@ -723,7 +730,6 @@
       from {
         text-shadow: 0 0 8px rgba(56, 189, 248, 0.25), 0 0 14px rgba(255, 255, 255, 0.15);
       }
-
       to {
         text-shadow: 0 0 14px rgba(56, 189, 248, 0.45), 0 0 28px rgba(255, 255, 255, 0.25);
       }
@@ -735,7 +741,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       .hero h2,
       header h1 {
         animation: none;
@@ -965,39 +970,105 @@
     const bgMusic = document.getElementById("bg-music");
     const mainContent = document.getElementById("content");
 
+    // All functions that should run when the page is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      // Typing effect logic
+      const typedTextElement = document.getElementById("typed-text");
+      const textToType = "Curious developer passionate about building projects and learning new technologies!";
+      let charIndex = 0;
+      const typingSpeed = 70;
+      const erasingSpeed = 40;
+      const newTextDelay = 1500;
+
+      function typeText() {
+        if (charIndex < textToType.length) {
+          typedTextElement.textContent += textToType.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeText, typingSpeed);
+        } else {
+          // You can uncomment this if you want it to erase and re-type
+          // setTimeout(eraseText, newTextDelay);
+        }
+      }
+
+      function eraseText() {
+        if (charIndex > 0) {
+          typedTextElement.textContent = textToType.substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(eraseText, erasingSpeed);
+        } else {
+          setTimeout(typeText, newTextDelay);
+        }
+      }
+      
+      // Starts the typing effect
+      typeText();
+
+      // Starts the particle effect
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 100
+          },
+          color: {
+            value: "#ffffff"
+          },
+          shape: {
+            type: "circle"
+          },
+          opacity: {
+            value: 0.5
+          },
+          size: {
+            value: 3
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 3
+          }
+        }
+      });
+      showSection();
+    });
+
     // Add event listener to the "Enter Website" button
     enterBtn.addEventListener("click", () => {
-      // Hide the intro overlay
+      // Hide the intro overlay with a CSS class
       overlay.classList.add("hidden");
-
-      // Play background music
-      bgMusic.muted = false;
-      bgMusic.currentTime = 2;
-      bgMusic.volume = 0.3;
-      bgMusic.play().then(() => {
-        console.log("Music started at 30% volume!");
-      }).catch((err) => {
-        console.log("Music play failed:", err);
-      });
-
-      // Animate in the main content after a slight delay
+      
+      // After a short delay, make the main content visible and start music
       setTimeout(() => {
-        mainContent.classList.add("show");
-      }, 500); // Wait for 500ms before showing the main content
+        document.body.classList.add('loaded'); // This triggers the main content animation
+        
+        bgMusic.muted = false;
+        bgMusic.currentTime = 2;
+        bgMusic.volume = 0.3;
+        bgMusic.play().then(() => {
+          console.log("Music started at 30% volume!");
+        }).catch((err) => {
+          console.log("Music play failed:", err);
+        });
+      }, 500); // This delay gives the user a moment before the main content appears
     });
 
     // Animate sections on scroll
     const sections = document.querySelectorAll("section");
     const showSection = () => {
       sections.forEach(sec => {
-        // Check if the section's top is within the viewport
         if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
           sec.classList.add("show");
         }
       });
     };
     window.addEventListener("scroll", showSection);
-
+    
     // Certificates viewer
     function showCertificate(certId) {
       const certs = document.querySelectorAll(".certificate-viewer img");
@@ -1042,74 +1113,6 @@
       const sidebar = document.getElementById("mySidebar");
       sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
     }
-
-    // All functions that should run when the page is fully loaded
-    document.addEventListener("DOMContentLoaded", () => {
-      // Typing effect logic
-      const typedTextElement = document.getElementById("typed-text");
-      const textToType = "Curious developer passionate about building projects and learning new technologies!";
-      let charIndex = 0;
-      const typingSpeed = 70;
-      const erasingSpeed = 40;
-      const newTextDelay = 1500;
-
-      function typeText() {
-        if (charIndex < textToType.length) {
-          typedTextElement.textContent += textToType.charAt(charIndex);
-          charIndex++;
-          setTimeout(typeText, typingSpeed);
-        } else {
-          // You can uncomment this if you want it to erase and re-type
-          // setTimeout(eraseText, newTextDelay);
-        }
-      }
-
-      function eraseText() {
-        if (charIndex > 0) {
-          typedTextElement.textContent = textToType.substring(0, charIndex - 1);
-          charIndex--;
-          setTimeout(eraseText, erasingSpeed);
-        } else {
-          setTimeout(typeText, newTextDelay);
-        }
-      }
-
-      // Start the typing effect
-      typeText();
-
-      // Start the particle effect
-      particlesJS("particles-js", {
-        particles: {
-          number: {
-            value: 100
-          },
-          color: {
-            value: "#ffffff"
-          },
-          shape: {
-            type: "circle"
-          },
-          opacity: {
-            value: 0.5
-          },
-          size: {
-            value: 3
-          },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#ffffff",
-            opacity: 0.4,
-            width: 1
-          },
-          move: {
-            enable: true,
-            speed: 3
-          }
-        }
-      });
-      showSection(); // Call once to check initial positions
-    });
   </script>
 </body>
 </html>
