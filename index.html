@@ -93,15 +93,15 @@
         .sidebar a:hover { background: var(--charcoal); color: var(--cyan-glow); }
         .hamburger { font-size: 26px; cursor: pointer; color: var(--cyan-glow); }
         .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; }
-        .hero h1 { 
-            font-family: var(--font-mono);
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: transparent;
-            text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow), 0 0 40px var(--cyan-glow);
-            animation: text-glow 2s ease-in-out infinite alternate;
-        }
+        .hero h1 {
+    font-family: var(--font-mono);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--cyan-glow); /* Sets the text to a solid color */
+    animation: none; /* Removes the animation to stop the glow from pulsing */
+    text-shadow: none; /* Removes the text glow effect */
+}
         .hero h2 { font-size: 2.5rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); color: var(--cyan-glow); }
         .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; color: var(--text-light); }
         .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
