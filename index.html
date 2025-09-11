@@ -95,8 +95,8 @@ body {
     background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent; /* For Chrome, Safari, etc. */
-    color: transparent; /* Fallback for other browsers */
+    -webkit-text-fill-color: transparent; /* This makes the text "see-through" to show the background */
+    /* Remove 'color: transparent;' which was causing the issue */
     
     background-size: 200% 100%;
     animation: gradient-shine 3s linear infinite;
@@ -117,7 +117,7 @@ nav a:hover::after { width: 100%; }
 .hamburger { font-size: 26px; cursor: pointer; color: var(--cyan-glow); display: none; }
 .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; }
 .hero h1 {
-    font-family: var(--font-mono);
+    font-family: var(--font-theme);
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 20px;
