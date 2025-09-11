@@ -82,7 +82,26 @@ body {
 /* --- Rest of your existing CSS, adapted for new color palette --- */
 .logo-name { display: flex; align-items: center; }
 .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
-.title { font-size: 28px; margin: 0; line-height: 1; font-family: var(--font-mono); color: var(--text-light); }
+.title {
+    font-size: 28px;
+    margin: 0;
+    line-height: 1;
+    font-family: var(--font-mono);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradient-shine 3s linear infinite;
+}
+@keyframes gradient-shine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; z-index: 1000; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); }
 nav a { color: var(--text-light); margin-left: 20px; text-decoration: none; font-weight: 500; position: relative; transition: color 0.3s; }
 nav a::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: var(--cyan-accent); transition: width 0.3s; }
@@ -153,9 +172,7 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
 #typed-text { border-right: 2px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; }
 @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--cyan-accent); } }
 
-/* * **Media Queries for Responsiveness**
-* The media queries now use a more mobile-first approach.
-*/
+/* **Media Queries for Responsiveness** */
 @media (max-width: 768px) {
     /* General adjustments for tablets and smaller devices */
     header {
@@ -227,6 +244,14 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
     }
     h2 {
         font-size: 1.8rem;
+    }
+
+    /* This is the key change to make the typed text flexible on phones */
+    #typed-text {
+        white-space: normal; /* Allows text to wrap to the next line */
+        overflow: visible; /* Prevents overflow from being hidden */
+        border-right: none; /* Removes the blinking cursor to prevent layout shifts */
+        animation: none; /* Stops the animation */
     }
 }
 </style>
