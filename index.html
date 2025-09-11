@@ -106,8 +106,7 @@
         .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; color: var(--text-light); }
         .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
         .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
-        section { padding: 80px 20px; max-width: 1200px; margin: auto; opacity: 0; transform: translateY(40px); transition: 1s; }
-        section.show { opacity: 1; transform: translateY(0); }
+        section { padding: 80px 20px; max-width: 1200px; margin: auto; }
         h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
         .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
         .skill { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--cyan-accent); color: var(--text-light); padding: 10px 20px; margin: 5px; border-radius: 8px; transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s; display: inline-block; cursor: pointer; font-weight: 500; }
@@ -217,7 +216,7 @@
             <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
         </section>
 
-        <div id="about">
+        <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
                 <p>
@@ -234,8 +233,6 @@
                 </p>
                 <img src="photos/anmol.jpeg" alt="Photo" class="photo">
             </div>
-        </div>
-
         </section>
 
         <section id="education">
