@@ -83,22 +83,21 @@ body {
 .logo-name { display: flex; align-items: center; }
 .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
 .title {
-    font-size: 28px;
-    margin: 0;
-    line-height: 1;
-    font-family: var(--font-mono);
-    
-    /* Fallback for older browsers */
-    color: var(--text-light); 
-    
-    /* The key properties for the shimmer effect */
-    background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
-    background-size: 200% 100%;
-    animation: gradient-shine 3s linear infinite;
+    font-size: 28px;
+    margin: 0;
+    line-height: 1;
+    font-family: var(--font-mono);
+    
+    /* Use a transparent color to allow the gradient to show through */
+    color: transparent; 
+    
+    /* The key properties for the shimmer effect */
+    background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    background-size: 200% 100%;
+    animation: gradient-shine 3s linear infinite;
 }
 @keyframes gradient-shine {
     0% { background-position: 200% 0; }
