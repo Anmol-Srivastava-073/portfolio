@@ -970,7 +970,34 @@
     const enterBtn = document.getElementById("enter-btn");
     const bgMusic = document.getElementById("bg-music");
     const mainContent = document.getElementById("content");
+    const typedTextElement = document.getElementById("typed-text");
+const textToType = "Curious developer passionate about building projects and learning new technologies!";
+let charIndex = 0;
+const typingSpeed = 70; // Adjust typing speed (milliseconds per character)
+const erasingSpeed = 40; // Adjust erasing speed
+const newTextDelay = 1500; // Delay before starting to type again (if looping)
 
+function typeText() {
+  if (charIndex < textToType.length) {
+    typedTextElement.textContent += textToType.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeText, typingSpeed);
+  } else {
+    // Optionally, if you want it to erase and re-type, uncomment the lines below
+    // setTimeout(eraseText, newTextDelay);
+  }
+}
+
+// Optional: function to erase text, if you want a looping effect
+function eraseText() {
+  if (charIndex > 0) {
+    typedTextElement.textContent = textToType.substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseText, erasingSpeed);
+  } else {
+    setTimeout(typeText, newTextDelay);
+  }
+}
     // Add event listener to the "Enter Website" button
     enterBtn.addEventListener("click", () => {
       // Hide the intro overlay
