@@ -311,4 +311,419 @@
         #contact h2 { font-size: 2.4rem; margin-bottom: 18px; font-weight: 700; position: relative; z-index: 1; letter-spacing: 1px; color: var(--primary-neon); text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
         .contact-container { max-width: 500px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 25px 20px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); position: relative; z-index: 1; animation: fadeInUp 1s ease both; }
         .contact-form .input-group { position: relative; margin-bottom: 16px; }
-        .contact-form input
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; background: rgba(255, 255, 255, 0.03); color: var(--text-color); font-size: 1rem; outline: none; transition: all 0.3s ease; }
+        .contact-form textarea { min-height: 120px; resize: none; }
+        .contact-form input:focus, .contact-form textarea:focus { background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 15px var(--primary-neon); border-color: var(--primary-neon); }
+        .contact-form label { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); color: #bbb; font-size: 1rem; pointer-events: none; transition: 0.3s ease; background: transparent; padding: 0 5px; }
+        .contact-form input:focus+label, .contact-form input:not(:placeholder-shown)+label, .contact-form textarea:focus+label, .contact-form textarea:not(:placeholder-shown)+label { top: -10px; left: 10px; font-size: 0.85rem; color: var(--secondary-neon); background: var(--bg-dark-blue); border-radius: 6px; }
+        .contact-form button { width: 100%; padding: 14px; font-size: 1.1rem; background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon)); background-size: 300% 300%; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.4s; color: var(--bg-dark-blue); animation: gradientFlow 6s ease infinite; margin-top: 20px; }
+        .contact-form button:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 25px rgba(0, 240, 255, 0.8); }
+        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .social-links { margin-top: 35px; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .social-btn { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); background: rgba(255, 255, 255, 0.1); border: 1px solid var(--primary-neon); }
+        .social-btn img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease, filter 0.3s ease; }
+        .social-btn:hover { transform: translateY(-5px) scale(1.15); box-shadow: 0 10px 25px var(--primary-neon); border-color: var(--secondary-neon); }
+        .social-btn:hover img { transform: scale(1.1); filter: brightness(1.2); }
+        footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        #typed-text { border-right: 2px solid var(--secondary-neon); animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--secondary-neon); } }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .orbital-ring h1 { font-size: 3rem; margin-bottom: 30px; }
+            #enter-btn { padding: 15px 60px; font-size: 1.2rem; }
+            .hero h2 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            header { padding: 15px 20px; }
+            .title { font-size: 24px; }
+            nav { display: none; } /* Hide desktop nav on small screens */
+            .hamburger { display: block; }
+            .about-content .photo { width: 200px; height: 200px; }
+        }
+
+        @media (max-width: 480px) {
+            .orbital-ring { padding: 30px 40px; }
+            .orbital-ring h1 { font-size: 2rem; margin-bottom: 20px; }
+            #enter-btn { padding: 12px 40px; font-size: 1rem; }
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-spinner"></div>
+    <div id="space-background"></div>
+    <div id="particles-js"></div>
+
+    <div id="intro-overlay">
+        <div class="orbital-ring">
+            <h1>Welcome to My Portfolio!</h1>
+            <button id="enter-btn">Enter Website</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="content">
+        <header>
+            <div class="logo-name">
+                <img src="photos/AS (2).png" alt="Logo" class="logo">
+                <h1 class="title">Anmol Srivastava</h1>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <span class="hamburger" onclick="toggleSidebar()">☰</span>
+        </header>
+
+        <div id="mySidebar" class="sidebar">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <section class="hero">
+            <h2>Hello, I'm Anmol Srivastava!</h2>
+            <p><span id="typed-text"></span></p>
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+        </section>
+
+        <div id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
+                    I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
+                    exploring new technologies to expand my skillset.
+
+                    I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
+                    tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
+                    improving, and creating impactful solutions.
+
+                    When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
+                    brainstorming fresh ideas to challenge myself.
+                </p>
+                <img src="photos/anmol.jpeg" alt="Photo" class="photo">
+            </div>
+        </div>
+
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-container">
+                <div class="education-item">
+                    <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Manipal University</h3>
+                        <p>📍Jaipur, Rajasthan</p><br>
+                        <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
+                        <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
+
+
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Maharshi Patanjali Vidya Mandir</h3>
+                        <p>📍Prayagraj, Uttar Pradesh</p><br>
+                        <p>Intermediate(2018 - 2025)</p>
+                        <p>Achieved excellent results throughout my school years,
+                            with a strong foundation in core subjects.</p>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Patanjali Rishikul</h3>
+                        <p>📍Prayagraj, Uttar Pradesh
+                        </p><br>
+                        <p>Junior and Middle School(2014 - 2018)</p>
+                        <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Java</div>
+                <div class="skill">C++</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Python</div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
+            <div class="skills">
+                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
+                <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
+                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
+            </div>
+            <div class="certificate-viewer">
+                <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
+                <img id="java-cert" src="photos/javacert.png" alt="Java Certificate">
+                <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
+                <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <img src="photos/a1.png" alt="Project 1">
+                    <div class="project-content">
+                        <h3>Flipping A Coin</h3>
+                        <p>A website which flips as many coins as you want and generates random result.</p>
+                        <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="photos/uninav.png" alt="Project 2">
+                    <div class="project-content">
+                        <h3>Manipal UniNav Map</h3>
+                        <p>A website made for manipal students to navigate through their campus.</p>
+                        <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="photos/s2.png" alt="Project 3">
+                    <div class="project-content">
+                        <h3>Spin Roulette</h3>
+                        <p>A website where you can spin the roulette and try to win in the least number of chances</p>
+                        <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p style="text-align:center; margin-bottom:20px;">
+                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
+            </p>
+            <div class="contact-container">
+                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder=" " required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder=" " required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" placeholder=" " rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+                </form>
+
+                <div class="social-links">
+                    <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
+                        <img src="photos/gtb.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
+                        <img src="photos/lkd.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
+                        <img src="photos/insta.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const introOverlay = document.getElementById("intro-overlay");
+        const enterBtn = document.getElementById("enter-btn");
+        const bgMusic = document.getElementById("bg-music");
+        const mainContent = document.getElementById("content");
+        const loadingSpinner = document.querySelector(".loading-spinner");
+        const particlesCanvas = document.getElementById("particles-js");
+        // const warpSound = document.getElementById("warp-sound"); // Uncomment if you add a warp sound
+
+        // --- Event Listener for "Enter Website" button ---
+        enterBtn.addEventListener("click", () => {
+            loadingSpinner.classList.remove("hidden"); // Show loading spinner
+            
+            // Start warp effect on particles
+            particlesCanvas.classList.add("warp-effect");
+
+            // Hide the intro overlay elements
+            introOverlay.classList.add("warp-out");
+
+            // Play warp sound if available
+            // if (warpSound) {
+            //     warpSound.currentTime = 0;
+            //     warpSound.play();
+            // }
+
+            // After a short delay (for warp animation), transition to main content
+            setTimeout(() => {
+                loadingSpinner.classList.add("hidden"); // Hide loading spinner
+                document.body.classList.add('loaded'); // Trigger main content fade-in
+                document.body.style.overflowY = 'auto'; // Re-enable scroll for main content
+
+                // Start background music
+                bgMusic.muted = false;
+                bgMusic.currentTime = 2; // Start a bit into the song
+                bgMusic.volume = 0.2; // Keep volume subtle
+                bgMusic.play().then(() => {
+                    console.log("Music started!");
+                }).catch((err) => {
+                    console.log("Music play failed:", err);
+                });
+            }, 1000); // This delay should match or slightly exceed the warp-effect animation duration
+        });
+
+        // --- Initialize particles.js and other effects on page load ---
+        document.addEventListener("DOMContentLoaded", () => {
+            // Typing effect logic
+            const typedTextElement = document.getElementById("typed-text");
+            const textToType = "Curious developer passionate about building projects and learning new technologies!";
+            let charIndex = 0;
+            const typingSpeed = 70;
+
+            function typeText() {
+                if (charIndex < textToType.length) {
+                    typedTextElement.textContent += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, typingSpeed);
+                }
+            }
+            // Only start typing effect once content is loaded (after intro)
+            // It will be called after body.loaded is added
+
+            // Particles.js configuration for a realistic starfield
+            particlesJS("particles-js", {
+                particles: {
+                    number: {
+                        value: 200, // More stars
+                        density: { enable: true, value_area: 800 }
+                    },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: {
+                        value: 0.7,
+                        random: true, // Varying opacity for twinkling
+                        anim: { enable: true, speed: 1, opacity_min: 0.2, sync: false } // Twinkling effect
+                    },
+                    size: {
+                        value: 2,
+                        random: true, // Varying sizes
+                        anim: { enable: false }
+                    },
+                    line_linked: { enable: false },
+                    move: {
+                        enable: true,
+                        speed: 0.5, // Slower, subtle movement
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: { enable: false }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: false } },
+                    modes: { repulse: { distance: 100, duration: 0.4 } }
+                },
+                retina_detect: true
+            });
+
+            // Show sections on scroll
+            const sections = document.querySelectorAll("section");
+            const showSection = () => {
+                sections.forEach(sec => {
+                    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+                        sec.classList.add("show");
+                    }
+                });
+            };
+            window.addEventListener("scroll", showSection);
+
+            // Observe when main content becomes visible to start typing effect
+            const observer = new MutationObserver((mutationsList, observer) => {
+                for (const mutation of mutationsList) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (document.body.classList.contains('loaded')) {
+                            typeText(); // Start typing only when main content is loaded
+                            observer.disconnect(); // Disconnect observer once typing started
+                        }
+                    }
+                }
+            });
+            observer.observe(document.body, { attributes: true });
+        });
+
+        // Other functions from your original code
+        function showCertificate(certId) {
+            const certs = document.querySelectorAll(".certificate-viewer img");
+            const clickedCert = document.getElementById(certId);
+
+            if (clickedCert.classList.contains("active")) {
+                clickedCert.classList.remove("active");
+                return;
+            }
+
+            certs.forEach(cert => cert.classList.remove("active"));
+            clickedCert.classList.add("active");
+        }
+
+        const form = document.querySelector('.contact-form');
+        const successMsg = document.getElementById('form-success');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    successMsg.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Oops! There was a problem.');
+                }
+            });
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
+        }
+    </script>
+</body>
+</html>
