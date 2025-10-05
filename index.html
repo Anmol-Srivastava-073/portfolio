@@ -538,18 +538,22 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
 
         // Other functions from your original code
         function showCertificate(certId) {
-            const certs = document.querySelectorAll(".certificate-viewer img");
-            const clickedCert = document.getElementById(certId);
+    // Select all top-level elements inside .certificate-viewer (images + divs)
+    const allCerts = document.querySelectorAll(".certificate-viewer > *");
+    const clickedCert = document.getElementById(certId);
 
-            if (clickedCert.classList.contains("active")) {
-                clickedCert.classList.remove("active");
-                return;
-            }
+    // If the clicked cert is already active, hide it
+    if (clickedCert.classList.contains("active")) {
+        clickedCert.classList.remove("active");
+        return;
+    }
 
-            certs.forEach(cert => cert.classList.remove("active"));
-            clickedCert.classList.add("active");
-        }
+    // Hide all other certificates
+    allCerts.forEach(cert => cert.classList.remove("active"));
 
+    // Show the selected one
+    clickedCert.classList.add("active");
+}
         const form = document.querySelector('.contact-form');
         const successMsg = document.getElementById('form-success');
         form.addEventListener('submit', function(e) {
