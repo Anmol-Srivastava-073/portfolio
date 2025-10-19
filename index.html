@@ -60,11 +60,16 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .hero { min-height: calc(100vh - 70px); display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 40px 20px; position: relative; }
 .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 10px; color: var(--cyan-glow); text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
 .hero h2 { font-size: 1.8rem; font-weight: 600; color: var(--cyan-glow); text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); margin-bottom: 20px; }
-.hero p { margin: 0 0 30px; font-size: 1.1rem; font-weight: 400; color: var(--text-light); max-width: 650px; line-height: 1.6; min-height: 1.6em; /* Reserve space for typed text */ }
+.hero p { margin: 0 0 30px; font-size: 1.1rem; font-weight: 400; color: var(--text-light); max-width: 650px; line-height: 1.6; min-height: 1.6em; /* Reserve space */ }
 #typed-text {
-    border-right: 3px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite;
-    /* Removed white-space nowrap and overflow hidden for word wrap if needed */
-    display: inline-block; vertical-align: bottom; color: var(--text-light); font-weight: 400;
+    border-right: 3px solid var(--cyan-accent);
+    animation: blink-caret 0.75s step-end infinite;
+    /* Allow wrapping if needed, adjust display */
+    display: inline; /* Changed from inline-block for better wrap with surrounding text if any */
+    vertical-align: bottom;
+    color: var(--text-light);
+    font-weight: 400;
+    /* word-break: break-all; /* If strict word-by-word causes overflow issues */
 }
 @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--cyan-accent); } }
 .hero button { padding: 10px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
@@ -81,13 +86,36 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 
 /* --- Certificates Section --- */
 #certificates p { text-align:center; margin-bottom: 25px; color: var(--text-medium); font-size: 0.95rem;}
-.certificate-viewer { margin-top: 0; display: flex; justify-content: center; align-items: center; position: relative; border: 1px solid transparent; border-radius: 10px; background: transparent; padding: 0; overflow: hidden; transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease; min-height: 0; }
-.certificate-viewer:has(> .active) { border-color: var(--charcoal); background: rgba(17, 17, 22, 0.4); padding: 15px; margin-top: 30px; }
-.certificate-viewer > img, .certificate-viewer > #java-cert { opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; max-width: calc(100% - 30px); max-height: calc(100% - 30px); }
-.certificate-viewer > .active { opacity: 1; pointer-events: auto; position: relative; top: auto; left: auto; width: auto; height: auto; max-width: 100%; display: block; transform: scale(1); transition: opacity 0.5s ease, transform 0.5s ease; }
-.certificate-viewer > img.active { max-height: 450px; margin: 10px auto; }
-.certificate-viewer #java-cert.active { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; width: 100%; margin: 10px 0; }
-.certificate-viewer #java-cert.active img { height: auto; width: auto; max-height: 400px; max-width: 45%; object-fit: contain; border-radius: 6px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); position: static; }
+.certificate-viewer {
+    margin-top: 0; display: flex; justify-content: center; align-items: center; position: relative;
+    border: 1px solid transparent; border-radius: 10px; background: transparent; padding: 0; overflow: hidden;
+    transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease; min-height: 0; /* Allows collapsing */
+}
+.certificate-viewer:has(> .active) { /* Styles when a cert is showing */
+    border-color: var(--charcoal); background: rgba(17, 17, 22, 0.4); padding: 15px; margin-top: 30px;
+}
+/* Hide initially & base positioning */
+.certificate-viewer > img,
+.certificate-viewer > #java-cert {
+    opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; max-width: calc(100% - 30px); max-height: calc(100% - 30px); width: auto; /* Ensure natural aspect ratio */ height: auto;
+}
+/* Show active */
+.certificate-viewer > .active {
+    opacity: 1; pointer-events: auto; position: relative; /* Takes space */ top: auto; left: auto; display: block; transform: scale(1); transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Reset absolute centering */
+    transform: none;
+}
+.certificate-viewer > img.active { max-height: 450px; margin: 10px auto; } /* Size for single image */
+.certificate-viewer #java-cert.active { /* Styles for Java div when active */
+    display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; width: 100%; margin: 10px 0;
+    /* Reset absolute positioning */
+    position: relative; top: auto; left: auto; transform: none;
+}
+.certificate-viewer #java-cert.active img { /* Size for images inside Java div */
+     max-height: 400px; max-width: 45%; /* Allows side-by-side */ object-fit: contain; border-radius: 6px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+     position: static; /* Important for flex layout */
+     opacity: 1; transform: none; pointer-events: auto; /* Ensure they behave normally */
+}
 
 /* --- Projects Section --- */
 .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
@@ -143,19 +171,18 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -9px; left: 10px; font-size: 0.75rem; color: var(--cyan-accent); background: var(--bg-medium); padding: 1px 5px; border-radius: 4px; }
 .contact-form button { width: 100%; padding: 13px; font-size: 1rem; background: var(--cyan-accent); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed); color: var(--bg-dark); margin-top: 10px; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .contact-form button:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); background-color: var(--cyan-glow); }
-.social-links { margin-top: 30px; display: flex; justify-content: center; gap: 25px; /* Increased gap slightly */ }
+.social-links { margin-top: 30px; display: flex; justify-content: center; gap: 25px; }
 .social-btn {
     width: 50px; height: 50px; /* ** Increased Size ** */
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--charcoal); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed); overflow: hidden; /* Hide image overflow */
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--charcoal); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed); overflow: hidden;
 }
 .social-btn img {
-    width: 100%; height: 100%; /* ** Fill the button ** */
-    object-fit: cover; /* ** Cover the area ** */
-    display: block;
-    transition: transform 0.3s ease; /* Add transition for image */
+    width: 100%; height: 100%; /* ** Fill Button ** */
+    object-fit: cover; /* ** Cover Area ** */
+    display: block; transition: transform 0.3s ease;
 }
 .social-btn:hover { transform: translateY(-4px) scale(1.1); box-shadow: 0 6px 15px rgba(0, 229, 255, 0.4); border-color: var(--cyan-accent); background: rgba(0, 184, 212, 0.1); }
-.social-btn:hover img { transform: scale(1.1); /* Optional: zoom image slightly on hover */ }
+.social-btn:hover img { transform: scale(1.1); }
 
 /* --- Footer --- */
 footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50px; border-top: 1px solid var(--charcoal); color: var(--text-medium); font-size: 0.9rem; }
@@ -206,7 +233,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .close-resume-viewer { font-size: 40px; top: 15px; right: 20px; }
 
     .contact-container { padding: 25px 20px; }
-    .social-btn { width: 45px; height: 45px; } /* Adjust size for tablet */
+    .social-btn { width: 45px; height: 45px; } /* Adjust size */
     .social-links { gap: 18px; }
 }
 
@@ -220,7 +247,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .hero h1 { font-size: 2rem; }
     .hero h2 { font-size: 1.4rem; }
     .hero p { font-size: 1rem; }
-    #typed-text { white-space: normal; /* Allow wrap on small screens */ overflow: visible; border-right: none; animation: none; display: block; text-align: center; margin: 10px auto 0; font-size: 1rem; min-height: 0; }
+    #typed-text { white-space: normal; overflow: visible; border-right: none; animation: none; display: block; text-align: center; margin: 10px auto 0; font-size: 1rem; min-height: 0; }
 
     h2 { font-size: 1.8rem; margin-bottom: 25px;}
     section { padding: 50px 10px; }
@@ -247,7 +274,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .contact-form button { padding: 12px; font-size: 0.95rem; }
 
     .social-links { gap: 15px; margin-top: 25px; }
-    .social-btn { width: 42px; height: 42px; } /* Further adjust size */
+    .social-btn { width: 42px; height: 42px; } /* Adjust size */
 }
     </style>
 </head>
@@ -475,33 +502,36 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             // Typing effect logic - WORD BY WORD
             const typedTextElement = document.getElementById("typed-text");
             const textToType = "Curious developer passionate about building projects and learning new technologies!";
-            const wordsToType = textToType.split(' '); // Split into words
+            const wordsToType = textToType.split(' ');
             let wordIndex = 0;
-            const typingSpeed = 200; // Delay between words (milliseconds)
+            const wordTypingSpeed = 200; // Delay between words (ms)
 
-            function typeWord() {
+            function typeWordByWord() {
                 if (typedTextElement && wordIndex < wordsToType.length) {
-                    typedTextElement.textContent += wordsToType[wordIndex] + ' '; // Add word and space
+                    typedTextElement.textContent += wordsToType[wordIndex] + ' ';
                     wordIndex++;
-                    setTimeout(typeWord, typingSpeed);
-                } else if (typedTextElement) {
-                     // Keep cursor solid at end and stop blinking after typing finishes
-                     typedTextElement.style.borderRightColor = 'var(--cyan-accent)';
-                     typedTextElement.style.animation = 'none';
+                    // Only set timeout if there are more words
+                    if (wordIndex < wordsToType.length) {
+                        setTimeout(typeWordByWord, wordTypingSpeed);
+                    } else {
+                        // Typing finished: stop blinking caret
+                        typedTextElement.style.borderRightColor = 'var(--cyan-accent)';
+                        typedTextElement.style.animation = 'none';
+                    }
                 }
             }
 
-            // Particles.js configuration - WITH INTERACTIVITY
+            // Particles.js configuration - WITH INTERACTIVITY & Increased Visibility
             if (typeof particlesJS !== 'undefined') {
                 particlesJS("particles-js", {
                     particles: {
                         number: { value: 70, density: { enable: true, value_area: 800 } },
                         color: { value: "#ffffff" },
                         shape: { type: "circle" },
-                        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 0.6, opacity_min: 0.15, sync: false } }, // Slightly increased opacity
+                        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 0.6, opacity_min: 0.15, sync: false } }, // Increased base opacity
                         size: { value: 2.5, random: true, anim: { enable: false } },
                         line_linked: {
-                            enable: true, distance: 140, color: "var(--cyan-accent)", opacity: 0.4, width: 1 // Increased line opacity
+                            enable: true, distance: 140, color: "var(--cyan-accent)", opacity: 0.5, width: 1 // Increased line opacity
                         },
                         move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false } }
                     },
@@ -523,22 +553,16 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
 
             // Start typing effect
             if (typedTextElement) {
-                typedTextElement.textContent = ''; // Clear initial text before typing
-                typeWord();
+                typedTextElement.textContent = ''; // Clear initial text
+                typeWordByWord(); // Start word-by-word typing
             }
 
-
-            // Background music attempt
+            // Background music
             const bgMusic = document.getElementById("bg-music");
             if (bgMusic) {
-                bgMusic.volume = 0.15;
-                bgMusic.currentTime = 2;
+                bgMusic.volume = 0.15; bgMusic.currentTime = 2;
                 let playPromise = bgMusic.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log("Music auto-play was prevented:", error);
-                    });
-                }
+                if (playPromise !== undefined) { playPromise.catch(error => { console.log("Music auto-play prevented:", error); }); }
             }
         });
 
@@ -559,33 +583,30 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             if (!isAlreadyActive) { clickedCert.classList.add("active"); }
         }
 
-        // Form submission logic (no changes needed from previous version)
+        // Form submission
         const form = document.querySelector('.contact-form');
         const successMsg = document.getElementById('form-success');
         if (form && successMsg) {
             form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(form);
+                e.preventDefault(); const formData = new FormData(form);
                 fetch(form.action, { method: form.method, body: formData, headers: { 'Accept': 'application/json' } })
                 .then(response => {
                     if (response.ok) {
                         successMsg.style.display = 'block'; form.reset();
                         setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
                     } else {
-                        response.json().then(data => {
-                            const errorMessage = data.errors?.map(err => err.message).join(', ') || 'Oops! There was a problem.';
-                            alert(errorMessage);
-                        }).catch(() => { alert('Oops! An unexpected error occurred.'); });
+                        response.json().then(data => { const errorMessage = data.errors?.map(err => err.message).join(', ') || 'Oops! There was a problem.'; alert(errorMessage); })
+                        .catch(() => { alert('Oops! An unexpected error occurred.'); });
                     }
                 }).catch(error => { alert('Network error. Please check connection.'); console.error('Form error:', error); });
             });
         }
 
-        // Sidebar toggle function (no changes needed)
+        // Sidebar
         const sidebar = document.getElementById("mySidebar");
         function toggleSidebar() { if (sidebar) { sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px"; } }
 
-        // Resume Viewer Logic (no changes needed)
+        // Resume Viewer
         const resumeImageViewer = document.getElementById("resume-image-viewer");
         function showResumeImage() { if (resumeImageViewer) { resumeImageViewer.style.display = "flex"; setTimeout(() => { resumeImageViewer.classList.add("visible"); }, 10); document.body.style.overflow = 'hidden'; } }
         function hideResumeImage() { if (resumeImageViewer) { resumeImageViewer.classList.remove("visible"); setTimeout(() => { resumeImageViewer.style.display = "none"; document.body.style.overflow = ''; }, 350); } }
