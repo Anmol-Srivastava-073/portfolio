@@ -6,10 +6,10 @@
     <title>Portfolio | Anmol Srivastava</title>
     <link rel="icon" type="image/png" href="photos/AS (2).png" />
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4b6c2b1d6f.js" crossorigin="anonymous"></script>
-    
+
     <style>
 /* CSS Custom Properties */
 :root {
@@ -19,8 +19,8 @@
     --cyan-glow: #00e5ff;
     --cyan-accent: #00b8d4;
     --text-light: #e0e0e0;
-    --text-medium: #b0b0b0; /* Added for less prominent text */
-    --transition-speed: 0.3s; /* Standardized transition speed */
+    --text-medium: #b0b0b0;
+    --transition-speed: 0.3s;
     --font-mono: 'Roboto Mono', monospace;
     --font-theme: 'Montserrat', sans-serif;
 }
@@ -53,7 +53,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Make sure they don't interfere with clicks */
+    pointer-events: none; /* Allows clicks to go through to content */
 }
 
 #grid-bg {
@@ -62,7 +62,7 @@ body {
         linear-gradient(to right, rgba(42, 42, 53, 0.4) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(42, 42, 53, 0.4) 1px, transparent 1px);
     opacity: 0.2;
-    animation: grid-pulse 12s ease-in-out infinite alternate; /* Slower pulse */
+    animation: grid-pulse 12s ease-in-out infinite alternate;
     z-index: -2;
 }
 
@@ -74,55 +74,31 @@ body {
 
 #particles-js {
     z-index: -1;
+    pointer-events: auto; /* Enable mouse interaction for particles */
 }
 
 /* Main Content Wrapper */
 #content {
     min-height: 100vh;
-    padding-top: 70px; /* Adjusted for slightly smaller header */
+    padding-top: 70px;
     position: relative;
     z-index: 1;
-    overflow-x: hidden; /* Prevent horizontal scroll from content */
+    overflow-x: hidden;
 }
 
 /* --- Header & Navigation --- */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(10, 10, 14, 0.75);
-    backdrop-filter: blur(10px);
-    color: var(--text-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px; /* Reduced padding */
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    height: 70px; /* Fixed header height */
+    position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 14, 0.75); backdrop-filter: blur(10px); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); height: 70px;
 }
 .logo-name { display: flex; align-items: center; }
-.logo { height: 45px; width: 45px; /* Slightly smaller logo */ margin-right: 12px; border-radius: 50%; border: 1px solid var(--cyan-accent); }
+.logo { height: 45px; width: 45px; margin-right: 12px; border-radius: 50%; border: 1px solid var(--cyan-accent); }
 .title {
-    font-size: 24px; /* Adjusted size */
-    margin: 0;
-    line-height: 1;
-    font-family: var(--font-mono);
-    background: linear-gradient(90deg, #d0d0d0, #ffffff, #d0d0d0); /* Slightly less bright */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    animation: gradient-shine 4s linear infinite;
+    font-size: 24px; margin: 0; line-height: 1; font-family: var(--font-mono); background: linear-gradient(90deg, #d0d0d0, #ffffff, #d0d0d0); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 100%; animation: gradient-shine 4s linear infinite;
 }
-@keyframes gradient-shine {
-    0% { background-position: 150% 0; } /* Adjusted start */
-    100% { background-position: -150% 0; } /* Adjusted end */
-}
+@keyframes gradient-shine { 0% { background-position: 150% 0; } 100% { background-position: -150% 0; } }
 nav a { color: var(--text-medium); margin-left: 25px; text-decoration: none; font-weight: 500; position: relative; transition: color var(--transition-speed); padding-bottom: 5px; }
 nav a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--cyan-glow); transition: width var(--transition-speed) ease-out; }
-nav a:hover, nav a.active { /* Style for active link */ color: var(--cyan-glow); }
+nav a:hover, nav a.active { color: var(--cyan-glow); }
 nav a:hover::after, nav a.active::after { width: 100%; }
 
 /* --- Sidebar --- */
@@ -135,87 +111,84 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 
 /* --- Hero Section --- */
 .hero {
-    min-height: calc(100vh - 70px); /* Adjusted for header height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px; /* Increased padding */
-    position: relative;
+    min-height: calc(100vh - 70px); display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 40px 20px; position: relative;
 }
 .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 15px; color: var(--cyan-glow); text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
-.hero h2 { font-size: 1.8rem; font-weight: 400; /* Lighter weight */ text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); color: var(--text-light); margin-bottom: 25px; }
-.hero p { margin: 0 0 35px; /* Adjusted margin */ font-size: 1.15rem; /* Adjusted size */ font-weight: 300; color: var(--text-medium); max-width: 600px; line-height: 1.7; }
-#typed-text { border-right: 3px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; display: inline-block; vertical-align: bottom; min-height: 1.7em; /* Prevent layout shift */ }
-.hero button { padding: 12px 28px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; /* Pill shape */ font-size: 0.95rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
+.hero h2 { font-size: 1.8rem; font-weight: 400; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); color: var(--text-light); margin-bottom: 25px; }
+.hero p { margin: 0 0 35px; font-size: 1.15rem; font-weight: 300; color: var(--text-medium); max-width: 600px; line-height: 1.7; }
+#typed-text { border-right: 3px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; display: inline-block; vertical-align: bottom; min-height: 1.7em; }
+@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--cyan-accent); } }
+.hero button { padding: 12px 28px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; font-size: 0.95rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .hero button:hover { transform: translateY(-3px) scale(1.03); background: var(--cyan-glow); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); }
 
 /* --- General Section Styling --- */
-section { padding: 80px 20px; max-width: 1100px; /* Slightly reduced max-width */ margin: 0 auto; }
+section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
 h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 600; color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); letter-spacing: 1px; }
 
 /* --- Skills Section --- */
 .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 25px; }
-.skill { background: rgba(42, 42, 53, 0.5); /* Use charcoal */ border: 1px solid var(--charcoal); color: var(--text-medium); padding: 10px 20px; margin: 5px; border-radius: 6px; transition: all var(--transition-speed) ease; display: inline-block; cursor: pointer; font-weight: 500; font-size: 0.9rem; }
+.skill { background: rgba(42, 42, 53, 0.5); border: 1px solid var(--charcoal); color: var(--text-medium); padding: 10px 20px; margin: 5px; border-radius: 6px; transition: all var(--transition-speed) ease; display: inline-block; cursor: pointer; font-weight: 500; font-size: 0.9rem; }
 .skill:hover { background: rgba(0, 184, 212, 0.2); border-color: var(--cyan-accent); color: var(--cyan-glow); transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3); }
 
 /* --- Certificates Section --- */
 #certificates p { text-align:center; margin-bottom: 25px; color: var(--text-medium); font-size: 0.95rem;}
 .certificate-viewer {
-    margin-top: 30px; display: flex; justify-content: center; align-items: center; position: relative; min-height: 450px; /* Reduced min-height */ border: 1px solid var(--charcoal); border-radius: 10px; background: rgba(17, 17, 22, 0.4); padding: 15px; overflow: hidden; /* Hide overflow during transition */
+    margin-top: 30px; display: flex; justify-content: center; align-items: center; position: relative;
+    /* REMOVED min-height */
+    border: 1px solid var(--charcoal); border-radius: 10px; background: rgba(17, 17, 22, 0.4); padding: 15px; overflow: hidden;
+    transition: padding 0.5s ease; /* Add transition for padding change */
 }
-/* Hide initially - IMPORTANT */
+/* Ensure viewer collapses when no cert is active */
+.certificate-viewer:not(:has(> .active)) {
+    padding: 0; /* Remove padding when empty */
+    border: none; /* Hide border when empty */
+    background: transparent; /* Hide background when empty */
+    margin-top: 0; /* Remove top margin when empty */
+}
+
+/* Hide initially & positioning */
 .certificate-viewer > img,
 .certificate-viewer > #java-cert {
     opacity: 0;
-    position: absolute; /* Keep absolute for layering */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%) scale(0.9); /* Center and scale down */
+    position: absolute; /* Keep absolute for layering, even when inactive */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
     transition: opacity 0.5s ease, transform 0.5s ease;
     pointer-events: none;
-    max-width: calc(100% - 30px); /* Ensure padding is respected */
+    max-width: calc(100% - 30px);
     max-height: calc(100% - 30px);
 }
 /* Show active */
 .certificate-viewer > .active {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1); /* Center and scale up */
+    transform: translate(-50%, -50%) scale(1);
     pointer-events: auto;
-    position: absolute; /* Keep absolute */
+    position: relative; /* CHANGE TO RELATIVE - Allows container to take its height */
+    transform: none; /* Reset transform */
+    top: auto; left: auto; /* Reset positioning */
+    width: auto; height: auto; /* Use auto sizing */
+    max-width: 100%; /* Limit width */
+    display: block; /* Ensure it takes space */
+}
+/* Adjust specific active elements */
+.certificate-viewer > img.active {
+     max-height: 450px; /* Control max height */
+     margin: 15px auto; /* Add margin when active */
 }
 /* Java container when active */
 .certificate-viewer #java-cert.active {
-    /* Styles are applied to the container itself when active */
-    display: flex; /* Overrides default display:none/block implicitly */
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%; /* Take full width within viewer */
-    height: 100%; /* Take full height */
-}
-/* Single certificate images (styling when active/visible) */
-.certificate-viewer > img.active {
-    height: auto; /* Let max-height control */
-    width: auto; /* Let max-width control */
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;
+    width: 100%; /* Take full width */
+    position: relative; /* Keep relative */
+    transform: none; top: auto; left: auto;
+    margin: 15px 0; /* Add margin when active */
 }
 /* Images inside Java container (styling when parent is active) */
 .certificate-viewer #java-cert.active img {
-    height: auto; /* Adjust based on container */
-    width: auto;
-    max-height: 90%; /* Limit height within container */
-    max-width: 45%; /* Allow side-by-side */
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    /* No absolute positioning needed here */
+     height: auto; width: auto; max-height: 400px; max-width: 45%; object-fit: contain; border-radius: 6px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+     position: static; opacity: 1; transform: none; pointer-events: auto;
 }
-
 
 /* --- Projects Section --- */
 .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
@@ -225,18 +198,18 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .project-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
 .project-content h3 { margin-bottom: 10px; color: var(--cyan-glow); font-size: 1.2rem; font-weight: 600; }
 .project-content p { font-size: 0.9rem; color: var(--text-medium); line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
-.project-content a { display: inline-block; margin-top: auto; color: var(--cyan-accent); text-decoration: none; font-weight: 600; transition: color var(--transition-speed), background-color var(--transition-speed); padding: 7px 14px; /* Adjusted padding */ border: 1px solid var(--cyan-accent); border-radius: 20px; align-self: flex-start; font-size: 0.85rem; }
+.project-content a { display: inline-block; margin-top: auto; color: var(--cyan-accent); text-decoration: none; font-weight: 600; transition: color var(--transition-speed), background-color var(--transition-speed); padding: 7px 14px; border: 1px solid var(--cyan-accent); border-radius: 20px; align-self: flex-start; font-size: 0.85rem; }
 .project-content a:hover { color: var(--bg-dark); background-color: var(--cyan-glow); border-color: var(--cyan-glow); }
 
 /* --- Education Section --- */
-#education { max-width: 900px; } /* Adjusted max-width */
+#education { max-width: 900px; }
 .education-container { display: flex; flex-direction: column; gap: 20px; }
 .education-item { display: flex; align-items: center; background: var(--bg-medium); padding: 20px 25px; border-left: 4px solid var(--cyan-accent); border-radius: 8px; gap: 20px; transition: transform var(--transition-speed), background var(--transition-speed), border-left-color var(--transition-speed); border: 1px solid var(--charcoal); }
 .education-item:hover { background: rgba(0, 184, 212, 0.1); transform: translateX(6px); border-left-color: var(--cyan-glow); }
 .education-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 50%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.05); }
-.education-text h3 { margin-bottom: 6px; color: var(--text-light); /* Less bright */ font-size: 1.1rem; font-weight: 600; }
+.education-text h3 { margin-bottom: 6px; color: var(--text-light); font-size: 1.1rem; font-weight: 600; }
 .education-text p { font-size: 0.9rem; color: var(--text-medium); line-height: 1.5; }
-.education-text p:first-of-type { font-style: normal; /* Remove italic */ opacity: 0.8; margin-bottom: 5px; font-weight: 400; font-size: 0.85rem; }
+.education-text p:first-of-type { opacity: 0.8; margin-bottom: 5px; font-weight: 400; font-size: 0.85rem; }
 
 /* --- About Section --- */
 #about { max-width: 950px; }
@@ -249,7 +222,7 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 /* --- Resume Section --- */
 #resume { text-align: center; }
 #resume p { text-align:center; margin-bottom: 30px; color: var(--text-medium); font-size: 0.95rem; }
-.resume-options { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 35px; }
+.resume-options { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; /* Reduced gap slightly */ }
 .resume-btn { padding: 12px 28px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; font-size: 0.95rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .resume-btn:hover { transform: translateY(-3px) scale(1.03); background: var(--cyan-glow); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); }
 /* Resume Modal Styles - Initially hidden */
@@ -257,14 +230,14 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.92); justify-content: center; align-items: center; padding: 20px; opacity: 0; transition: opacity 0.35s ease-in-out;
 }
 .resume-image-viewer.visible { display: flex; opacity: 1; }
-.resume-image-viewer img { display: block; margin: auto; max-width: 90%; max-height: 90vh; border-radius: 8px; /* Smaller radius */ box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); object-fit: contain; }
-.close-resume-viewer { position: absolute; top: 20px; right: 30px; color: var(--text-medium); font-size: 45px; /* Smaller close button */ font-weight: bold; cursor: pointer; background: none; border: none; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; line-height: 1; }
+.resume-image-viewer img { display: block; margin: auto; max-width: 90%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); object-fit: contain; }
+.close-resume-viewer { position: absolute; top: 20px; right: 30px; color: var(--text-medium); font-size: 45px; font-weight: bold; cursor: pointer; background: none; border: none; transition: color var(--transition-speed) ease, transform var(--transition-speed) ease; line-height: 1; }
 .close-resume-viewer:hover, .close-resume-viewer:focus { color: var(--cyan-glow); transform: scale(1.1); }
 
 /* --- Contact Section --- */
-#contact { padding: 80px 20px; }
+#contact { padding: 70px 20px; /* Adjusted padding */ }
 #contact h2 { margin-bottom: 20px; }
-#contact > p { text-align:center; margin-bottom: 35px; color: var(--text-medium); font-size: 0.95rem; max-width: 550px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+#contact > p { margin-bottom: 30px; font-size: 0.95rem; max-width: 550px; }
 .contact-container { max-width: 500px; background: rgba(17, 17, 22, 0.8); backdrop-filter: blur(10px); padding: 30px 25px; border-radius: 15px; border: 1px solid var(--charcoal); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); }
 .contact-form .input-group { position: relative; margin-bottom: 22px; }
 .contact-form label { position: absolute; top: 13px; left: 16px; font-size: 0.95rem; color: var(--text-medium); pointer-events: none; transition: all var(--transition-speed) ease; }
@@ -288,11 +261,11 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50px; border-top: 1px solid var(--charcoal); color: var(--text-medium); font-size: 0.9rem; }
 
 /* **Media Queries for Responsiveness** */
-@media (max-width: 992px) { /* Added breakpoint for laptops/larger tablets */
+@media (max-width: 992px) {
     section { max-width: 90%; }
     .about-content { gap: 30px; }
     .about-content .photo { width: 240px; height: 240px; }
-    .projects { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* Adjust min size */
+    .projects { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 }
 
 @media (max-width: 768px) {
@@ -324,9 +297,8 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .skills { gap: 10px; }
     .skill { padding: 9px 16px; font-size: 0.85rem;}
 
-    .certificate-viewer { min-height: 380px; padding: 10px; }
-    .certificate-viewer > img.active { max-height: 360px; } /* Adjust height directly */
-    .certificate-viewer #java-cert.active img { max-height: 85%; max-width: 46%; }
+    .certificate-viewer > img.active { max-height: 400px; }
+    .certificate-viewer #java-cert.active img { max-height: 350px; max-width: 47%; }
 
     .resume-options { flex-direction: column; gap: 15px; }
     .resume-btn { padding: 11px 24px; font-size: 0.9rem; }
@@ -483,7 +455,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                 <div class="skill">C++</div>
                 <div class="skill">SQL</div>
                 <div class="skill">Python</div>
-                </div>
+            </div>
         </section>
 
         <section id="certificates">
@@ -511,7 +483,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         <section id="projects">
             <h2>Projects</h2>
             <div class="projects">
-                <div class="project">
+                 <div class="project">
                     <img src="photos/a1.png" alt="Screenshot of Flipping A Coin project">
                     <div class="project-content">
                         <h3>Flipping A Coin</h3>
@@ -611,13 +583,12 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                     charIndex++;
                     setTimeout(typeText, typingSpeed);
                 } else if (typedTextElement) {
-                     // Keep cursor solid at end and stop blinking
                      typedTextElement.style.borderRightColor = 'var(--cyan-accent)';
                      typedTextElement.style.animation = 'none';
                 }
             }
 
-            // Particles.js configuration
+            // Particles.js configuration - WITH INTERACTIVITY
             if (typeof particlesJS !== 'undefined') {
                 particlesJS("particles-js", {
                     particles: {
@@ -631,10 +602,27 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                         },
                         move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false } }
                     },
+                    // *** THIS PART ENABLES MOUSE INTERACTIVITY ***
                     interactivity: {
-                        detect_on: "canvas",
-                        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false }, resize: true },
-                        modes: { grab: { distance: 120, line_linked: { opacity: 0.7 } }, bubble: {}, repulse: {}, push: {}, remove: {} }
+                        detect_on: "canvas", // Detects on the particles canvas
+                        events: {
+                            onhover: {
+                                enable: true, // Enable hover interaction
+                                mode: "grab" // Mode: grab lines, "repulse" pushes particles away
+                            },
+                            onclick: {
+                                enable: false, // Disable click interaction (can set to true and choose a mode like "push")
+                                mode: "push"
+                            },
+                            resize: true // Adjust particles on window resize
+                        },
+                        modes: {
+                            grab: {
+                                distance: 130, // How far the mouse grabs lines
+                                line_linked: { opacity: 0.7 } // Make grabbed lines more visible
+                            },
+                            bubble: {}, repulse: {}, push: {}, remove: {} // Other modes (not used here)
+                        }
                     },
                     retina_detect: true
                 });
@@ -648,14 +636,12 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             // Background music attempt
             const bgMusic = document.getElementById("bg-music");
             if (bgMusic) {
-                bgMusic.volume = 0.15; // Set volume first
+                bgMusic.volume = 0.15;
                 bgMusic.currentTime = 2;
                 let playPromise = bgMusic.play();
                 if (playPromise !== undefined) {
                     playPromise.catch(error => {
                         console.log("Music auto-play was prevented:", error);
-                        // Auto-play is often blocked. You might need user interaction to start music.
-                        // Example: Add a button to play music on click.
                     });
                 }
             }
@@ -665,25 +651,21 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         function showCertificate(certId) {
             const viewer = document.querySelector(".certificate-viewer");
             if (!viewer) return;
-            // Select only direct children: img and the specific div#java-cert
             const allCerts = viewer.querySelectorAll(":scope > img, :scope > #java-cert");
             const clickedCert = document.getElementById(certId);
             if (!clickedCert) return;
 
-            // If the clicked one is active, deactivate it
-            if (clickedCert.classList.contains("active")) {
-                clickedCert.classList.remove("active");
-            } else {
-                // Deactivate all others first
-                allCerts.forEach(cert => {
-                    if (cert.id !== certId) { // Check if it's not the clicked one
-                         cert.classList.remove("active");
-                    }
-                });
-                // Then activate the clicked one
-                clickedCert.classList.add("active");
-            }
+            // Deactivate currently active cert if it's not the one clicked
+            allCerts.forEach(cert => {
+                 if (cert.id !== certId && cert.classList.contains("active")) {
+                      cert.classList.remove("active");
+                 }
+            });
+
+            // Toggle the clicked one
+            clickedCert.classList.toggle("active");
         }
+
 
         // Form submission logic
         const form = document.querySelector('.contact-form');
@@ -700,15 +682,14 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                 .then(response => {
                     if (response.ok) {
                         successMsg.style.display = 'block';
-                        form.reset(); // Clear form fields
-                        setTimeout(() => { successMsg.style.display = 'none'; }, 5000); // Hide after 5s
+                        form.reset();
+                        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
                     } else {
-                        // Try to parse error from Formspree
                         response.json().then(data => {
                             const errorMessage = data.errors?.map(err => err.message).join(', ') || 'Oops! There was a problem.';
                             alert(errorMessage);
                         }).catch(() => {
-                            alert('Oops! An unexpected error occurred.'); // Fallback error
+                            alert('Oops! An unexpected error occurred.');
                         });
                     }
                 }).catch(error => {
@@ -719,7 +700,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         }
 
         // Sidebar toggle function
-        const sidebar = document.getElementById("mySidebar"); // Get sidebar element once
+        const sidebar = document.getElementById("mySidebar");
         function toggleSidebar() {
             if (sidebar) {
                  sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
@@ -732,36 +713,30 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         function showResumeImage() {
             if (resumeImageViewer) {
                 resumeImageViewer.style.display = "flex";
-                // Delay adding class slightly to ensure transition runs
-                setTimeout(() => {
-                    resumeImageViewer.classList.add("visible");
-                }, 10);
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
+                setTimeout(() => { resumeImageViewer.classList.add("visible"); }, 10);
+                document.body.style.overflow = 'hidden';
             }
         }
 
         function hideResumeImage() {
             if (resumeImageViewer) {
                 resumeImageViewer.classList.remove("visible");
-                // Wait for opacity transition before setting display none
                 setTimeout(() => {
                     resumeImageViewer.style.display = "none";
-                    document.body.style.overflow = ''; // Restore background scroll
-                }, 350); // Should match CSS transition duration
+                    document.body.style.overflow = '';
+                }, 350);
             }
         }
 
-        // Close resume viewer with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape" && resumeImageViewer && resumeImageViewer.classList.contains("visible")) {
                 hideResumeImage();
             }
         });
 
-        // Close resume viewer by clicking overlay (only if overlay is clicked, not image/button)
         if (resumeImageViewer) {
             resumeImageViewer.addEventListener('click', function(event) {
-                if (event.target === resumeImageViewer) { // Check if the click is directly on the overlay
+                if (event.target === resumeImageViewer) {
                     hideResumeImage();
                 }
             });
