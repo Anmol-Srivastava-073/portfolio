@@ -1,108 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Anmol Srivastava</title>
-    <link rel="icon" type="image/png" href="photos/AS (2).png" />
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/4b6c2b1d6f.js" crossorigin="anonymous"></script>
-    
-    <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Anmol Srivastava</title>
+    <link rel="icon" type="image/png" href="photos/AS (2).png" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4b6c2b1d6f.js" crossorigin="anonymous"></script>
+    
+    <style>
 /* CSS Custom Properties for a professional color palette */
 :root {
-    --bg-dark: #0a0a0e;
-    --bg-medium: #111116;
-    --charcoal: #2a2a35;
-    --cyan-glow: #00e5ff;
-    --cyan-accent: #00b8d4;
-    --text-light: #e0e0e0;
-    --transition-speed: 0.6s;
-    --font-mono: 'Roboto Mono', monospace;
-    --font-poppins: 'Poppins', sans-serif;
-    --font-theme: 'Montserrat', sans-serif; /* New font for the overall theme */
+    --bg-dark: #0a0a0e;
+    --bg-medium: #111116;
+    --charcoal: #2a2a35;
+    --cyan-glow: #00e5ff;
+    --cyan-accent: #00b8d4;
+    --text-light: #e0e0e0;
+    --transition-speed: 0.6s;
+    --font-mono: 'Roboto Mono', monospace;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-theme: 'Montserrat', sans-serif; /* New font for the overall theme */
 }
 
 /* General & Resets */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--font-theme); /* Applied to all elements */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-theme); /* Applied to all elements */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    color: var(--text-light);
-    background-color: var(--bg-dark);
-    overflow-x: hidden;
-    position: relative;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* Animated Grid Background */
 #grid-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: 50px 50px;
-    background-image:
-        linear-gradient(to right, var(--charcoal) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--charcoal) 1px, transparent 1px);
-    opacity: 0.2;
-    animation: grid-pulse 10s ease-in-out infinite alternate;
-    z-index: -3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50px 50px;
+    background-image:
+        linear-gradient(to right, var(--charcoal) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--charcoal) 1px, transparent 1px);
+    opacity: 0.2;
+    animation: grid-pulse 10s ease-in-out infinite alternate;
+    z-index: -3;
 }
 
 @keyframes grid-pulse {
-    0% { transform: scale(1); opacity: 0.15; }
-    50% { transform: scale(1.05); opacity: 0.3; }
-    100% { transform: scale(1); opacity: 0.15; }
+    0% { transform: scale(1); opacity: 0.15; }
+    50% { transform: scale(1.05); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 0.15; }
 }
 
 /* Particles Network */
 #particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-color: var(--bg-dark);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: var(--bg-dark);
 }
 
 /* Main content */
 #content {
-    min-height: 100vh;
-    padding-top: 80px;
-    overflow-y: auto;
+    min-height: 100vh;
+    padding-top: 80px;
+    overflow-y: auto;
 }
- 
+ 
 /* --- Rest of your existing CSS, adapted for new color palette --- */
 .logo-name { display: flex; align-items: center; }
 .logo { height: 50px; width: 50px; margin-right: 12px; border-radius: 50%; }
 .title {
-    font-size: 28px;
-    margin: 0;
-    line-height: 1;
-    font-family: var(--font-mono);
-    
-    /* This section is the key to the shimmer effect */
-    background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* This makes the text "see-through" to show the background */
-    
-    background-size: 200% 100%;
-    animation: gradient-shine 3s linear infinite;
+    font-size: 28px;
+    margin: 0;
+    line-height: 1;
+    font-family: var(--font-mono);
+    
+    /* This section is the key to the shimmer effect */
+    background: linear-gradient(90deg, #e0e0e0, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* This makes the text "see-through" to show the background */
+    
+    background-size: 200% 100%;
+    animation: gradient-shine 3s linear infinite;
 }
 @keyframes gradient-shine {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; z-index: 1000; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); }
@@ -116,45 +116,102 @@ nav a:hover::after { width: 100%; }
 .hamburger { font-size: 26px; cursor: pointer; color: var(--cyan-glow); display: none; }
 .hero { height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 20px; }
 .hero h1 {
-    font-family: var(--font-theme);
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--cyan-glow);
-    animation: none;
-    text-shadow: none;
+    font-family: var(--font-theme);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--cyan-glow);
+    animation: none;
+    text-shadow: none;
 }
 .hero h2 { font-size: 2.5rem; font-weight: 700; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); color: var(--cyan-glow); }
 .hero p { margin: 15px 0; font-size: 1.4rem; font-weight: 300; color: var(--text-light); }
 .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
 .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
-        .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
 
-/* ===== NEW RESUME STYLES ===== */
+/* ===== RESUME STYLES (INCLUDES POP-UP) ===== */
 #resume {
-    text-align: center;
+    text-align: center;
+}
+
+.resume-options {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex; /* Arrange buttons side-by-side */
+    justify-content: center; /* Center them */
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .resume-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: var(--cyan-accent);
-    color: var(--bg-dark);
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-    text-decoration: none; /* Removes underline from the <a> tag */
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--cyan-accent);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    text-decoration: none; /* Removes underline from the <a> tag */
 }
 .resume-btn:hover {
-    transform: scale(1.1);
-    background: var(--cyan-glow);
+    transform: scale(1.1);
+    background: var(--cyan-glow);
+}
+
+.resume-image-viewer {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay on top */
+    z-index: 2000; /* High z-index to be above everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.resume-image-viewer.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.resume-image-viewer img {
+    max-width: 90%;
+    max-height: 90vh; /* Max height relative to viewport height */
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); /* Cyan glow shadow */
+    object-fit: contain; /* Ensure the image fits without cropping */
+}
+
+.close-resume-viewer {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--cyan-glow);
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close-resume-viewer:hover,
+.close-resume-viewer:focus {
+    color: white;
+    transform: scale(1.1);
 }
 /* ===== END OF RESUME STYLES ===== */
 
-section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
 .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -162,63 +219,63 @@ h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 70
 .skill:hover { background: rgba(0, 229, 255, 0.2); transform: scale(1.05); border-color: var(--cyan-glow); }
 
 .certificate-viewer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    /* The "min-height" property was removed from here to eliminate the gap */
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* The "min-height" property was removed from here to eliminate the gap */
 }
 
 /* This rule now hides ALL direct children (img and div) */
 .certificate-viewer > * {
-    opacity: 0;
-    position: absolute;
-    transition: all 0.6s ease;
-    transform: scale(0.95);
-    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.6s ease;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
 /* This rule now shows any direct child (img or div) that is active */
 .certificate-viewer > .active {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-    position: relative;
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    position: relative;
 }
 
 /* NEW RULE: For the Java container when it's active */
 .certificate-viewer #java-cert.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
 /* EDITED RULE: Standardize size for single certificates */
 /* Using direct child selector ">" so it doesn't affect images inside the java div */
 .certificate-viewer > img {
-    height: 450px; /* Fixed height for consistency */
-    width: auto;   /* Allow width to adjust automatically */
-    max-width: 90%; /* Prevent it from being too wide */
-    object-fit: contain; /* Ensures the whole image fits without distortion */
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    height: 450px; /* Fixed height for consistency */
+    width: auto;   /* Allow width to adjust automatically */
+    max-width: 90%; /* Prevent it from being too wide */
+    object-fit: contain; /* Ensures the whole image fits without distortion */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* NEW RULE: Style the two Java certificate images inside their container */
 .certificate-viewer #java-cert img {
-    height: 400px; /* Slightly smaller to fit side-by-side */
-    width: auto;
-    max-width: 45%;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    /* Make them visible when their parent container is active */
-    opacity: 1;
-    position: static; /* Let flexbox control the position */
-    transform: scale(1);
+    height: 400px; /* Slightly smaller to fit side-by-side */
+    width: auto;
+    max-width: 45%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Make them visible when their parent container is active */
+    opacity: 1;
+    position: static; /* Let flexbox control the position */
+    transform: scale(1);
 }
 /* --- END OF CERTIFICATE EDITS --- */
 
@@ -263,428 +320,573 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
 
 /* **Media Queries for Responsiveness** */
 @media (max-width: 768px) {
-    /* General adjustments for tablets and smaller devices */
-    header {
-        padding: 15px 20px;
-    }
-    
-    .title {
-        font-size: 24px;
-    }
+    /* General adjustments for tablets and smaller devices */
+    header {
+        padding: 15px 20px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
 
-    nav {
-        display: none;
-    }
+    nav {
+        display: none;
+    }
 
-    .hamburger {
-        display: block;
-    }
-    
-    /* Hero section font size adjustments */
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-    .hero p {
-        font-size: 1.2rem;
-    }
+    .hamburger {
+        display: block;
+    }
+    
+    /* Hero section font size adjustments */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
 
-    /* About section image size and content layout */
-    .about-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .about-content .photo {
-        width: 200px;
-        height: 200px;
-    }
+    /* About section image size and content layout */
+    .about-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .about-content .photo {
+        width: 200px;
+        height: 200px;
+    }
 
-    /* Education section improvements for mobile */
-    .education-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-        padding: 15px;
-    }
+    /* Education section improvements for mobile */
+    .education-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 15px;
+    }
 
-    .education-logo {
-        width: 50px;
-        height: 50px;
-    }
+    .education-logo {
+        width: 50px;
+        height: 50px;
+    }
 
-    /* Project section layout changes */
-    .projects {
-        grid-template-columns: 1fr;
-    }
+    /* Project section layout changes */
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- ADDED RESUME VIEWER STYLES FOR MOBILE --- */
+    .resume-options {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+    .resume-image-viewer img {
+        max-width: 95%; /* Take more width on smaller screens */
+        max-height: 85vh; /* Adjust height */
+    }
+    .close-resume-viewer {
+        font-size: 40px;
+        top: 15px;
+        right: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-    /* Further adjustments for smaller phones */
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero h2 {
-        font-size: 1.5rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    h2 {
-        font-size: 1.8rem;
-    }
+    /* Further adjustments for smaller phones */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
 
-    /* This is the key change to make the typed text flexible on phones */
-    #typed-text {
-        white-space: normal; /* Allows text to wrap to the next line */
-        overflow: visible; /* Prevents overflow from being hidden */
-        border-right: none; /* Removes the blinking cursor to prevent layout shifts */
-        animation: none; /* Stops the animation */
-    }
+    /* This is the key change to make the typed text flexible on phones */
+    #typed-text {
+        white-space: normal; /* Allows text to wrap to the next line */
+        overflow: visible; /* Prevents overflow from being hidden */
+        border-right: none; /* Removes the blinking cursor to prevent layout shifts */
+        animation: none; /* Stops the animation */
+    }
 }
 </style>
 </head>
 
 <body>
-    <div id="grid-bg"></div>
-    <div id="particles-js"></div>
-    
-    <audio id="bg-music" loop>
-        <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <div id="grid-bg"></div>
+    <div id="particles-js"></div>
+    
+    <audio id="bg-music" loop>
+        <source src="Interstellar Cornfield Chase (PenduJatt.Com.Se).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-    <div id="content">
-        <header>
-            <div class="logo-name">
-                <img src="photos/AS (2).png" alt="Logo" class="logo">
-                <h1 class="title">Anmol Srivastava</h1>
-            </div>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#resume">Resume</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <span class="hamburger" onclick="toggleSidebar()">☰</span>
-        </header>
+    <div id="content">
+        <header>
+            <div class="logo-name">
+                <img src="photos/AS (2).png" alt="Logo" class="logo">
+                <h1 class="title">Anmol Srivastava</h1>
+            </div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <span class="hamburger" onclick="toggleSidebar()">☰</span>
+        </header>
 
-        <div id="mySidebar" class="sidebar">
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <div id="mySidebar" class="sidebar">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </div>
 
-        <section class="hero">
-            <h1>Welcome to My Portfolio!</h1>
-            <h2>Hello, I'm Anmol Srivastava!</h2>
-            <p><span id="typed-text"></span></p>
-            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-        </section>
+        <section class="hero">
+            <h1>Welcome to My Portfolio!</h1>
+            <h2>Hello, I'm Anmol Srivastava!</h2>
+            <p><span id="typed-text"></span></p>
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+        </section>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>
-                    Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
-                    I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
-                    exploring new technologies to expand my skillset.
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    Hi, I’m Anmol Srivastava — a passionate developer with a strong foundation in programming and problem-solving.
+                    I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
+                    exploring new technologies to expand my skillset.
 
-                    I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
-                    tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
-                    improving, and creating impactful solutions.
+                    I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
+                    tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
+                    improving, and creating impactful solutions.
 
-                    When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
-                    brainstorming fresh ideas to challenge myself.
-                </p>
-                <img src="photos/anmol.jpeg" alt="Photo" class="photo">
-            </div>
-        </section>
+                    When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
+_                   brainstorming fresh ideas to challenge myself.
+                </p>
+                <img src="photos/anmol.jpeg" alt="Photo" class="photo">
+            </div>
+        </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-container">
-                <div class="education-item">
-                    <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Manipal University</h3>
-                        <p>📍Jaipur, Rajasthan</p><br>
-                        <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
-                        <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
-
-
-                    </div>
-                </div>
-                <div class="education-item">
-                    <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Maharshi Patanjali Vidya Mandir</h3>
-                        <p>📍Prayagraj, Uttar Pradesh</p><br>
-                        <p>Intermediate(2018 - 2025)</p>
-                        <p>Achieved excellent results throughout my school years,
-                            with a strong foundation in core subjects.</p>
-
-                        </p>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
-                    <div class="education-text">
-                        <h3>Patanjali Rishikul</h3>
-                        <p>📍Prayagraj, Uttar Pradesh
-                        </p><br>
-                        <p>Junior and Middle School(2014 - 2018)</p>
-                        <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Java</div>
-                <div class="skill">C++</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Python</div>
-            </div>
-        </section>
-
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
-
-            <div class="skills">
-                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
-                <div class="skill" onclick="showCertificate('genai-cert')">GenAI</div>
-                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
-                <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
-                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
-            </div>
-
-            <div class="certificate-viewer">
-                <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
-                <img id="genai-cert" src="photos/genai.png" alt="Intro to GenAI Certificate">
-                <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
-                <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
-            
-                <div id="java-cert" class="java-certificates">
-                    <img src="photos/javacert.png" alt="Java Certificate">
-                    <img src="photos/jvcert.png" alt="Advanced Java Certificate">
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <img src="photos/a1.png" alt="Project 1">
-                    <div class="project-content">
-                        <h3>Flipping A Coin</h3>
-                        <p>A website which flips as many coins as you want and generates random result.</p>
-                        <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="photos/uninav.png" alt="Project 2">
-                    <div class="project-content">
-                        <h3>Manipal UniNav Map</h3>
-                        <p>A website made for manipal students to navigate through their campus.</p>
-                        <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="photos/s2.png" alt="Project 3">
-                    <div class="project-content">
-                        <h3>Spin Roulette</h3>
-                        <p>A website where you can spin the roulette and try to win in the least number of chances</p>
-                        <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
-                    </div>
-                </div>
-                <div class="project">
-                    <img src="photos/s3.png" alt="Project 4">
-                    <div class="project-content">
-                        <h3>Portfolio For Anmol Srivastava</h3>
-                        <p>This is my personal portfolio website showcasing my skills, projects, and achievements.</p>
-                        <a href="https://portfolio-anmolsri0610.vercel.app/" target="_blank">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-container">
+                <div class="education-item">
+                    <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Manipal University</h3>
+                        <p>📍Jaipur, Rajasthan</p><br>
+                        <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
+                D       <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
 
 
-        </section>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="photos/mpvmlogo.png" alt="XYZ Senior Secondary School Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Maharshi Patanjali Vidya Mandir</h3>
+                        <p>📍Prayagraj, Uttar Pradesh</p><br>
+                        <p>Intermediate(2018 - 2025)</p>
+                        <p>Achieved excellent results throughout my school years,
+                            with a strong foundation in core subjects.</p>
 
-        <section id="resume">
-            <h2>My Resume</h2>
-            <p style="text-align:center; margin-bottom: 25px;">
-                Choose an option to view or download my resume:
-            </p>
-            <div class="resume-options">
-                <button class="resume-btn" onclick="showResumeImage()">View Resume</button>
-                <a href="photos/Anmol_Srivastava_Resume_BW.docx" target="_blank" class="resume-btn download-btn">Download Resume</a>
-            </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="photos/rishikullogo.jpeg" alt="ABC Junior School Logo" class="education-logo">
+                    <div class="education-text">
+                        <h3>Patanjali Rishikul</h3>
+                        <p>📍Prayagraj, Uttar Pradesh
+                        </p><br>
+                        <p>Junior and Middle School(2014 - 2018)</p>
+                        <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
 
-            <div id="resume-image-viewer" class="resume-image-viewer">
-                <img id="resume-img" src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
-                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
-            </div>
-        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="contact">
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Java</div>
+                <div class="skill">C++</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Python</div>
+            </div>
+        </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p style="text-align:center; margin-bottom:20px;">
-                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
-            </p>
-            <div class="contact-container">
-                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
-                    <div class="input-group">
-                        <input type="text" name="name" placeholder=" " required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder=" " required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="input-group">
-                        <textarea name="message" placeholder=" " rows="5" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit">Send Message</button>
-                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
-                </form>
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <p style="text-align:center; margin-bottom:20px;">Click on a skill to view the certificate</p>
 
-                <div class="social-links">
-                    <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-                        <img src="photos/gtb.png" alt="GitHub">
-                    </a>
-                    <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-                        <img src="photos/lkd.png" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-                        <img src="photos/insta.png" alt="Instagram">
-                    </a>
-                </div>
-            </div>
-        </section>
+            <div class="skills">
+                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+                <div class="skill" onclick="showCertificate('genai-cert')">GenAI</div>
+                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
+                <div class="skill" onclick="showCertificate('sql-cert')">SQL</div>
+                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
+            </div>
 
-        <footer>
-            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
-        </footer>
-    </div>
+            <div class="certificate-viewer">
+                <img id="js-cert" src="photos/jscert.png" alt="JavaScript Certificate">
+                <img id="genai-cert" src="photos/genai.png" alt="Intro to GenAI Certificate">
+                <img id="sql-cert" src="photos/sqlcert.png" alt="SQL Certificate">
+                <img id="python-cert" src="photos/pythoncert.png" alt="Python Certificate">
+            
+                <div id="java-cert" class="java-certificates">
+                    <img src="photos/javacert.png" alt="Java Certificate">
+                    <img src="photos/jvcert.png" alt="Advanced Java Certificate">
+                </div>
+            </div>
+        </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Typing effect logic
-            const typedTextElement = document.getElementById("typed-text");
-            const textToType = "Curious developer passionate about building projects and learning new technologies!";
-            let charIndex = 0;
-            const typingSpeed = 70;
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <img src="photos/a1.png" alt="Project 1">
+                    <div class="project-content">
+                        <h3>Flipping A Coin</h3>
+                        <p>A website which flips as many coins as you want and generates random result.</p>
+                        <a href="https://flippingacoin.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project">
+          _           <img src="photos/uninav.png" alt="Project 2">
+                    <div class="project-content">
+                        <h3>Manipal UniNav Map</h3>
+                        <p>A website made for manipal students to navigate through their campus.</p>
+                        <a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="photos/s2.png" alt="Project 3">
+                    <div class="project-content">
+                        <h3>Spin Roulette</h3>
+                        <p>A website where you can spin the roulette and try to win in the least number of chances</p>
+                        <a href="https://spinroulette.netlify.app" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="photos/s3.png" alt="Project 4">
+                    <div class="project-content">
+                        <h3>Portfolio For Anmol Srivastava</h3>
+                        <p>This is my personal portfolio website showcasing my skills, projects, and achievements.</p>
+                        <a href="https://portfolio-anmolsri0610.vercel.app/" target="_blank">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            function typeText() {
-                if (charIndex < textToType.length) {
-                    typedTextElement.textContent += textToType.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeText, typingSpeed);
-                }
-            }
+        <section id="resume">
+            <h2>My Resume</h2>
+            <p style="text-align:center; margin-bottom: 25px;">
+                Choose an option to view or download my resume:
+            </p>
+            <div class="resume-options">
+                <button class="resume-btn" onclick="showResumeImage()">View Resume</button>
+                <a href="photos/Anmol_Srivastava_Resume_BW.docx" target="_blank" class="resume-btn download-btn">Download Resume</a>
+            </div>
 
-            // Particles.js configuration for a professional network effect
-            particlesJS("particles-js", {
-                particles: {
-                    number: { value: 60, density: { enable: true, value_area: 800 } },
-                    color: { value: "#ffffff" },
-                    shape: { type: "circle" },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#00e5ff",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
-                    modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
-                },
-                retina_detect: true
-            });
-            
-            // Start typing effect immediately
-            typeText();
-            
-            // Play background music
-            const bgMusic = document.getElementById("bg-music");
-            bgMusic.muted = false;
-            bgMusic.currentTime = 2; // Start a bit into the song
-            bgMusic.volume = 0.2; // Keep volume subtle
-            bgMusic.play().then(() => {
-                console.log("Music started!");
-            }).catch((err) => {
-                console.log("Music play failed:", err);
-            });
-        });
+            <div id="resume-image-viewer" class="resume-image-viewer">
+                <img id="resume-img" src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
+                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
+            </div>
+        </section>
 
-        // Other functions from your original code
-        function showCertificate(certId) {
-            // Select all top-level elements inside .certificate-viewer (images + divs)
-            const allCerts = document.querySelectorAll(".certificate-viewer > *");
-            const clickedCert = document.getElementById(certId);
+        <section id="contact">
+            <h2>Contact Me</h2>
+img src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
+                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
+            </div>
+        </section>
 
-            // If the clicked cert is already active, hide it and do nothing else
-            if (clickedCert.classList.contains("active")) {
-                clickedCert.classList.remove("active");
-                return;
-            }
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p style="text-align:center; margin-bottom:20px;">
+                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
+            </p>
+            <div class="contact-container">
+                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder=" " required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder=" " required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="input-group">
+s                     <textarea name="message" placeholder=" " rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+                </form>
 
-            // Hide all other certificates
-            allCerts.forEach(cert => cert.classList.remove("active"));
+                <div class="social-links">
+                    <a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
+                        <img src="photos/gtb.png" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
+                        <img src="photos/lkd.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
+                        <img src="photos/insta.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </section>
 
-            // Show the selected one
-            clickedCert.classList.add("active");
-        }
-        
-        const form = document.querySelector('.contact-form');
-        const successMsg = document.getElementById('form-success');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(response => {
-                if (response.ok) {
-                    successMsg.style.display = 'block';
-                    form.reset();
-                } else {
-                    alert('Oops! There was a problem.');
-                }
-            });
-        });
+        <footer>
+            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
+D       </footer>
+    </div>
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById("mySidebar");
-            sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
-        }
-    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Typing effect logic
+            const typedTextElement = document.getElementById("typed-text");
+            const textToType = "Curious developer passionate about building projects and learning new technologies!";
+            let charIndex = 0;
+            const typingSpeed = 70;
+
+            function typeText() {
+                if (charIndex < textToType.length) {
+                    typedTextElement.textContent += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, typingSpeed);
+                }
+            }
+
+            // Particles.js configuration for a professional network effect
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+D                       distance: 150,
+                        color: "#00e5ff",
+                        opacity: 0.4,
+                        width: 1
+s                   },
+                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+s                   events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
+                    modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
+                },
+                retina_detect: true
+            });
+            
+            // Start typing effect immediately
+s           typeText();
+            
+            // Play background music
+            const bgMusic = document.getElementById("bg-music");
+            bgMusic.muted = false;
+            bgMusic.currentTime = 2; // Start a bit into the song
+  D         bgMusic.volume = 0.2; // Keep volume subtle
+            bgMusic.play().then(() => {
+                console.log("Music started!");
+            }).catch((err) => {
+                console.log("Music play failed:", err);
+img src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
+                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p style="text-align:center; margin-bottom:20px;">
+                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
+            </p>
+            <div class="contact-container">
+                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder=" " required>
+s                     <label for="name">Your Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder=" " required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="input-group">
+                        <textarea name="message" placeholder=" " rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+                </form>
+
+                <div class="social-links">
+                    <a href="httpsD://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
+                        <img src="photos/gtb.png" alt="GitHub">
+                    </a>
+                _   <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
+                        <img src="photos/lkd.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
+                    D   <img src="photos/insta.png" alt="Instagram">
+      s             </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Typing effect logic
+            const typedTextElement = document.getElementById("typed-text");
+            const textToType = "Curious developer passionate about building projects and learning new technologies!";
+            let charIndex = 0;
+            const typingSpeed = 70;
+
+            function typeText() {
+                if (charIndex < textToType.length) {
+                    typedTextElement.textContent += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, typingSpeed);
+                }
+            }
+
+            // Particles.js configuration for a professional network effect
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 60, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#00e5ff",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+                },
+                interactivity: {
+                s   detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
+                    modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
+                },
+                retina_detect: true
+            });
+            
+            // Start typing effect immediately
+            typeText();
+            
+            // Play background music
+            const bgMusic = document.getElementById("bg-music");
+            bgMusic.muted = false;
+            bgMusic.currentTime = 2; // Start a bit into the song
+            bgMusic.volume = 0.2; // Keep volume subtle
+            bgMusic.play().then(() => {
+D               console.log("Music started!");
+            }).catch((err) => {
+                console.log("Music play failed:", err);
+            });
+        });
+
+        // Other functions from your original code
+        function showCertificate(certId) {
+            // Select all top-level elements inside .certificate-viewer (images + divs)
+            const allCerts = document.querySelectorAll(".certificate-viewer > *");
+            const clickedCert = document.getElementById(certId);
+
+            // If the clicked cert is already active, hide it and do nothing else
+  D         if (clickedCert.classList.contains("active")) {
+                clickedCert.classList.remove("active");
+                return;
+            }
+
+            // Hide all other certificates
+            allCerts.forEach(cert => cert.classList.remove("active"));
+s
+            // Show the selected one
+            clickedCert.classList.add("active");
+        }
+        
+        const form = document.querySelector('.contact-form');
+        const successMsg = document.getElementById('form-success');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+  D         const formData = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+s         })
+            .then(response => {
+                if (response.ok) {
+                    successMsg.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Oops! There was a problem.');
+SESSION               }
+            });
+        });
+
+               function showResumeImage() {
+            const resumeImageViewer = document.getElementById("resume-image-viewer");
+            resumeImageViewer.style.display = "flex"; // Make it visible
+            setTimeout(() => { // Use a timeout to allow display change before transition
+                resumeImageViewer.classList.add("visible");
+            }, 10); // Small delay
+        }
+
+        function hideResumeImage() {
+            const resumeImageViewer = document.getElementById("resume-image-viewer");
+            resumeImageViewer.classList.remove("visible");
+            setTimeout(() => { // Hide after transition
+                resumeImageViewer.style.display = "none";
+            }, 300); // Match transition duration
+        }
+
+        // Close resume viewer if escape key is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                hideResumeImage();
+            }
+        });
+
+        // Close resume viewer if clicking outside the image (on the overlay)
+        document.getElementById('resume-image-viewer').addEventListener('click', function(event) {
+            if (event.target === this) { // Only close if the click is directly on the overlay
+                hideResumeImage();
+            }
+        });
+                function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
+        }
+    </script>
 </body>
 </html>
