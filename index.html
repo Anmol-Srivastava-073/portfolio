@@ -19,7 +19,7 @@
     --cyan-glow: #00e5ff;
     --cyan-accent: #00b8d4;
     --text-light: #e0e0e0;
-  - --transition-speed: 0.6s;
+    --transition-speed: 0.6s;
     --font-mono: 'Roboto Mono', monospace;
     --font-poppins: 'Poppins', sans-serif;
     --font-theme: 'Montserrat', sans-serif; /* New font for the overall theme */
@@ -129,7 +129,7 @@ nav a:hover::after { width: 100%; }
 .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
 .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
 
-/* ===== RESUME STYLES ===== */
+/* ===== NEW RESUME STYLES ===== */
 #resume {
     text-align: center;
 }
@@ -151,67 +151,7 @@ nav a:hover::after { width: 100%; }
     transform: scale(1.1);
     background: var(--cyan-glow);
 }
-
-/* === ADDED: CSS FOR RESUME POP-UP === */
-.resume-options {
-    text-align: center;
-    margin-bottom: 30px;
-    display: flex; /* Arrange buttons side-by-side */
-    justify-content: center; /* Center them */
-    gap: 20px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-
-.resume-image-viewer {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay on top */
-    z-index: 2000; /* High z-index to be above everything */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.resume-image-viewer.visible {
-    display: flex;
-    opacity: 1;
-}
-
-.resume-image-viewer img {
-    max-width: 90%;
-    max-height: 90vh; /* Max height relative to viewport height */
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); /* Cyan glow shadow */
-    object-fit: contain; /* Ensure the image fits without distortion */
-}
-
-.close-resume-viewer {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: var(--cyan-glow);
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    background: none;
-    border: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.close-resume-viewer:hover,
-.close-resume-viewer:focus {
-    color: white;
-    transform: scale(1.1);
-}
-/* === END OF ADDED CSS === */
+/* ===== END OF RESUME STYLES ===== */
 
 section { padding: 80px 20px; max-width: 1200px; margin: auto; }
 h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
@@ -247,27 +187,27 @@ h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 70
     justify-content: center;
     align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
 .certificate-viewer > img {
-    height: 450px;
-    width: auto;   
-    max-width: 90%;
-    object-fit: contain;
+    height: 450px; /* Fixed height for consistency */
+    width: auto;   /* Allow width to adjust automatically */
+    max-width: 90%; /* Prevent it from being too wide */
+    object-fit: contain; /* Ensures the whole image fits without distortion */
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .certificate-viewer #java-cert img {
-    height: 400px;
+    height: 400px; /* Slightly smaller to fit side-by-side */
     width: auto;
     max-width: 45%;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     opacity: 1;
-    position: static;
+    position: static; /* Let flexbox control the position */
     transform: scale(1);
 }
 
@@ -367,20 +307,6 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
     .projects {
         grid-template-columns: 1fr;
     }
-
-  	/* === ADDED: RESUME VIEWER STYLES FOR MOBILE === */
-  	.resume-options {
-    	 	flex-direction: column; /* Stack buttons vertically */
-  	}
-  	.resume-image-viewer img {
-    	 	max-width: 95%; /* Take more width on smaller screens */
-    	 	max-height: 85vh; /* Adjust height */
-  	}
-  	.close-resume-viewer {
-    	 	font-size: 40px;
-    	 	top: 15px;
-    	 	right: 20px;
-  	}
 }
 
 @media (max-width: 480px) {
@@ -459,7 +385,7 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
                   	I have hands-on experience in Java, C++, Python, HTML, CSS, JavaScript, and MySQL, and I’m constantly
                   	exploring new technologies to expand my skillset.
 
-  	 	 	 	 	 	I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
+  	 	 	 	 	I enjoy building projects that bring ideas to life, whether it’s a dynamic web application, a problem-solving
                   	tool, or an interactive experiment. My journey in tech is driven by curiosity and a desire to keep learning,
                   	improving, and creating impactful solutions.
 
@@ -558,6 +484,9 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
                   	<img src="photos/uninav.png" alt="Project 2">
                   	<div class="project-content">
                       	<h3>Manipal UniNav Map</h3>
+Clicking the button runs JavaScript to make a hidden `div` (the overlay) visible. This `div` contains the `<img>` tag and a close button. Clicking the close button or outside the image runs another JavaScript function to hide the overlay again.
+
+Let me know if you want to add the code for that!
                       	<p>A website made for manipal students to navigate through their campus.</p>
                       	<a href="https://mujnavigator.netlify.app" target="_blank">View Project</a>
                   	</div>
@@ -577,27 +506,27 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
                       	<p>This is my personal portfolio website showcasing my skills, projects, and achievements.</p>
                       	<a href="https://portfolio-anmolsri0610.vercel.app/" target="_blank">View Project</a>
                   	</div>
-              	</div>
+            	</div>
           	</div>
       	</section>
 
-      	      	<section id="resume">
+      	<section id="resume">
           	<h2>My Resume</h2>
           	<p style="text-align:center; margin-bottom: 25px;">
               	Choose an option to view or download my resume:
           	</p>
           	<div class="resume-options">
-  	 	 	 	<button class="resume-btn" onclick="showResumeImage()">View Resume</button>
-  	 	 	 	<a href="photos/Anmol_Srivastava_Resume_BW.docx" target="_blank" class="resume-btn download-btn">Download Resume</a>
+              	<button class="resume-btn" onclick="showResumeImage()">View Resume</button>
+              	<a href="photos/Anmol_Srivastava_Resume_BW.docx" target="_blank" class="resume-btn download-btn">Download Resume</a>
           	</div>
 
           	<div id="resume-image-viewer" class="resume-image-viewer">
-  	 	 	 	<img id="resume-img" src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
-  	 	 	 	<button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
+              	<img id="resume-img" src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
+              	<button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
           	</div>
       	</section>
 
-  	 	      	<section id="contact">
+      	<section id="contact">
           	<h2>Contact Me</h2>
           	<p style="text-align:center; margin-bottom:20px;">
               	Have a project idea or just want to say hi? Fill out the form or reach me on social media.
@@ -617,18 +546,18 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
                       	<label for="message">Your Message</label>
                   	</div>
                   	<button type="submit">Send Message</button>
-      	 	 	 	 	<p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
+                  	<p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
               	</form>
 
               	<div class="social-links">
                   	<a href="https://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-                      	<img src="photos/gtb.png" alt="GitHub">
+      	 	 	 	 	<img src="photos/gtb.png" alt="GitHub">
                   	</a>
                   	<a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-                      	<img src="photos/lkd.png" alt="LinkedIn">
+      	 	 	 	 	<img src="photos/lkd.png" alt="LinkedIn">
                   	</a>
                   	<a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-                      	<img src="photos/insta.png" alt="Instagram">
+      	 	 	 	 	<img src="photos/insta.png" alt="Instagram">
                   	</a>
               	</div>
           	</div>
@@ -651,31 +580,31 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
               	if (charIndex < textToType.length) {
                   	typedTextElement.textContent += textToType.charAt(charIndex);
                   	charIndex++;
-  	 	 	 	 	 	setTimeout(typeText, typingSpeed);
+  	 	 	 	 	setTimeout(typeText, typingSpeed);
               	}
           	}
 
           	// Particles.js configuration for a professional network effect
           	particlesJS("particles-js", {
               	particles: {
-                  	number: { value: 60, density: { enable: true, value_area: 800 } },
-                  	color: { value: "#ffffff" },
-                  	shape: { type: "circle" },
-                  	opacity: { value: 0.5, random: true },
-                  	size: { value: 3, random: true },
-                  	line_linked: {
-                      	enable: true,
-                      	distance: 150,
-                      	color: "#00e5ff",
+    	 	 	 	 	number: { value: 60, density: { enable: true, value_area: 800 } },
+    	 	 	 	 	color: { value: "#ffffff" },
+    	 	 	 	 	shape: { type: "circle" },
+    	 	 	 	 	opacity: { value: 0.5, random: true },
+    	 	 	 	 	size: { value: 3, random: true },
+    	 	 	 	 	line_linked: {
+    	 	 	 	 	 	enable: true,
+    	 	 	 	 	 	distance: 150,
+    	 	 	 	 	 	color: "#00e5ff",
     	 	 	 	 	 	opacity: 0.4,
-                      	width: 1
-                  	},
-                  	move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
+    	 	 	 	 	 	width: 1
+    	 	 	 	 	},
+    	 	 	 	 	move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
               	},
               	interactivity: {
-                  	detect_on: "canvas",
-  	 	 	 	 	 	events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
-                  	modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
+    	 	 	 	 	detect_on: "canvas",
+    	 	 	 	 	events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
+    	 	 	 	 	modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
               	},
               	retina_detect: true
           	});
@@ -683,15 +612,15 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
           	// Start typing effect immediately
           	typeText();
           	 
-  	 	 	// Play background music
+          	// Play background music
           	const bgMusic = document.getElementById("bg-music");
           	bgMusic.muted = false;
           	bgMusic.currentTime = 2; // Start a bit into the song
           	bgMusic.volume = 0.2; // Keep volume subtle
           	bgMusic.play().then(() => {
-              	console.log("Music started!");
+      	 	 	 	console.log("Music started!");
           	}).catch((err) => {
-              	console.log("Music play failed:", err);
+      	 	 	 	console.log("Music play failed:", err);
           	});
       	});
 
@@ -704,7 +633,7 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
           	// If the clicked cert is already active, hide it and do nothing else
           	if (clickedCert.classList.contains("active")) {
   	 	 	 	clickedCert.classList.remove("active");
-              	return;
+  	 	 	 	return;
           	}
 
           	// Hide all other certificates
@@ -717,26 +646,26 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
       	const form = document.querySelector('.contact-form');
       	const successMsg = document.getElementById('form-success');
       	form.addEventListener('submit', function(e) {
-          	e.preventDefault();
-          	const formData = new FormData(form);
-          	fetch(form.action, {
+  	 	 	e.preventDefault();
+  	 	 	const formData = new FormData(form);
+  	 	 	fetch(form.action, {
   	 	 	 	method: form.method,
-              	body: formData,
-              	headers: { 'Accept': 'application/json' }
-        	})
-          	.then(response => {
-              	if (response.ok) {
+  	 	 	 	body: formData,
+  	 	 	 	headers: { 'Accept': 'application/json' }
+  	 	 	})
+  	 	 	.then(response => {
+  	 	 	 	if (response.ok) {
   	 	 	 	 	successMsg.style.display = 'block';
-                  	form.reset();
-              	} else {
-                  	alert('Oops! There was a problem.');
-              	}
-          	});
+  	 	 	 	 	form.reset();
+  	 	 	 	} else {
+  	 	 	 	 	alert('Oops! There was a problem.');
+  	 	 	 	}
+  	 	 	});
       	});
 
       	function toggleSidebar() {
           	const sidebar = document.getElementById("mySidebar");
-          	sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
+s       	sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
       	}
 
       	      	function showResumeImage() {
@@ -749,10 +678,10 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
 
       	function hideResumeImage() {
           	const resumeImageViewer = document.getElementById("resume-image-viewer");
-          	resumeImageViewer.classList.remove("visible");
+s       	resumeImageViewer.classList.remove("visible");
           	setTimeout(() => { // Hide after transition
               	resumeImageViewer.style.display = "none";
-s       }, 300); // Match transition duration
+          	}, 300); // Match transition duration
       	}
 
       	// Close resume viewer if escape key is pressed
@@ -765,9 +694,9 @@ s       }, 300); // Match transition duration
       	// Close resume viewer if clicking outside the image (on the overlay)
       	document.getElementById('resume-image-viewer').addEventListener('click', function(event) {
           	if (event.target === this) { // Only close if the click is directly on the overlay
-              	hideResumeImage();
+C           	hideResumeImage();
           	}
       	});
-      	    </script>
+      	t   </script>
 </body>
 </html>
