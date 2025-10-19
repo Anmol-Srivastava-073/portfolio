@@ -129,18 +129,9 @@ nav a:hover::after { width: 100%; }
 .hero button { padding: 12px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 30px; font-size: 1rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
 .hero button:hover { transform: scale(1.1); background: var(--cyan-glow); }
 
-/* ===== RESUME STYLES (INCLUDES POP-UP) ===== */
+/* ===== NEW RESUME STYLES ===== */
 #resume {
     text-align: center;
-}
-
-.resume-options {
-    text-align: center;
-    margin-bottom: 30px;
-    display: flex; /* Arrange buttons side-by-side */
-    justify-content: center; /* Center them */
-    gap: 20px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .resume-btn {
@@ -159,6 +150,16 @@ nav a:hover::after { width: 100%; }
 .resume-btn:hover {
     transform: scale(1.1);
     background: var(--cyan-glow);
+}
+
+/* --- ADDED CSS FOR POP-UP VIEWER --- */
+.resume-options {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex; /* Arrange buttons side-by-side */
+    justify-content: center; /* Center them */
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .resume-image-viewer {
@@ -189,7 +190,7 @@ nav a:hover::after { width: 100%; }
     max-height: 90vh; /* Max height relative to viewport height */
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); /* Cyan glow shadow */
-    object-fit: contain; /* Ensure the image fits without cropping */
+    object-fit: contain; /* Ensure the image fits without distortion */
 }
 
 .close-resume-viewer {
@@ -213,6 +214,7 @@ nav a:hover::after { width: 100%; }
 /* ===== END OF RESUME STYLES ===== */
 
 section { padding: 80px 20px; max-width: 1200px; margin: auto; }
+/* (Removed duplicate section style) */
 h2 { margin-bottom: 20px; text-align: center; font-size: 2.3rem; font-weight: 700; color: var(--cyan-glow); text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
 .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
 .skill { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--cyan-accent); color: var(--text-light); padding: 10px 20px; margin: 5px; border-radius: 8px; transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s; display: inline-block; cursor: pointer; font-weight: 500; }
@@ -375,20 +377,20 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
     .projects {
         grid-template-columns: 1fr;
     }
-
-    /* --- ADDED RESUME VIEWER STYLES FOR MOBILE --- */
-    .resume-options {
-        flex-direction: column; /* Stack buttons vertically */
-    }
-    .resume-image-viewer img {
-        max-width: 95%; /* Take more width on smaller screens */
-        max-height: 85vh; /* Adjust height */
-    }
-    .close-resume-viewer {
-        font-size: 40px;
-        top: 15px;
-        right: 20px;
-    }
+    
+    /* --- ADDED RESUME VIEWER STYLES FOR MOBILE --- */
+    .resume-options {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+    .resume-image-viewer img {
+        max-width: 95%; /* Take more width on smaller screens */
+        max-height: 85vh; /* Adjust height */
+    }
+    .close-resume-viewer {
+        font-size: 40px;
+        top: 15px;
+        right: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -472,7 +474,7 @@ footer { background: rgba(0, 0, 0, 0.7); padding: 20px; text-align: center; marg
                     improving, and creating impactful solutions.
 
                     When I’m not coding, you’ll probably find me exploring new frameworks, refining my existing projects, or
-_                   brainstorming fresh ideas to challenge myself.
+                    brainstorming fresh ideas to challenge myself.
                 </p>
                 <img src="photos/anmol.jpeg" alt="Photo" class="photo">
             </div>
@@ -487,7 +489,7 @@ _                   brainstorming fresh ideas to challenge myself.
                         <h3>Manipal University</h3>
                         <p>📍Jaipur, Rajasthan</p><br>
                         <p>Bachelor of Technology in Computer Science(2025 - 2029) </p>
-                D       <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
+                        <p>Currently pursuing my studies at MUJ, exploring opportunities in Computer Science and Engineering.</p>
 
 
                     </div>
@@ -513,7 +515,7 @@ _                   brainstorming fresh ideas to challenge myself.
                         <p>Junior and Middle School(2014 - 2018)</p>
                         <p>Completed my schooling with strong academic results, maintaining good performance throughout.</p>
 
-                    </div>
+                  _ </div>
                 </div>
             </div>
         </section>
@@ -568,7 +570,7 @@ _                   brainstorming fresh ideas to challenge myself.
                     </div>
                 </div>
                 <div class="project">
-          _           <img src="photos/uninav.png" alt="Project 2">
+                    <img src="photos/uninav.png" alt="Project 2">
                     <div class="project-content">
                         <h3>Manipal UniNav Map</h3>
                         <p>A website made for manipal students to navigate through their campus.</p>
@@ -584,7 +586,7 @@ _                   brainstorming fresh ideas to challenge myself.
                     </div>
                 </div>
                 <div class="project">
-                    <img src="photos/s3.png" alt="Project 4">
+      _             <img src="photos/s3.png" alt="Project 4">
                     <div class="project-content">
                         <h3>Portfolio For Anmol Srivastava</h3>
                         <p>This is my personal portfolio website showcasing my skills, projects, and achievements.</p>
@@ -594,7 +596,7 @@ _                   brainstorming fresh ideas to challenge myself.
             </div>
         </section>
 
-        <section id="resume">
+                <section id="resume">
             <h2>My Resume</h2>
             <p style="text-align:center; margin-bottom: 25px;">
                 Choose an option to view or download my resume:
@@ -607,17 +609,10 @@ _                   brainstorming fresh ideas to challenge myself.
             <div id="resume-image-viewer" class="resume-image-viewer">
                 <img id="resume-img" src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
                 <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
-            </div>
+  V         </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-img src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
-                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
-            </div>
-        </section>
-
-        <section id="contact">
+                <section id="contact">
             <h2>Contact Me</h2>
             <p style="text-align:center; margin-bottom:20px;">
                 Have a project idea or just want to say hi? Fill out the form or reach me on social media.
@@ -633,7 +628,7 @@ img src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
                         <label for="email">Your Email</label>
                     </div>
                     <div class="input-group">
-s                     <textarea name="message" placeholder=" " rows="5" required></textarea>
+                        <textarea name="message" placeholder=" " rows="5" required></textarea>
                         <label for="message">Your Message</label>
                     </div>
                     <button type="submit">Send Message</button>
@@ -645,111 +640,11 @@ s                     <textarea name="message" placeholder=" " rows="5
                         <img src="photos/gtb.png" alt="GitHub">
                     </a>
                     <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-                        <img src="photos/lkd.png" alt="LinkedIn">
+            _           <img src="photos/lkd.png" alt="LinkedIn">
                     </a>
                     <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
                         <img src="photos/insta.png" alt="Instagram">
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Anmol Srivastava. All rights reserved.</p>
-D       </footer>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Typing effect logic
-            const typedTextElement = document.getElementById("typed-text");
-            const textToType = "Curious developer passionate about building projects and learning new technologies!";
-            let charIndex = 0;
-            const typingSpeed = 70;
-
-            function typeText() {
-                if (charIndex < textToType.length) {
-                    typedTextElement.textContent += textToType.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeText, typingSpeed);
-                }
-            }
-
-            // Particles.js configuration for a professional network effect
-            particlesJS("particles-js", {
-                particles: {
-                    number: { value: 60, density: { enable: true, value_area: 800 } },
-                    color: { value: "#ffffff" },
-                    shape: { type: "circle" },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: {
-                        enable: true,
-D                       distance: 150,
-                        color: "#00e5ff",
-                        opacity: 0.4,
-                        width: 1
-s                   },
-                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-s                   events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
-                    modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
-                },
-                retina_detect: true
-            });
-            
-            // Start typing effect immediately
-s           typeText();
-            
-            // Play background music
-            const bgMusic = document.getElementById("bg-music");
-            bgMusic.muted = false;
-            bgMusic.currentTime = 2; // Start a bit into the song
-  D         bgMusic.volume = 0.2; // Keep volume subtle
-            bgMusic.play().then(() => {
-                console.log("Music started!");
-            }).catch((err) => {
-                console.log("Music play failed:", err);
-img src="photos/anmolres.png" alt="Anmol Srivastava's Resume" class="active">
-                <button class="close-resume-viewer" onclick="hideResumeImage()">×</button>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p style="text-align:center; margin-bottom:20px;">
-                Have a project idea or just want to say hi? Fill out the form or reach me on social media.
-            </p>
-            <div class="contact-container">
-                <form class="contact-form" action="https://formspree.io/f/mkgvndga" method="POST">
-                    <div class="input-group">
-                        <input type="text" name="name" placeholder=" " required>
-s                     <label for="name">Your Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" name="email" placeholder=" " required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="input-group">
-                        <textarea name="message" placeholder=" " rows="5" required></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-                    <button type="submit">Send Message</button>
-                    <p id="form-success" style="display:none; color:#0f0; margin-top:10px;">Message sent! Thanks 😊</p>
-                </form>
-
-                <div class="social-links">
-                    <a href="httpsD://github.com/Anmol-Srivastava-073" target="_blank" class="social-btn github">
-                        <img src="photos/gtb.png" alt="GitHub">
-                    </a>
-                _   <a href="https://www.linkedin.com/in/anmol-srivastava-46430727a/" target="_blank" class="social-btn linkedin">
-                        <img src="photos/lkd.png" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.instagram.com/anmol_sriv.073/" target="_blank" class="social-btn instagram">
-                    D   <img src="photos/insta.png" alt="Instagram">
-      s             </a>
                 </div>
             </div>
         </section>
@@ -772,7 +667,7 @@ s                     <label for="name">Your Name</label>
                     typedTextElement.textContent += textToType.charAt(charIndex);
                     charIndex++;
                     setTimeout(typeText, typingSpeed);
-                }
+warning             }
             }
 
             // Particles.js configuration for a professional network effect
@@ -793,7 +688,7 @@ s                     <label for="name">Your Name</label>
                     move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false }
                 },
                 interactivity: {
-                s   detect_on: "canvas",
+              s     detect_on: "canvas",
                     events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: false } },
                     modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
                 },
@@ -802,14 +697,14 @@ s                     <label for="name">Your Name</label>
             
             // Start typing effect immediately
             typeText();
-            
+          _  
             // Play background music
             const bgMusic = document.getElementById("bg-music");
             bgMusic.muted = false;
             bgMusic.currentTime = 2; // Start a bit into the song
             bgMusic.volume = 0.2; // Keep volume subtle
             bgMusic.play().then(() => {
-D               console.log("Music started!");
+                console.log("Music started!");
             }).catch((err) => {
                 console.log("Music play failed:", err);
             });
@@ -822,14 +717,14 @@ D               console.log("Music started!");
             const clickedCert = document.getElementById(certId);
 
             // If the clicked cert is already active, hide it and do nothing else
-  D         if (clickedCert.classList.contains("active")) {
+  B         if (clickedCert.classList.contains("active")) {
                 clickedCert.classList.remove("active");
                 return;
             }
 
             // Hide all other certificates
             allCerts.forEach(cert => cert.classList.remove("active"));
-s
+
             // Show the selected one
             clickedCert.classList.add("active");
         }
@@ -837,8 +732,8 @@ s
         const form = document.querySelector('.contact-form');
         const successMsg = document.getElementById('form-success');
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
-  D         const formData = new FormData(form);
+          s e.preventDefault();
+            const formData = new FormData(form);
             fetch(form.action, {
                 method: form.method,
                 body: formData,
@@ -849,44 +744,45 @@ s         })
                     successMsg.style.display = 'block';
                     form.reset();
                 } else {
-                    alert('Oops! There was a problem.');
-SESSION               }
+                s   alert('Oops! There was a problem.');
+                }
             });
         });
 
-               function showResumeImage() {
-            const resumeImageViewer = document.getElementById("resume-image-viewer");
-            resumeImageViewer.style.display = "flex"; // Make it visible
-            setTimeout(() => { // Use a timeout to allow display change before transition
-                resumeImageViewer.classList.add("visible");
-            }, 10); // Small delay
-        }
-
-        function hideResumeImage() {
-            const resumeImageViewer = document.getElementById("resume-image-viewer");
-            resumeImageViewer.classList.remove("visible");
-            setTimeout(() => { // Hide after transition
-                resumeImageViewer.style.display = "none";
-            }, 300); // Match transition duration
-        }
-
-        // Close resume viewer if escape key is pressed
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                hideResumeImage();
-            }
-        });
-
-        // Close resume viewer if clicking outside the image (on the overlay)
-        document.getElementById('resume-image-viewer').addEventListener('click', function(event) {
-            if (event.target === this) { // Only close if the click is directly on the overlay
-                hideResumeImage();
-            }
-        });
-                function toggleSidebar() {
+        function toggleSidebar() {
             const sidebar = document.getElementById("mySidebar");
-            sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
+D           sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
         }
-    </script>
+
+                function showResumeImage() {
+            const resumeImageViewer = document.getElementById("resume-image-viewer");
+            resumeImageViewer.style.display = "flex"; // Make it visible
+            setTimeout(() => { // Use a timeout to allow display change before transition
+                resumeImageViewer.classList.add("visible");
+s         }, 10); // Small delay
+        }
+
+        function hideResumeImage() {
+            const resumeImageViewer = document.getElementById("resume-image-viewer");
+            resumeImageViewer.classList.remove("visible");
+            setTimeout(() => { // Hide after transition
+                resumeImageViewer.style.display = "none";
+            }, 300); // Match transition duration
+        }
+
+        // Close resume viewer if escape key is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                hideResumeImage();
+            }
+        });
+
+        // Close resume viewer if clicking outside the image (on the overlay)
+        document.getElementById('resume-image-viewer').addEventListener('click', function(event) {
+            if (event.target === this) { // Only close if the click is directly on the overlay
+C               hideResumeImage();
+            }
+        });
+        C   </script>
 </body>
 </html>
