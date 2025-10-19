@@ -13,7 +13,7 @@
     <style>
 /* CSS Custom Properties */
 :root {
-    --bg-dark: #0a0a0e; /* Very dark blue/black */
+    --bg-dark: #0a0a0e;
     --bg-medium: #111116;
     --charcoal: #2a2a35;
     --cyan-glow: #00e5ff;
@@ -32,15 +32,15 @@ body { color: var(--text-light); background-color: var(--bg-dark); overflow-x: h
 
 /* --- Background Elements --- */
 #grid-bg, #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-#grid-bg { background-size: 50px 50px; background-image: linear-gradient(to right, rgba(42, 42, 53, 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(42, 42, 53, 0.4) 1px, transparent 1px); opacity: 0.15; /* Reduced opacity */ animation: grid-pulse 15s ease-in-out infinite alternate; z-index: -2; }
-@keyframes grid-pulse { 0% { opacity: 0.1; } 50% { opacity: 0.2; } 100% { opacity: 0.1; } } /* Simplified pulse */
+#grid-bg { background-size: 50px 50px; background-image: linear-gradient(to right, rgba(42, 42, 53, 0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(42, 42, 53, 0.4) 1px, transparent 1px); opacity: 0.15; animation: grid-pulse 15s ease-in-out infinite alternate; z-index: -2; }
+@keyframes grid-pulse { 0% { opacity: 0.1; } 50% { opacity: 0.2; } 100% { opacity: 0.1; } }
 #particles-js { z-index: -1; pointer-events: auto; /* Enable mouse interaction */ }
 
 /* Main Content Wrapper */
 #content { min-height: 100vh; padding-top: 70px; position: relative; z-index: 1; overflow-x: hidden; }
 
 /* --- Header & Navigation --- */
-header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 14, 0.8); /* Slightly more opaque */ backdrop-filter: blur(10px); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); height: 70px; }
+header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 14, 0.8); backdrop-filter: blur(10px); color: var(--text-light); display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); height: 70px; }
 .logo-name { display: flex; align-items: center; }
 .logo { height: 45px; width: 45px; margin-right: 12px; border-radius: 50%; border: 1px solid var(--cyan-accent); }
 .title { font-size: 24px; margin: 0; line-height: 1; font-family: var(--font-mono); background: linear-gradient(90deg, #d0d0d0, #ffffff, #d0d0d0); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 100%; animation: gradient-shine 4s linear infinite; }
@@ -56,12 +56,16 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 .sidebar a:hover { background: rgba(42, 42, 53, 0.7); color: var(--cyan-glow); border-left-color: var(--cyan-glow); }
 .hamburger { font-size: 26px; cursor: pointer; color: var(--cyan-glow); display: none; padding: 5px; }
 
-/* --- Hero Section - Adjusted to match screenshot --- */
+/* --- Hero Section --- */
 .hero { min-height: calc(100vh - 70px); display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 40px 20px; position: relative; }
 .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 10px; color: var(--cyan-glow); text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
 .hero h2 { font-size: 1.8rem; font-weight: 600; color: var(--cyan-glow); text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); margin-bottom: 20px; }
-.hero p { margin: 0 0 30px; font-size: 1.1rem; font-weight: 400; color: var(--text-light); max-width: 650px; line-height: 1.6; }
-#typed-text { border-right: 3px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite; white-space: nowrap; overflow: hidden; display: inline-block; vertical-align: bottom; min-height: 1.6em; color: var(--text-light); font-weight: 400; }
+.hero p { margin: 0 0 30px; font-size: 1.1rem; font-weight: 400; color: var(--text-light); max-width: 650px; line-height: 1.6; min-height: 1.6em; /* Reserve space for typed text */ }
+#typed-text {
+    border-right: 3px solid var(--cyan-accent); animation: blink-caret 0.75s step-end infinite;
+    /* Removed white-space nowrap and overflow hidden for word wrap if needed */
+    display: inline-block; vertical-align: bottom; color: var(--text-light); font-weight: 400;
+}
 @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--cyan-accent); } }
 .hero button { padding: 10px 25px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; font-size: 0.9rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .hero button:hover { transform: translateY(-3px) scale(1.03); background: var(--cyan-glow); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); }
@@ -77,30 +81,13 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 
 /* --- Certificates Section --- */
 #certificates p { text-align:center; margin-bottom: 25px; color: var(--text-medium); font-size: 0.95rem;}
-.certificate-viewer {
-    /* REMOVED min-height */
-    margin-top: 0; /* Remove default margin */
-    display: flex; justify-content: center; align-items: center; position: relative;
-    border: 1px solid transparent; border-radius: 10px; background: transparent; padding: 0; overflow: hidden;
-    transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease;
-}
-/* Apply styles ONLY when a certificate is visible */
-.certificate-viewer:has(> .active) {
-    border-color: var(--charcoal); background: rgba(17, 17, 22, 0.4); padding: 15px; margin-top: 30px; /* Add margin back when visible */
-}
-/* Hide initially & positioning for layering */
-.certificate-viewer > img,
-.certificate-viewer > #java-cert {
-    opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; max-width: calc(100% - 30px); max-height: calc(100% - 30px);
-}
-/* Show active - Make it relative to take space */
-.certificate-viewer > .active {
-    opacity: 1; pointer-events: auto; position: relative; /* Takes up space */ top: auto; left: auto; /* Reset positioning */ width: auto; height: auto; max-width: 100%; display: block; transform: scale(1); /* Ensure it's full size */ transition: opacity 0.5s ease, transform 0.5s ease; /* Ensure transition applies here too */
-}
-/* Specific styles for active elements to control size */
-.certificate-viewer > img.active { max-height: 450px; margin: 10px auto; /* Add some margin */ }
-.certificate-viewer #java-cert.active { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; width: 100%; margin: 10px 0; /* Add some margin */ }
-.certificate-viewer #java-cert.active img { height: auto; width: auto; max-height: 400px; max-width: 45%; object-fit: contain; border-radius: 6px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); position: static; /* Let flexbox handle layout */ }
+.certificate-viewer { margin-top: 0; display: flex; justify-content: center; align-items: center; position: relative; border: 1px solid transparent; border-radius: 10px; background: transparent; padding: 0; overflow: hidden; transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease; min-height: 0; }
+.certificate-viewer:has(> .active) { border-color: var(--charcoal); background: rgba(17, 17, 22, 0.4); padding: 15px; margin-top: 30px; }
+.certificate-viewer > img, .certificate-viewer > #java-cert { opacity: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; max-width: calc(100% - 30px); max-height: calc(100% - 30px); }
+.certificate-viewer > .active { opacity: 1; pointer-events: auto; position: relative; top: auto; left: auto; width: auto; height: auto; max-width: 100%; display: block; transform: scale(1); transition: opacity 0.5s ease, transform 0.5s ease; }
+.certificate-viewer > img.active { max-height: 450px; margin: 10px auto; }
+.certificate-viewer #java-cert.active { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; width: 100%; margin: 10px 0; }
+.certificate-viewer #java-cert.active img { height: auto; width: auto; max-height: 400px; max-width: 45%; object-fit: contain; border-radius: 6px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); position: static; }
 
 /* --- Projects Section --- */
 .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
@@ -134,7 +121,7 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 /* --- Resume Section --- */
 #resume { text-align: center; }
 #resume p { text-align:center; margin-bottom: 30px; color: var(--text-medium); font-size: 0.95rem; }
-.resume-options { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; /* Reduced gap */ }
+.resume-options { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px; }
 .resume-btn { padding: 12px 28px; background: var(--cyan-accent); color: var(--bg-dark); border: none; border-radius: 50px; font-size: 0.95rem; cursor: pointer; transition: transform var(--transition-speed), background-color var(--transition-speed), box-shadow var(--transition-speed); font-weight: 600; text-decoration: none; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .resume-btn:hover { transform: translateY(-3px) scale(1.03); background: var(--cyan-glow); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); }
 .resume-image-viewer { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.92); justify-content: center; align-items: center; padding: 20px; opacity: 0; transition: opacity 0.35s ease-in-out; }
@@ -156,16 +143,19 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -9px; left: 10px; font-size: 0.75rem; color: var(--cyan-accent); background: var(--bg-medium); padding: 1px 5px; border-radius: 4px; }
 .contact-form button { width: 100%; padding: 13px; font-size: 1rem; background: var(--cyan-accent); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed); color: var(--bg-dark); margin-top: 10px; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
 .contact-form button:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); background-color: var(--cyan-glow); }
-.social-links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; /* Reduced gap */ }
+.social-links { margin-top: 30px; display: flex; justify-content: center; gap: 25px; /* Increased gap slightly */ }
 .social-btn {
-    width: 40px; height: 40px; /* ** Reduced Size ** */
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--charcoal); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
+    width: 50px; height: 50px; /* ** Increased Size ** */
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--charcoal); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed); overflow: hidden; /* Hide image overflow */
 }
 .social-btn img {
-    width: 50%; height: 50%; /* ** Adjusted icon size ** */
-    object-fit: contain; display: block;
+    width: 100%; height: 100%; /* ** Fill the button ** */
+    object-fit: cover; /* ** Cover the area ** */
+    display: block;
+    transition: transform 0.3s ease; /* Add transition for image */
 }
 .social-btn:hover { transform: translateY(-4px) scale(1.1); box-shadow: 0 6px 15px rgba(0, 229, 255, 0.4); border-color: var(--cyan-accent); background: rgba(0, 184, 212, 0.1); }
+.social-btn:hover img { transform: scale(1.1); /* Optional: zoom image slightly on hover */ }
 
 /* --- Footer --- */
 footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50px; border-top: 1px solid var(--charcoal); color: var(--text-medium); font-size: 0.9rem; }
@@ -216,7 +206,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .close-resume-viewer { font-size: 40px; top: 15px; right: 20px; }
 
     .contact-container { padding: 25px 20px; }
-    .social-btn { width: 40px; height: 40px; }
+    .social-btn { width: 45px; height: 45px; } /* Adjust size for tablet */
     .social-links { gap: 18px; }
 }
 
@@ -230,7 +220,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .hero h1 { font-size: 2rem; }
     .hero h2 { font-size: 1.4rem; }
     .hero p { font-size: 1rem; }
-    #typed-text { white-space: normal; overflow: visible; border-right: none; animation: none; display: block; text-align: center; margin: 15px auto 0; font-size: 1rem; min-height: 0; }
+    #typed-text { white-space: normal; /* Allow wrap on small screens */ overflow: visible; border-right: none; animation: none; display: block; text-align: center; margin: 10px auto 0; font-size: 1rem; min-height: 0; }
 
     h2 { font-size: 1.8rem; margin-bottom: 25px;}
     section { padding: 50px 10px; }
@@ -257,7 +247,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .contact-form button { padding: 12px; font-size: 0.95rem; }
 
     .social-links { gap: 15px; margin-top: 25px; }
-    .social-btn { width: 38px; height: 38px; }
+    .social-btn { width: 42px; height: 42px; } /* Further adjust size */
 }
     </style>
 </head>
@@ -326,7 +316,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         <section id="education">
             <h2>Education</h2>
             <div class="education-container">
-                <div class="education-item">
+                 <div class="education-item">
                     <img src="photos/manipallogo.png" alt="Manipal University Logo" class="education-logo">
                     <div class="education-text">
                         <h3>Manipal University Jaipur</h3>
@@ -482,17 +472,20 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
         </footer>
     </div> <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Typing effect logic - WORD BY WORD
             const typedTextElement = document.getElementById("typed-text");
             const textToType = "Curious developer passionate about building projects and learning new technologies!";
-            let charIndex = 0;
-            const typingSpeed = 60;
+            const wordsToType = textToType.split(' '); // Split into words
+            let wordIndex = 0;
+            const typingSpeed = 200; // Delay between words (milliseconds)
 
-            function typeText() {
-                if (typedTextElement && charIndex < textToType.length) {
-                    typedTextElement.textContent += textToType.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeText, typingSpeed);
+            function typeWord() {
+                if (typedTextElement && wordIndex < wordsToType.length) {
+                    typedTextElement.textContent += wordsToType[wordIndex] + ' '; // Add word and space
+                    wordIndex++;
+                    setTimeout(typeWord, typingSpeed);
                 } else if (typedTextElement) {
+                     // Keep cursor solid at end and stop blinking after typing finishes
                      typedTextElement.style.borderRightColor = 'var(--cyan-accent)';
                      typedTextElement.style.animation = 'none';
                 }
@@ -505,22 +498,22 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                         number: { value: 70, density: { enable: true, value_area: 800 } },
                         color: { value: "#ffffff" },
                         shape: { type: "circle" },
-                        opacity: { value: 0.4, random: true, anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false } },
+                        opacity: { value: 0.5, random: true, anim: { enable: true, speed: 0.6, opacity_min: 0.15, sync: false } }, // Slightly increased opacity
                         size: { value: 2.5, random: true, anim: { enable: false } },
                         line_linked: {
-                            enable: true, distance: 140, color: "var(--cyan-accent)", opacity: 0.35, width: 1 // Using accent color for lines
+                            enable: true, distance: 140, color: "var(--cyan-accent)", opacity: 0.4, width: 1 // Increased line opacity
                         },
                         move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false } }
                     },
                     interactivity: {
                         detect_on: "canvas",
                         events: {
-                            onhover: { enable: true, mode: "grab" }, // Enable grab on hover
+                            onhover: { enable: true, mode: "grab" }, // Grab lines on hover
                             onclick: { enable: false },
                             resize: true
                         },
                         modes: {
-                            grab: { distance: 130, line_linked: { opacity: 0.7 } }, // Grab lines effect
+                            grab: { distance: 130, line_linked: { opacity: 0.8 } }, // Make grabbed lines more visible
                             bubble: {}, repulse: {}, push: {}, remove: {}
                         }
                     },
@@ -528,14 +521,24 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
                 });
             } else { console.error("particles.js library not loaded."); }
 
-            typeText(); // Start typing
+            // Start typing effect
+            if (typedTextElement) {
+                typedTextElement.textContent = ''; // Clear initial text before typing
+                typeWord();
+            }
 
-            // Background music
+
+            // Background music attempt
             const bgMusic = document.getElementById("bg-music");
             if (bgMusic) {
-                bgMusic.volume = 0.15; bgMusic.currentTime = 2;
+                bgMusic.volume = 0.15;
+                bgMusic.currentTime = 2;
                 let playPromise = bgMusic.play();
-                if (playPromise !== undefined) { playPromise.catch(error => { console.log("Music auto-play prevented:", error); }); }
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Music auto-play was prevented:", error);
+                    });
+                }
             }
         });
 
@@ -554,10 +557,9 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
 
             // If the clicked one wasn't active, activate it now
             if (!isAlreadyActive) { clickedCert.classList.add("active"); }
-            // If it was already active, clicking again hides it (as 'active' was removed from all)
         }
 
-        // Form submission
+        // Form submission logic (no changes needed from previous version)
         const form = document.querySelector('.contact-form');
         const successMsg = document.getElementById('form-success');
         if (form && successMsg) {
@@ -579,11 +581,11 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             });
         }
 
-        // Sidebar
+        // Sidebar toggle function (no changes needed)
         const sidebar = document.getElementById("mySidebar");
         function toggleSidebar() { if (sidebar) { sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px"; } }
 
-        // Resume Viewer
+        // Resume Viewer Logic (no changes needed)
         const resumeImageViewer = document.getElementById("resume-image-viewer");
         function showResumeImage() { if (resumeImageViewer) { resumeImageViewer.style.display = "flex"; setTimeout(() => { resumeImageViewer.classList.add("visible"); }, 10); document.body.style.overflow = 'hidden'; } }
         function hideResumeImage() { if (resumeImageViewer) { resumeImageViewer.classList.remove("visible"); setTimeout(() => { resumeImageViewer.style.display = "none"; document.body.style.overflow = ''; }, 350); } }
