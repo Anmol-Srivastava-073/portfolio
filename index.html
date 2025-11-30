@@ -154,15 +154,15 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     width: 100%;
     height: auto;
     padding: 10px 0;
-    max-height: 800px; /* Increased max height */
+    max-height: 800px;
     overflow-y: visible;
 }
 
 /* Images inside the ACTIVE Java container - FIXED */
 .certificate-viewer #java-cert.active img {
     max-height: 250px; 
-    width: 45%; 
-    max-width: 350px; /* Max size per image */
+    width: 48%; /* Try to fit two per row */
+    max-width: 350px; 
     height: auto;
     object-fit: contain;
     border-radius: 6px;
@@ -173,8 +173,9 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     pointer-events: auto;
     position: static;
     transform: none;
-    margin: 5px; /* Add margin for spacing */
-    flex: 1 1 200px; /* Allow flex to control size, min-width 200px before wrapping */
+    margin: 5px; 
+    /* Force size to be primarily controlled by width/max-width */
+    flex: 0 0 auto;
 }
 
 /* --- Projects Section --- */
@@ -313,8 +314,15 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
 
     .certificate-viewer > img.active { max-height: 300px; }
     /* Adjusted Java cert container/image sizes for 480px screen - FIXED */
-    .certificate-viewer #java-cert.active { gap: 5px; }
-    .certificate-viewer #java-cert.active img { max-height: 200px; width: 90%; /* Forces stacking */ }
+    .certificate-viewer #java-cert.active { 
+        gap: 5px; 
+        flex-direction: column; /* Force stack on small screens */
+    }
+    .certificate-viewer #java-cert.active img { 
+        max-height: 200px; 
+        width: 100%; /* Take full width to ensure visibility */
+        margin: 5px auto;
+    }
 
     .project img { height: 160px; }
     .project-content { padding: 15px; }
