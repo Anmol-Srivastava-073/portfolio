@@ -88,23 +88,22 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     overflow: hidden;
     transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease, min-height 0.5s ease;
     min-height: 0;
-    flex-direction: column; /* Ensure content flows vertically when active */
+    flex-direction: column;
 }
+
 /* Apply styles ONLY when a certificate is visible */
 .certificate-viewer:has(> .active) {
     border-color: var(--charcoal);
     background: rgba(17, 17, 22, 0.4);
     padding: 15px;
     margin-top: 30px;
-    /* Use a min-height that accommodates content, but allow growth */
     min-height: 400px; 
 }
 
-/* Hide initially & base positioning for ALL direct children */
+/* Hide initially & base positioning for ALL non-active direct children */
 .certificate-viewer > img,
 .certificate-viewer > #java-cert {
     opacity: 0;
-    /* Using absolute positioning to hide all non-active items, but changing how the active one is displayed */
     position: absolute; 
     top: 50%;
     left: 50%;
@@ -121,8 +120,7 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .certificate-viewer > .active {
     opacity: 1;
     pointer-events: auto;
-    
-    /* MODIFIED: Use static position for active items to take up space in the parent flex container */
+    /* Use static position for active items to take up space in the parent flex container */
     position: static;
     transform: none;
     top: auto;
@@ -137,16 +135,16 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 
 /* Specific size and centering for single active images */
 .certificate-viewer > img.active {
-    max-height: 500px; /* Increased max height slightly for better viewing */
+    max-height: 500px; 
     max-width: 100%;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-    margin: 0 auto; /* Center the image */
-    display: block; /* Ensure margin auto works */
+    margin: 0 auto;
+    display: block;
 }
 
-/* Java container specific style when active */
+/* Java container specific style when active - FIXED */
 .certificate-viewer #java-cert.active {
     display: flex;
     justify-content: center;
@@ -154,29 +152,29 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     gap: 10px;
     flex-wrap: wrap;
     width: 100%;
-    max-height: none; /* Allow vertical growth */
     height: auto;
-    overflow-y: visible; /* Prevent unnecessary scrollbar */
     padding: 10px 0;
+    max-height: 800px; /* Increased max height */
+    overflow-y: visible;
 }
 
-/* Images inside the ACTIVE Java container */
+/* Images inside the ACTIVE Java container - FIXED */
 .certificate-viewer #java-cert.active img {
-    max-height: 250px; /* Reduced max height to fit three side-by-side or stacked */
-    width: 45%; /* Allow side-by-side on larger screens */
-    max-width: 300px; /* Max size per image */
+    max-height: 250px; 
+    width: 45%; 
+    max-width: 350px; /* Max size per image */
     height: auto;
     object-fit: contain;
     border-radius: 6px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     
-    /* Ensure visible and properly sized */
     display: block;
     opacity: 1;
     pointer-events: auto;
     position: static;
     transform: none;
     margin: 5px; /* Add margin for spacing */
+    flex: 1 1 200px; /* Allow flex to control size, min-width 200px before wrapping */
 }
 
 /* --- Projects Section --- */
@@ -314,7 +312,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .skill { padding: 8px 14px; font-size: 0.8rem; }
 
     .certificate-viewer > img.active { max-height: 300px; }
-    /* Adjusted Java cert container/image sizes for 480px screen */
+    /* Adjusted Java cert container/image sizes for 480px screen - FIXED */
     .certificate-viewer #java-cert.active { gap: 5px; }
     .certificate-viewer #java-cert.active img { max-height: 200px; width: 90%; /* Forces stacking */ }
 
@@ -432,11 +430,11 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             <div class="skills">
                 <div class="skill">HTML</div>
                 <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Java</div>
+                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
                 <div class="skill">C++</div>
-                <div class="skill">MySQL</div>
-                <div class="skill">Python</div>
+                <div class="skill" onclick="showCertificate('sql-cert')">MySQL</div>
+                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
                 <div class="skill">Flask</div>
                 <div class="skill">C</div>
                 <div class="skill">Git</div>
