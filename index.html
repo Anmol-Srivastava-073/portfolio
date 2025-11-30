@@ -73,103 +73,107 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .skill:hover { background: rgba(0, 184, 212, 0.2); border-color: var(--cyan-accent); color: var(--cyan-glow); transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3); }
 
 /* --- Certificates Section --- */
-/* --- Certificates Section --- */
 #certificates p { text-align:center; margin-bottom: 25px; color: var(--text-medium); font-size: 0.95rem;}
 
 .certificate-viewer {
-    margin-top: 0; /* Collapse margin initially */
-    display: flex; /* Use flex to center the active item */
+    margin-top: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Needed for absolute positioning of children */
-    border: 1px solid transparent; /* Keep layout consistent, hide border */
+    position: relative;
+    border: 1px solid transparent;
     border-radius: 10px;
     background: transparent;
     padding: 0;
     overflow: hidden;
     transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease, min-height 0.5s ease;
-    min-height: 0; /* Allow collapsing */
+    min-height: 0;
+    flex-direction: column;
 }
+
 /* Apply styles ONLY when a certificate is visible */
 .certificate-viewer:has(> .active) {
     border-color: var(--charcoal);
     background: rgba(17, 17, 22, 0.4);
     padding: 15px;
-    margin-top: 30px; /* Add margin back when visible */
-    min-height: 400px; /* Set a min-height when active to contain the certs */
+    margin-top: 30px;
+    min-height: 400px; 
 }
 
-/* Hide initially & base positioning for ALL direct children */
+/* Hide initially & base positioning for ALL non-active direct children */
 .certificate-viewer > img,
 .certificate-viewer > #java-cert {
     opacity: 0;
-    position: absolute; /* Position absolutely for layering */
+    /* Keeps hidden items off the flow but visible to JS selection */
+    position: absolute; 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center */
-    transition: opacity 0.5s ease; /* Only transition opacity */
-    pointer-events: none; /* Non-interactive when hidden */
-    max-width: calc(100% - 30px); /* Fit within potential padding */
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    max-width: calc(100% - 30px);
     max-height: calc(100% - 30px);
     width: auto;
     height: auto;
 }
 
-/* Show active direct child - DOES NOT take space itself, acts as a layer */
+/* Show active direct child (Single Image or Java Group) - MODIFIED: Removed absolute position */
 .certificate-viewer > .active {
     opacity: 1;
     pointer-events: auto;
-    position: absolute; /* Keep absolute */
-    /* Size constraints */
-    max-width: 95%; /* Limit width within the viewer */
-    max-height: 95%; /* Limit height */
+    position: static; /* CRITICAL FIX: Allows container to expand and contents to flow */
+    transform: none;
+    top: auto;
+    left: auto;
+
+    max-width: 100%;
+    max-height: 100%;
     width: auto;
     height: auto;
-    /* Reset transform if needed */
-    transform: translate(-50%, -50%); /* Keep centered */
 }
 
-/* Specific size for single active images */
+/* Specific size and centering for single active images */
 .certificate-viewer > img.active {
-    max-height: 450px; /* Max height for single large certs */
+    max-height: 500px; 
+    max-width: 100%;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    display: block;
 }
 
 /* Java container specific style when active */
 .certificate-viewer #java-cert.active {
-    display: flex; /* Use flex to arrange children */
+    display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
+    align-items: flex-start; /* Align to top to prevent vertical centering issues */
+    gap: 10px;
     flex-wrap: wrap;
-    width: 100%; /* Take full available width */
-    height: 100%; /* Take full available height */
-    /* Ensure opacity/pointer events are set correctly */
-    opacity: 1;
-    pointer-events: auto;
-    position: absolute; /* Keep centered */
-    /* Other styles like max-height handled by .active */
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    max-height: none; /* Allow vertical growth for all three certs */
+    overflow-y: visible;
 }
 
-/* Images inside the ACTIVE Java container */
+/* Images inside the ACTIVE Java container - FIXED */
 .certificate-viewer #java-cert.active img {
-    max-height: 350px; /* ** Smaller than single certs ** */
-    max-width: 48%; /* Allow side-by-side, adjust % if needed */
-    width: auto; height: auto; /* Maintain aspect ratio */
+    max-height: 250px; 
+    width: 48%; /* Try to fit two per row */
+    max-width: 350px; 
+    height: auto;
     object-fit: contain;
     border-radius: 6px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    /* Make them behave like inline elements within the flex container */
-    display: inline-block;
-    vertical-align: middle;
-    /* No absolute positioning needed here */
-    position: static;
-    /* Ensure visible */
+    
+    display: block;
     opacity: 1;
     pointer-events: auto;
+    position: static; /* CRITICAL FIX: Ensure they flow within the flex container */
     transform: none;
+    margin: 5px; 
+    flex: 0 0 auto;
 }
 
 /* --- Projects Section --- */
@@ -273,7 +277,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .skill { padding: 9px 16px; font-size: 0.85rem;}
 
     .certificate-viewer > img.active { max-height: 400px; }
-    .certificate-viewer #java-cert.active img { max-height: 350px; max-width: 47%; }
+    .certificate-viewer #java-cert.active img { max-height: 250px; width: 48%; }
 
     .resume-options { flex-direction: column; gap: 15px; }
     .resume-btn { padding: 11px 24px; font-size: 0.9rem; }
@@ -306,8 +310,17 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
     .skill { padding: 8px 14px; font-size: 0.8rem; }
 
     .certificate-viewer > img.active { max-height: 300px; }
-    .certificate-viewer #java-cert.active { gap: 10px; }
-    .certificate-viewer #java-cert.active img { max-height: 80%; max-width: 90%; }
+    /* Adjusted Java cert container/image sizes for 480px screen - FINAL FIX */
+    .certificate-viewer #java-cert.active { 
+        gap: 5px; 
+        flex-direction: column; /* Force stack on small screens */
+        align-items: center; /* Center stacked items */
+    }
+    .certificate-viewer #java-cert.active img { 
+        max-height: 200px; 
+        width: 95%; /* Take almost full width to ensure visibility */
+        margin: 5px auto;
+    }
 
     .project img { height: 160px; }
     .project-content { padding: 15px; }
@@ -423,11 +436,11 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             <div class="skills">
                 <div class="skill">HTML</div>
                 <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Java</div>
+                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
                 <div class="skill">C++</div>
-                <div class="skill">MySQL</div>
-                <div class="skill">Python</div>
+                <div class="skill" onclick="showCertificate('sql-cert')">MySQL</div>
+                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
                 <div class="skill">Flask</div>
                 <div class="skill">C</div>
                 <div class="skill">Git</div>
