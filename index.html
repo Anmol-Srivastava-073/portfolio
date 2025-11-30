@@ -76,28 +76,27 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 #certificates p { text-align:center; margin-bottom: 25px; color: var(--text-medium); font-size: 0.95rem;}
 
 .certificate-viewer {
-    margin-top: 0;
-    display: flex;
+    margin-top: 0; /* Collapse margin initially */
+    display: flex; 
     justify-content: center;
-    align-items: flex-start; /* Align top for multi-row content */
-    position: relative;
-    border: 1px solid transparent;
+    align-items: center;
+    position: relative; 
+    border: 1px solid transparent; 
     border-radius: 10px;
     background: transparent;
     padding: 0;
     overflow: hidden;
     transition: padding 0.5s ease, background-color 0.5s ease, border-color 0.5s ease, margin-top 0.5s ease, min-height 0.5s ease;
-    min-height: 0;
-    flex-direction: column;
+    min-height: 0; /* Allow collapsing */
+    flex-direction: column; /* Ensure content flows vertically */
 }
-
 /* Apply styles ONLY when a certificate is visible */
 .certificate-viewer:has(> .active) {
     border-color: var(--charcoal);
     background: rgba(17, 17, 22, 0.4);
     padding: 15px;
-    margin-top: 30px;
-    min-height: 400px; /* Set a reasonable min height */
+    margin-top: 30px; 
+    min-height: 400px; 
 }
 
 /* Hide initially & base positioning for ALL non-active direct children */
@@ -120,8 +119,7 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .certificate-viewer > .active {
     opacity: 1;
     pointer-events: auto;
-    /* FIX: Force active element into normal flow so container height is calculated */
-    position: static; 
+    position: static; /* FIX: Forces container to expand with content, removing the empty space issue */
     transform: none;
     top: auto;
     left: auto;
@@ -145,19 +143,19 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 
 /* Java container specific style when active */
 .certificate-viewer #java-cert.active {
-    display: flex;
+    display: flex; 
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start; /* Align top for better flow */
     gap: 10px;
     flex-wrap: wrap;
-    width: 100%;
+    width: 100%; 
     height: auto;
     padding: 10px 0;
-    max-height: none; 
+    max-height: none; /* Allow vertical expansion */
     overflow-y: visible;
 }
 
-/* Images inside the ACTIVE Java container - CRITICAL FIX */
+/* Images inside the ACTIVE Java container - CRITICAL FIX (ensures visibility and flow) */
 .certificate-viewer #java-cert.active img {
     max-height: 250px; 
     width: 48%; 
@@ -168,9 +166,9 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     
     display: block;
-    opacity: 1; 
+    opacity: 1; /* ENSURE VISIBILITY */
     pointer-events: auto;
-    position: static; /* FIX: Ensure they flow correctly */
+    position: static; /* ENSURE CORRECT FLOW (NOT ABSOLUTE) */
     transform: none; 
     margin: 5px; 
     flex: 0 0 auto;
@@ -229,7 +227,7 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .contact-form textarea { min-height: 120px; resize: vertical; padding-top: 13px; }
 .contact-form input:focus + label, .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:focus + label, .contact-form textarea:not(:placeholder-shown) + label { top: -9px; left: 10px; font-size: 0.75rem; color: var(--cyan-accent); background: var(--bg-medium); padding: 1px 5px; border-radius: 4px; }
 .contact-form button { width: 100%; padding: 13px; font-size: 1rem; background: var(--cyan-accent); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed); color: var(--bg-dark); margin-top: 10px; box-shadow: 0 4px 15px rgba(0, 184, 212, 0.3); }
-.contact-form button:hover { transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); background-color: var(--cyan-glow); }
+.contact-form button:hover { transform: translateY(-3px) scale(1.03); background: var(--cyan-glow); box-shadow: 0 7px 20px rgba(0, 229, 255, 0.5); }
 .social-links { margin-top: 30px; display: flex; justify-content: center; gap: 25px; }
 .social-btn { width: 50px; height: 50px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--charcoal); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed); overflow: hidden; }
 .social-btn img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
@@ -435,11 +433,11 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             <div class="skills">
                 <div class="skill">HTML</div>
                 <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Java</div>
+                <div class="skill" onclick="showCertificate('js-cert')">JavaScript</div>
+                <div class="skill" onclick="showCertificate('java-cert')">Java</div>
                 <div class="skill">C++</div>
-                <div class="skill">MySQL</div>
-                <div class="skill">Python</div>
+                <div class="skill" onclick="showCertificate('sql-cert')">MySQL</div>
+                <div class="skill" onclick="showCertificate('python-cert')">Python</div>
                 <div class="skill">Flask</div>
                 <div class="skill">C</div>
                 <div class="skill">Git</div>
