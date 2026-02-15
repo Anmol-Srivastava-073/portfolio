@@ -613,7 +613,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             // Background music
             const bgMusic = document.getElementById("bg-music");
             if (bgMusic) {
-                bgMusic.volume = 0.15; bgMusic.currentTime = 2;
+                bgMusic.volume = 0.075; bgMusic.currentTime = 2;
                 let playPromise = bgMusic.play();
                 if (playPromise !== undefined) { playPromise.catch(error => { console.log("Music auto-play prevented:", error); }); }
             }
