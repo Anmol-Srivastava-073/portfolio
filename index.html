@@ -195,6 +195,50 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
 .education-text p { font-size: 0.9rem; color: var(--text-medium); line-height: 1.5; }
 .education-text p:first-of-type { opacity: 0.8; margin-bottom: 5px; font-weight: 400; font-size: 0.85rem; }
 
+/* --- Experience Section --- */
+#experience {
+    max-width: 900px;
+}
+
+#experience .education-container {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--cyan-accent);
+}
+
+/* Timeline dot */
+#experience .education-item {
+    position: relative;
+    margin-left: 10px;
+}
+
+/* Glowing dot */
+#experience .education-item::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 25px;
+    width: 10px;
+    height: 10px;
+    background: var(--cyan-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+/* Better hover effect */
+#experience .education-item:hover {
+    transform: translateX(10px);
+    background: rgba(0, 229, 255, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
+}
+
+/* Logo tweak for experience */
+#experience .education-logo {
+    border: 1px solid var(--cyan-accent);
+    padding: 5px;
+    background: rgba(0,0,0,0.3);
+}
+        
 /* --- About Section --- */
 #about { max-width: 950px; }
 #about h2 { margin-bottom: 35px; }
@@ -420,7 +464,7 @@ footer { background: #08080b; padding: 20px; text-align: center; margin-top: 50p
             </div>
         </section>
 
-        <section id="experience">
+    <section id="experience">
     <h2>Experience</h2>
     <div class="education-container">
 
