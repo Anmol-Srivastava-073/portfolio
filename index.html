@@ -200,45 +200,43 @@ h2 { margin-bottom: 35px; text-align: center; font-size: 2.2rem; font-weight: 60
     max-width: 900px;
 }
 
+/* Ensure same spacing + behavior */
 #experience .education-container {
-    position: relative;
-    padding-left: 20px;
-    border-left: 2px solid var(--cyan-accent);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Timeline dot */
+/* Remove any accidental overrides */
 #experience .education-item {
-    position: relative;
-    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    background: var(--bg-medium);
+    padding: 20px 25px;
+    border-left: 4px solid var(--cyan-accent);
+    border-radius: 8px;
+    gap: 20px;
+    border: 1px solid var(--charcoal);
+    transition: transform var(--transition-speed),
+                background var(--transition-speed),
+                border-left-color var(--transition-speed);
 }
 
-/* Glowing dot */
-#experience .education-item::before {
-    content: "";
-    position: absolute;
-    left: -18px;
-    top: 25px;
-    width: 10px;
-    height: 10px;
-    background: var(--cyan-glow);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--cyan-glow);
-}
-
-/* Better hover effect */
+/* Same hover as education */
 #experience .education-item:hover {
-    transform: translateX(10px);
-    background: rgba(0, 229, 255, 0.08);
-    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
+    background: rgba(0, 184, 212, 0.1);
+    transform: translateX(6px);
+    border-left-color: var(--cyan-glow);
 }
 
-/* Logo tweak for experience */
+/* Same logo styling */
 #experience .education-logo {
-    border: 1px solid var(--cyan-accent);
-    padding: 5px;
-    background: rgba(0,0,0,0.3);
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
-        
 /* --- About Section --- */
 #about { max-width: 950px; }
 #about h2 { margin-bottom: 35px; }
