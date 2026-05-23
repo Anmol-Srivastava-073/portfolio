@@ -25,7 +25,7 @@ function Hero() {
           </h1>
           
           <p className="font-manga text-lg md:text-xl font-bold mb-8 max-w-2xl border-l-4 border-ink pl-4">
-            BTech CSE Student @ MUJ. Full-stack developer, API tinkerer, and open-source contributor writing the next chapter of the web.
+            BTech CSE Student @ MUJ. Full-stack developer, Web Developer and Open-source contributor making the right use of Internet.
           </p>
           
           <div className="flex flex-wrap gap-4">
