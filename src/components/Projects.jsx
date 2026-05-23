@@ -1,73 +1,103 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { projects } from '../data/portfolioData'
-import { ExternalLink, Github } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 function Projects() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.2 } }
-  }
-
-  const cardVariant = {
-    hidden: { opacity: 0, scale: 0.95, y: 30 },
-    show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
-  }
+  const [showAll, setShowAll] = useState(false)
+  
+  // Show 2 projects initially (to make them look massive), then all when expanded
+  const visibleProjects = showAll ? projects : projects.slice(0, 2)
 
   return (
-    <section id="projects" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+    <section id="projects" className="py-32 px-6 max-w-7xl mx-auto relative z-10 border-t border-white/5">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Featured Projects</h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg">A selection of my best work in software development.</p>
+        <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-none">
+          SELECTED <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+            WORKS.
+          </span>
+        </h2>
+        <p className="text-slate-400 max-w-sm text-lg md:text-xl font-light text-right">
+          A showcase of engineering, design, and interactive web experiences.
+        </p>
       </motion.div>
 
       <motion.div 
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid lg:grid-cols-2 gap-8"
+        layout 
+        className="grid md:grid-cols-2 gap-10 md:gap-16"
       >
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            variants={cardVariant}
-            className="group relative rounded-3xl premium-glass overflow-hidden hover:border-slate-500 transition-colors duration-500"
-          >
-            {/* Image Container with Zoom effect */}
-            <div className="relative h-64 md:h-80 overflow-hidden">
-              <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out" 
-              />
-            </div>
-
-            <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">{project.title}</h3>
-              <p className="text-slate-400 leading-relaxed mb-8">
-                {project.desc}
-              </p>
-
-              <div className="flex gap-4">
+        <AnimatePresence>
+          {visibleProjects.map((project, index) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              key={project.title}
+              className={`group relative flex flex-col ${index % 2 !== 0 && !showAll ? 'md:mt-32' : ''}`}
+            >
+              <div className="relative overflow-hidden rounded-2xl bg-slate-900 aspect-[4/3] md:aspect-[3/4] xl:aspect-[4/3]">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out" 
+                />
+                
+                {/* Floating View Button on Hover */}
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold text-white bg-slate-800 hover:bg-slate-700 px-5 py-2.5 rounded-full transition-colors"
+                  className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 >
-                  Live Demo <ExternalLink size={16} />
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full w-24 h-24 flex items-center justify-center font-bold tracking-widest text-xs uppercase hover:bg-white hover:text-black transition-colors duration-300">
+                    View
+                  </div>
                 </a>
               </div>
-            </div>
-          </motion.div>
-        ))}
+
+              <div className="mt-8 flex justify-between items-start">
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
+                  <p className="text-slate-400 text-lg font-light leading-relaxed max-w-md">
+                    {project.desc}
+                  </p>
+                </div>
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-slate-500 hover:text-cyan-400 transition-colors"
+                >
+                  <ArrowUpRight size={32} strokeWidth={1.5} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </motion.div>
+
+      {projects.length > 2 && (
+        <motion.div layout className="mt-20 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="group relative px-10 py-5 rounded-full overflow-hidden border border-white/20 text-white font-medium tracking-widest uppercase text-sm hover:border-white/50 transition-colors"
+          >
+            <span className="relative z-10">{showAll ? 'Show Less' : 'Explore All Projects'}</span>
+            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0"></div>
+            <span className="absolute inset-0 z-10 flex items-center justify-center text-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+              {showAll ? 'Show Less' : 'Explore All Projects'}
+            </span>
+          </button>
+        </motion.div>
+      )}
     </section>
   )
 }
