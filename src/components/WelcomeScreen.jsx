@@ -40,7 +40,7 @@ function WelcomeScreen({ onEnter }) {
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <button
             onClick={() => onEnter(true)}
-            className="sketch-border bg-markerBlue text-white px-8 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
+            className="sketch-border-alt bg-white text-ink px-8 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
           >
             With Audio
           </button>
