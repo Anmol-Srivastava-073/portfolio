@@ -12,7 +12,7 @@ function WelcomeScreen({ onEnter }) {
         <div className="washi-tape bg-markerRed/40 w-32 -rotate-3"></div>
         
         <h1 className="font-marker text-4xl md:text-5xl text-ink mb-8">
-          Volume 1: Setup
+            Volume 1 : Setup
         </h1>
 
         {/* Sketched Spotify-like Audio Wave Animation */}
@@ -42,14 +42,14 @@ function WelcomeScreen({ onEnter }) {
             onClick={() => onEnter(true)}
             className="sketch-border bg-markerBlue text-white px-8 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
           >
-            Play Audio
+            With Audio
           </button>
           
           <button
             onClick={() => onEnter(false)}
             className="sketch-border-alt bg-white text-ink px-8 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
           >
-            Enter Silent
+            Without Audio
           </button>
         </div>
       </motion.div>
