@@ -1,7 +1,9 @@
-export default function Footer() {
+function Footer() {
   return (
-    <footer className="py-8 border-t border-white/10 text-center text-slate-400">
-      © 2026 Anmol Srivastava
+    <footer className="text-center py-10 border-t border-white/10 text-gray-400">
+      © 2026 Anmol Srivastava. All Rights Reserved.
     </footer>
   )
 }
+
+export default Footer
