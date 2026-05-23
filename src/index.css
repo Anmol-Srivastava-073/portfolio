@@ -1,58 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* --- GOD LEVEL MANGA EFFECTS --- */
 
-@layer base {
-  body {
-    @apply bg-paper text-ink font-manga selection:bg-markerYellow selection:text-ink overflow-x-hidden;
-    /* Dotted sketchbook paper background */
-    background-image: radial-gradient(#d1ccc0 2px, transparent 2px);
-    background-size: 32px 32px;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border-radius: 20px;
-}
-
-/* Hand-drawn organic border effect */
-.sketch-border {
-  border: 3px solid #1a1a1a;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-}
-
-.sketch-border-alt {
-  border: 3px solid #1a1a1a;
-  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
-}
-
-/* Manga image effect (Grayscale removed, just keeping a slight contrast pop) */
-.manga-image {
-  filter: contrast(1.05);
-  transition: transform 0.5s ease;
-}
-
-.manga-image:hover {
-  filter: contrast(1);
-}
-
-/* Washi tape effect */
-.washi-tape {
+/* Concentrated Action Lines (Mangasen) */
+.manga-action-bg {
   position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 120px;
-  height: 35px;
-  background-color: rgba(255, 215, 0, 0.5); /* Yellow tape */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  z-index: 10;
+  inset: -50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 5deg,
+    rgba(26, 26, 26, 0.05) 5deg 6deg,
+    transparent 6deg 15deg,
+    rgba(26, 26, 26, 0.08) 15deg 17deg,
+    transparent 17deg 25deg,
+    rgba(26, 26, 26, 0.03) 25deg 26deg
+  );
+  animation: spin-action 40s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes spin-action {
+  100% { transform: rotate(360deg); }
+}
+
+/* Ink Bleed Hover Effect */
+.ink-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ink-fill::before {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: -100%;
+  width: 100%; 
+  height: 100%;
+  background: #1a1a1a;
+  transition: left 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  z-index: -1;
+  /* Matches the sketch-border radius */
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
+}
+
+.ink-fill:hover::before {
+  left: 0;
+}
+
+.ink-fill:hover {
+  color: white !important;
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* Floating Sketch Elements */
+.float-sketch {
+  animation: float-sketch 4s ease-in-out infinite alternate;
+}
+
+@keyframes float-sketch {
+  0% { transform: translateY(0px) rotate(-5deg); }
+  100% { transform: translateY(-15px) rotate(5deg); }
 }
