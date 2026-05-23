@@ -1,3 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-manga selection:bg-markerYellow selection:text-ink overflow-x-hidden;
+    /* Dotted sketchbook paper background */
+    background-image: radial-gradient(#d1ccc0 2px, transparent 2px);
+    background-size: 32px 32px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 20px;
+}
+
+/* Hand-drawn organic border effect */
+.sketch-border {
+  border: 3px solid #1a1a1a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.sketch-border-alt {
+  border: 3px solid #1a1a1a;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+}
+
+/* Manga image effect (Grayscale removed, just keeping a slight contrast pop) */
+.manga-image {
+  filter: contrast(1.05);
+  transition: transform 0.5s ease;
+}
+
+.manga-image:hover {
+  filter: contrast(1);
+}
+
+/* Washi tape effect */
+.washi-tape {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 120px;
+  height: 35px;
+  background-color: rgba(255, 215, 0, 0.5); /* Yellow tape */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
 /* --- GOD LEVEL MANGA EFFECTS --- */
 
 /* Concentrated Action Lines (Mangasen) */
