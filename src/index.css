@@ -4,7 +4,18 @@
 
 @layer base {
   body {
-    @apply bg-dark text-slate-200 antialiased overflow-x-hidden;
+    @apply bg-space text-slate-200 antialiased overflow-x-hidden;
+    /* Vibrant Animated Aurora Background */
+    background: linear-gradient(
+      -45deg, 
+      #02000f, 
+      #13002b, 
+      #001a33, 
+      #1f0033
+    );
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+    min-height: 100vh;
   }
 }
 
@@ -12,46 +23,21 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #02000f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 5px;
-  border: 2px solid #030712;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: linear-gradient(to bottom, #00e5ff, #c084fc);
+  border-radius: 10px;
 }
 
-/* Modern Animated Grid Background */
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
+.bento-card {
+  @apply bg-glass backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)];
 }
 
-/* High-end glassmorphism (subtle, not cheap) */
-.premium-glass {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Shimmering Text Gradient */
-.text-gradient {
-  background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc, #38bdf8);
-  background-size: 200% auto;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: text-shimmer 3s linear infinite;
+.text-glow {
+  text-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
 }
