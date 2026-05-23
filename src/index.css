@@ -2,69 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  body {
+    @apply bg-background text-neutral-200 antialiased;
+    selection-background-color: #ffffff;
+    selection-color: #000000;
+  }
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #050816;
-  color: white;
-  overflow-x: hidden;
-}
-
-.gradient {
-  background: linear-gradient(
-    135deg,
-    #00e5ff,
-    #7c3aed
-  );
-}
-
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.blob1 {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: rgba(0,229,255,0.15);
-  filter: blur(140px);
-  top: -100px;
-  left: -100px;
-  z-index: 0;
-}
-
-.blob2 {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: rgba(124,58,237,0.15);
-  filter: blur(140px);
-  bottom: -100px;
-  right: -100px;
-  z-index: 0;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #00e5ff;
-  border-radius: 999px;
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
 }
 
-section {
-  position: relative;
-  z-index: 10;
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
 }
