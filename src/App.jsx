@@ -9,28 +9,22 @@ import Projects from './components/Projects'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import BackgroundMusic from './components/BackgroundMusic'
 
 function App() {
   return (
-    <div className="bg-dark text-white overflow-hidden relative">
-      
-      <div className="blob1" />
-      <div className="blob2" />
-
+    <div className="min-h-screen overflow-hidden">
+      <BackgroundMusic />
       <Navbar />
-
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Certificates />
-        <Resume />
-        <Contact />
-      </main>
-
+      <Hero />
+      <About />
+      <Education />
+      <Experience />
+      <Skills />
+      <Certificates />
+      <Projects />
+      <Resume />
+      <Contact />
       <Footer />
     </div>
   )
