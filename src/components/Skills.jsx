@@ -1,27 +1,43 @@
 import { motion } from 'framer-motion'
-import { skills } from '../data/portfolioData'
 
-function Skills() {
+function About() {
   return (
-    <section id="skills" className="py-24 px-6 max-w-4xl mx-auto border-t border-border">
-      <h2 className="text-3xl font-bold text-white mb-12 tracking-tight">Technologies & Skills</h2>
+    <section id="about" className="py-24 px-6 max-w-5xl mx-auto border-t border-border">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="grid md:grid-cols-5 gap-12 items-start"
+      >
+        <div className="md:col-span-2">
+          <img
+            src="/photos/anmol.jpeg"
+            alt="Anmol Srivastava"
+            className="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-500 border border-border"
+          />
+        </div>
 
-      <div className="flex flex-wrap gap-3">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="px-4 py-2 text-sm text-muted border border-border rounded-md hover:text-white hover:border-neutral-500 transition-colors cursor-default"
-          >
-            {skill}
-          </motion.div>
-        ))}
-      </div>
+        <div className="md:col-span-3">
+          <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">About Me</h2>
+
+          <div className="space-y-4 text-muted text-base leading-relaxed">
+            <p>
+              Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
+              in programming, problem-solving, and full stack development.
+            </p>
+            <p>
+              I enjoy building modern projects using Java, JavaScript, React, Python,
+              MySQL, and cloud technologies. Currently pursuing my BTech in Computer Science at Manipal University Jaipur.
+            </p>
+            <p>
+              My goal is to create products that are technically sound and genuinely useful, focusing on clean code and intuitive user experiences.
+            </p>
+          </div>
+        </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Skills
+export default About
