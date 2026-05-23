@@ -1,4 +1,6 @@
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import { SiSubstack } from 'react-icons/si'
 import { motion } from 'framer-motion'
 
 function Contact() {
@@ -46,7 +48,7 @@ function Contact() {
         </div>
       </motion.form>
 
-      <div className="flex justify-center gap-8 mt-12 text-5xl text-ink">
+      <div className="flex flex-wrap justify-center gap-6 md:gap-8 mt-12 text-4xl md:text-5xl text-ink">
         <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="hover:text-markerRed hover:-translate-y-2 transition-all">
           <FaGithub />
         </a>
