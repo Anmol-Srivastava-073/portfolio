@@ -23,15 +23,16 @@ function BackgroundMusic() {
   return (
     <>
       <audio ref={audioRef} loop>
-        <source src="/music/interstellar.mp3" type="audio/mpeg" />
+        {/* Updated audio source here */}
+        <source src="/music/Suzume.mp3" type="audio/mpeg" />
       </audio>
       
       <button
         onClick={togglePlay}
-        className="fixed bottom-6 right-6 z-50 bg-surface border border-border p-3 rounded-full text-muted hover:text-white hover:border-neutral-500 transition-all"
+        className="fixed bottom-6 right-6 z-50 bg-white border-2 border-ink p-3 rounded-full text-ink shadow-[4px_4px_0px_0px_#1a1a1a] hover:shadow-[2px_2px_0px_0px_#1a1a1a] hover:translate-y-1 hover:translate-x-1 transition-all"
         aria-label="Toggle Background Music"
       >
-        {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
+        {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
       </button>
     </>
   )
