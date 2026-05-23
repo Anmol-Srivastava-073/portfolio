@@ -1,16 +1,20 @@
 export const skills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'React',
-  'Java',
-  'Python',
-  'MySQL',
-  'Flask',
-  'Git',
-  'GitHub',
-  'Tailwind CSS',
-  'Cloud Computing',
+  {
+    category: "Languages",
+    items: ["Java", "C++", "Python", "JavaScript", "SQL"]
+  },
+  {
+    category: "Frontend",
+    items: ["React", "HTML5", "CSS3", "Tailwind CSS", "Framer Motion"]
+  },
+  {
+    category: "Backend & Database",
+    items: ["Node.js", "Flask", "MySQL", "Supabase", "REST APIs"]
+  },
+  {
+    category: "Tools & Cloud",
+    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "LLM APIs (Gemini/Claude)"]
+  }
 ]
 
 export const education = [
