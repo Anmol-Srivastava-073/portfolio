@@ -2,31 +2,38 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
+    <section id="about" className="py-24 px-6 max-w-5xl mx-auto border-t border-border">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="grid md:grid-cols-2 gap-14 items-center"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="grid md:grid-cols-5 gap-12 items-start"
       >
-        <img
-          src="/photos/anmol.jpeg"
-          className="rounded-3xl shadow-2xl border border-cyan-400"
-        />
+        <div className="md:col-span-2">
+          <img
+            src="/photos/anmol.jpeg"
+            alt="Anmol Srivastava"
+            className="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-500 border border-border"
+          />
+        </div>
 
-        <div>
-          <h2 className="text-5xl font-bold mb-8">About Me</h2>
+        <div className="md:col-span-3">
+          <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">About Me</h2>
 
-          <p className="text-gray-300 leading-9 text-lg">
-            Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
-            in programming, problem-solving, full stack development, and open source.
-            
-            I enjoy building modern projects using Java, JavaScript, React, Python,
-            MySQL, and cloud technologies.
-
-            My goal is to create products that are visually impressive, technically
-            strong, and genuinely useful.
-          </p>
+          <div className="space-y-4 text-muted text-base leading-relaxed">
+            <p>
+              Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
+              in programming, problem-solving, and full stack development.
+            </p>
+            <p>
+              I enjoy building modern projects using Java, JavaScript, React, Python,
+              MySQL, and cloud technologies. Currently pursuing my BTech in Computer Science at Manipal University Jaipur.
+            </p>
+            <p>
+              My goal is to create products that are technically sound and genuinely useful, focusing on clean code and intuitive user experiences.
+            </p>
+          </div>
         </div>
       </motion.div>
     </section>
