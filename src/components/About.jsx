@@ -1,25 +1,36 @@
-export default function About() {
+import { motion } from 'framer-motion'
+
+function About() {
   return (
-    <section id="about" className="max-w-7xl mx-auto px-6 py-28">
-      <div className="grid md:grid-cols-2 gap-16">
-        <div>
-          <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm">
-            About Me
-          </p>
+    <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="grid md:grid-cols-2 gap-14 items-center"
+      >
+        <img
+          src="/photos/anmol.jpeg"
+          className="rounded-3xl shadow-2xl border border-cyan-400"
+        />
 
-          <h2 className="text-5xl font-bold mt-4 leading-tight">
-            Passionate Developer & Problem Solver
-          </h2>
-        </div>
-
         <div>
-          <p className="text-slate-300 text-lg leading-8">
-            I’m a Computer Science student at Manipal University Jaipur with a
-            strong interest in full stack development, AI projects, cloud
-            technologies, and modern UI/UX design.
+          <h2 className="text-5xl font-bold mb-8">About Me</h2>
+
+          <p className="text-gray-300 leading-9 text-lg">
+            Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
+            in programming, problem-solving, full stack development, and open source.
+            
+            I enjoy building modern projects using Java, JavaScript, React, Python,
+            MySQL, and cloud technologies.
+
+            My goal is to create products that are visually impressive, technically
+            strong, and genuinely useful.
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
+
+export default About
