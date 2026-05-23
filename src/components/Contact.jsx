@@ -53,8 +53,14 @@ function Contact() {
         <a href="https://linkedin.com/in/anmol-srivastava-46430727a" target="_blank" rel="noreferrer" className="hover:text-markerBlue hover:-translate-y-2 transition-all">
           <FaLinkedin />
         </a>
+        <a href="https://x.com/anmol_sriv073" target="_blank" rel="noreferrer" className="hover:text-ink/60 hover:-translate-y-2 transition-all">
+          <FaXTwitter />
+        </a>
         <a href="https://instagram.com/anmol_sriv.073" target="_blank" rel="noreferrer" className="hover:text-markerYellow hover:-translate-y-2 transition-all">
           <FaInstagram />
+        </a>
+        <a href="https://substack.com/@anmolsriv073" target="_blank" rel="noreferrer" className="hover:text-[#ff6719] hover:-translate-y-2 transition-all">
+          <SiSubstack />
         </a>
       </div>
     </section>
