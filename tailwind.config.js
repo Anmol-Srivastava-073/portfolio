@@ -7,23 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        space: '#02000f',
-        surface: 'rgba(20, 15, 35, 0.4)',
-        glass: 'rgba(255, 255, 255, 0.03)',
+        paper: '#f4f1ea',
+        ink: '#1a1a1a',
+        markerRed: '#ff4d4d',
+        markerBlue: '#3b82f6',
+        markerYellow: '#ffd700',
       },
-      animation: {
-        'aurora': 'aurora 15s ease infinite',
-        'float': 'float 6s ease-in-out infinite',
+      fontFamily: {
+        manga: ['"M PLUS Rounded 1c"', 'sans-serif'],
+        handwritten: ['Caveat', 'cursive'],
+        marker: ['"Permanent Marker"', 'cursive'],
       },
-      keyframes: {
-        aurora: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        }
+      boxShadow: {
+        'sketch': '6px 6px 0px 0px #1a1a1a',
+        'sketch-hover': '2px 2px 0px 0px #1a1a1a',
       }
     },
   },
