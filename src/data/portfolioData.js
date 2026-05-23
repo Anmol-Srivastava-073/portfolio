@@ -67,4 +67,16 @@ export const projects = [
     desc: 'Smart waste management system focused on sustainability, tracking, and optimized waste collection.',
     stack: ['React', 'Sustainability', 'Dashboard'],
   },
+  {
+    title: 'Spin Roulette',
+    image: '/photos/s2.png',
+    link: 'https://spinroulette.netlify.app',
+    desc: 'Fun roulette game project.',
+  },
+  {
+    title: 'Flipping A Coin',
+    image: '/photos/a1.png',
+    link: 'https://flippingacoin.netlify.app',
+    desc: 'Coin flipping simulator.',
+  },
 ]
