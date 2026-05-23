@@ -1,60 +1,60 @@
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 border-t border-border max-w-3xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">Get in Touch</h2>
-        <p className="text-muted">Have a project in mind or just want to say hi? Let's connect.</p>
-      </div>
+    <section id="contact" className="py-24 px-6 text-center max-w-3xl mx-auto">
+      <h2 className="font-marker text-5xl md:text-7xl text-ink mb-16">Contact</h2>
 
-      <form
+      <motion.form
         action="https://formspree.io/f/mkgvndga"
         method="POST"
-        className="space-y-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="bg-white p-8 md:p-10 sketch-border shadow-sketch relative"
       >
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="washi-tape bg-markerRed/40 w-32 -rotate-2"></div>
+        <div className="space-y-6">
           <input
             type="text"
             name="name"
-            placeholder="Name"
+            placeholder="Your Name"
             required
-            className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors"
+            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors"
           />
+
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Your Email"
             required
-            className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors"
+            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors"
           />
+
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Your Message"
+            required
+            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors resize-none"
+          />
+
+          <button type="submit" className="sketch-border-alt bg-markerBlue text-white px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all w-full">
+            Send Message
+          </button>
         </div>
+      </motion.form>
 
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Message"
-          required
-          className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors resize-none"
-        />
-
-        <button 
-          type="submit"
-          className="w-full bg-white text-black font-medium py-3 rounded-md hover:bg-neutral-200 transition-colors"
-        >
-          Send Message
-        </button>
-      </form>
-
-      <div className="flex justify-center gap-6 mt-16">
-        <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
-          <FaGithub size={24} />
+      <div className="flex justify-center gap-8 mt-12 text-5xl text-ink">
+        <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="hover:text-markerRed hover:-translate-y-2 transition-all">
+          <FaGithub />
         </a>
-        <a href="https://linkedin.com/in/anmol-srivastava-46430727a" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
-          <FaLinkedin size={24} />
+        <a href="https://linkedin.com/in/anmol-srivastava-46430727a" target="_blank" rel="noreferrer" className="hover:text-markerBlue hover:-translate-y-2 transition-all">
+          <FaLinkedin />
         </a>
-        <a href="https://instagram.com/anmol_sriv.073" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
-          <FaInstagram size={24} />
+        <a href="https://instagram.com/anmol_sriv.073" target="_blank" rel="noreferrer" className="hover:text-markerYellow hover:-translate-y-2 transition-all">
+          <FaInstagram />
         </a>
       </div>
     </section>
