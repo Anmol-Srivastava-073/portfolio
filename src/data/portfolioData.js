@@ -1,7 +1,7 @@
 export const skills = [
   {
     category: "Languages",
-    items: ["Java", "C++", "Python", "JavaScript", "SQL"]
+    items: ["Java", "C++", "Python", "JavaScript", "TypeScript" , "SQL"]
   },
   {
     category: "Frontend",
@@ -13,7 +13,7 @@ export const skills = [
   },
   {
     category: "Tools & Cloud",
-    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "LLM APIs (Gemini/Claude)"]
+    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "Vercel, "LLM APIs(Gemini/Claude)"]
   }
 ]
 
