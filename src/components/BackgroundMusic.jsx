@@ -4,45 +4,25 @@ function BackgroundMusic() {
   const audioRef = useRef(null)
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    // Keep volume pleasant
-    audio.volume = 0.2;
-
-    const forcePlay = () => {
-      if (audio.paused) {
-        const playPromise = audio.play();
+    // This perfectly mimics your old document.addEventListener("DOMContentLoaded")
+    const bgMusic = audioRef.current;
+    
+    if (bgMusic) {
+        bgMusic.volume = 0.1; 
+        bgMusic.currentTime = 2;
         
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              // The moment it successfully plays, destroy the listeners
-              window.removeEventListener('pointerdown', forcePlay);
-              window.removeEventListener('keydown', forcePlay);
-              window.removeEventListener('touchstart', forcePlay);
-            })
-            .catch(err => {
-              console.warn("Browser still blocking audio:", err);
-            });
+        let playPromise = bgMusic.play();
+        
+        if (playPromise !== undefined) { 
+            playPromise.catch(error => { 
+                console.log("Music auto-play prevented:", error); 
+            }); 
         }
-      }
-    };
-
-    // Attach to the most top-level window events
-    window.addEventListener('pointerdown', forcePlay, { once: true });
-    window.addEventListener('keydown', forcePlay, { once: true });
-    window.addEventListener('touchstart', forcePlay, { once: true });
-
-    return () => {
-      window.removeEventListener('pointerdown', forcePlay);
-      window.removeEventListener('keydown', forcePlay);
-      window.removeEventListener('touchstart', forcePlay);
-    };
-  }, []);
+    }
+  }, [])
 
   return (
-    <audio ref={audioRef} id="bg-music" loop preload="auto">
+    <audio ref={audioRef} id="bg-music" loop>
       <source src="/music/Suzume.mp3" type="audio/mpeg" />
     </audio>
   )
