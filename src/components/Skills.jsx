@@ -1,17 +1,15 @@
-import { skills } from '../data/data'
+import { skills } from '../data/portfolioData'
 
-export default function Skills() {
+function Skills() {
   return (
-    <section id="skills" className="max-w-7xl mx-auto px-6 py-24">
-      <h2 className="text-5xl font-bold text-center mb-16">
-        Skills
-      </h2>
+    <section id="skills" className="py-24 px-6 max-w-6xl mx-auto">
+      <h2 className="text-5xl font-bold text-center mb-16">Skills</h2>
 
-      <div className="flex flex-wrap justify-center gap-5">
-        {skills.map((skill) => (
+      <div className="flex flex-wrap justify-center gap-6">
+        {skills.map((skill, index) => (
           <div
-            key={skill}
-            className="px-7 py-4 bg-white/5 border border-white/10 rounded-2xl hover:border-cyan-400 hover:-translate-y-2 transition"
+            key={index}
+            className="glass px-8 py-4 rounded-full hover:scale-110 transition"
           >
             {skill}
           </div>
@@ -20,3 +18,5 @@ export default function Skills() {
     </section>
   )
 }
+
+export default Skills
