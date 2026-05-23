@@ -2,19 +2,21 @@ import { experience } from '../data/portfolioData'
 
 function Experience() {
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="text-5xl font-bold text-center mb-16">Experience</h2>
+    <section className="py-24 px-6 max-w-4xl mx-auto border-t border-border">
+      <h2 className="text-3xl font-bold text-white mb-12 tracking-tight">Experience</h2>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-4">
         {experience.map((item, index) => (
-          <div key={index} className="glass rounded-3xl p-8 text-center">
+          <div key={index} className="bg-surface border border-border rounded-lg p-6 flex items-center gap-4">
             <img
               src={item.image}
-              className="w-24 h-24 rounded-full mx-auto mb-6"
+              alt={item.title}
+              className="w-12 h-12 rounded-md object-cover grayscale"
             />
-
-            <h3 className="text-2xl font-bold">{item.title}</h3>
-            <p className="text-cyan-400 mt-3">{item.role}</p>
+            <div>
+              <h3 className="text-base font-semibold text-white">{item.title}</h3>
+              <p className="text-sm text-muted mt-1">{item.role}</p>
+            </div>
           </div>
         ))}
       </div>
