@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -15,10 +14,9 @@ function BackgroundMusic() {
     setIsPlaying(!isPlaying)
   }
 
-  // Lower the volume slightly so it's ambient
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.3
+      audioRef.current.volume = 0.2
     }
   }, [])
 
@@ -28,17 +26,13 @@ function BackgroundMusic() {
         <source src="/music/interstellar.mp3" type="audio/mpeg" />
       </audio>
       
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+      <button
         onClick={togglePlay}
-        className="fixed bottom-8 right-8 z-50 glass p-4 rounded-full text-cyan-400 hover:text-white transition-colors border border-cyan-400/30 shadow-[0_0_15px_rgba(0,229,255,0.3)]"
+        className="fixed bottom-6 right-6 z-50 bg-surface border border-border p-3 rounded-full text-muted hover:text-white hover:border-neutral-500 transition-all"
         aria-label="Toggle Background Music"
       >
-        {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
-      </motion.button>
+        {isPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
+      </button>
     </>
   )
 }
