@@ -4,39 +4,45 @@ function BackgroundMusic() {
   const audioRef = useRef(null)
 
   useEffect(() => {
-    const bgMusic = audioRef.current;
-    
-    if (bgMusic) {
-        bgMusic.volume = 0.2; 
-    }
-    const startAudio = () => {
-        if (bgMusic && bgMusic.paused) {
-            let playPromise = bgMusic.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => console.log("Audio playback waiting for interaction...", error));
-            }
-        }
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    // Keep volume pleasant
+    audio.volume = 0.2;
+
+    const forcePlay = () => {
+      if (audio.paused) {
+        const playPromise = audio.play();
         
-        document.removeEventListener('click', startAudio);
-        document.removeEventListener('touchstart', startAudio);
-        document.removeEventListener('keydown', startAudio);
-        document.removeEventListener('scroll', startAudio);
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              // The moment it successfully plays, destroy the listeners
+              window.removeEventListener('pointerdown', forcePlay);
+              window.removeEventListener('keydown', forcePlay);
+              window.removeEventListener('touchstart', forcePlay);
+            })
+            .catch(err => {
+              console.warn("Browser still blocking audio:", err);
+            });
+        }
+      }
     };
-    document.addEventListener('click', startAudio);
-    document.addEventListener('touchstart', startAudio);
-    document.addEventListener('keydown', startAudio);
-    document.addEventListener('scroll', startAudio);
+
+    // Attach to the most top-level window events
+    window.addEventListener('pointerdown', forcePlay, { once: true });
+    window.addEventListener('keydown', forcePlay, { once: true });
+    window.addEventListener('touchstart', forcePlay, { once: true });
 
     return () => {
-        document.removeEventListener('click', startAudio);
-        document.removeEventListener('touchstart', startAudio);
-        document.removeEventListener('keydown', startAudio);
-        document.removeEventListener('scroll', startAudio);
+      window.removeEventListener('pointerdown', forcePlay);
+      window.removeEventListener('keydown', forcePlay);
+      window.removeEventListener('touchstart', forcePlay);
     };
-  }, [])
+  }, []);
 
   return (
-    <audio ref={audioRef} id="bg-music" loop>
+    <audio ref={audioRef} id="bg-music" loop preload="auto">
       <source src="/music/Suzume.mp3" type="audio/mpeg" />
     </audio>
   )
