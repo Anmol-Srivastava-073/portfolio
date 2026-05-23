@@ -13,7 +13,7 @@ export const skills = [
   },
   {
     category: "Tools & Cloud",
-    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "Vercel, "LLM APIs(Gemini/Claude)"]
+    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "Vercel", "LLM APIs(Gemini/Claude)"]
   }
 ]
 
