@@ -7,9 +7,8 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  // Add background blur when scrolling down
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -22,11 +21,9 @@ function Navbar() {
   ]
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <nav
       className={`fixed w-full top-0 z-50 px-8 py-5 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg border-b border-white/10' : 'bg-transparent'
+        scrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -34,9 +31,9 @@ function Navbar() {
           to="root" 
           smooth={true} 
           duration={500} 
-          className="text-2xl font-bold gradient bg-clip-text text-transparent cursor-pointer z-50"
+          className="text-xl font-medium text-white tracking-tight cursor-pointer z-50 hover:text-muted transition-colors"
         >
-          Anmol Srivastava
+          Anmol Srivastava.
         </Link>
 
         {/* Desktop Menu */}
@@ -48,7 +45,7 @@ function Navbar() {
               smooth={true}
               duration={500}
               offset={-80}
-              className="cursor-pointer hover:text-cyan-400 transition-colors font-medium"
+              className="text-sm text-muted cursor-pointer hover:text-white transition-colors"
             >
               {link.name}
             </Link>
@@ -57,20 +54,20 @@ function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-white z-50"
+          className="md:hidden text-muted hover:text-white z-50 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-0 left-0 w-full h-screen bg-[#050816]/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute top-0 left-0 w-full h-screen bg-background flex flex-col items-center justify-center gap-8 md:hidden"
             >
               {navLinks.map((link) => (
                 <Link
@@ -80,7 +77,7 @@ function Navbar() {
                   duration={500}
                   offset={-80}
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-semibold cursor-pointer hover:text-cyan-400 transition-colors"
+                  className="text-2xl font-medium text-muted hover:text-white cursor-pointer transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -89,7 +86,7 @@ function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </nav>
   )
 }
 
