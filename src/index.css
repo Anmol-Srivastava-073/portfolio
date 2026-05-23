@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-paper text-ink font-manga selection:bg-markerYellow selection:text-ink;
+    @apply bg-paper text-ink font-manga selection:bg-markerYellow selection:text-ink overflow-x-hidden;
     /* Dotted sketchbook paper background */
     background-image: radial-gradient(#d1ccc0 2px, transparent 2px);
     background-size: 32px 32px;
@@ -13,6 +13,14 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 20px;
 }
 
 /* Hand-drawn organic border effect */
@@ -26,14 +34,14 @@ html {
   border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
 }
 
-/* Manga halftone effect for images */
+/* Manga image effect (Grayscale removed, just keeping a slight contrast pop) */
 .manga-image {
-  filter: grayscale(100%) contrast(1.2);
-  transition: filter 0.5s ease;
+  filter: contrast(1.05);
+  transition: transform 0.5s ease;
 }
 
 .manga-image:hover {
-  filter: grayscale(0%) contrast(1);
+  filter: contrast(1);
 }
 
 /* Washi tape effect */
