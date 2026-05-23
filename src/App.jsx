@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,11 +11,26 @@ import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BackgroundMusic from './components/BackgroundMusic'
+import WelcomeScreen from './components/WelcomeScreen'
 
 function App() {
+  const [hasEntered, setHasEntered] = useState(false)
+  const [playAudio, setPlayAudio] = useState(false)
+
+  const handleEnter = (withSound) => {
+    setPlayAudio(withSound)
+    setHasEntered(true)
+  }
+
+  // Show the landing page first
+  if (!hasEntered) {
+    return <WelcomeScreen onEnter={handleEnter} />
+  }
+
+  // Load the full site after they click a button
   return (
     <div className="min-h-screen overflow-hidden">
-      <BackgroundMusic />
+      <BackgroundMusic initialPlay={playAudio} />
       <Navbar />
       <Hero />
       <About />
