@@ -4,9 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-neutral-200 antialiased;
-    selection-background-color: #ffffff;
-    selection-color: #000000;
+    @apply bg-dark text-slate-200 antialiased overflow-x-hidden;
   }
 }
 
@@ -14,19 +12,46 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Premium Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #030712;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 4px;
+  background: #1e293b;
+  border-radius: 5px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+/* Modern Animated Grid Background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* High-end glassmorphism (subtle, not cheap) */
+.premium-glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Shimmering Text Gradient */
+.text-gradient {
+  background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc, #38bdf8);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 3s linear infinite;
 }
