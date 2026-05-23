@@ -2,50 +2,59 @@ import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 text-center">
-      <h2 className="text-5xl font-bold mb-16">Contact</h2>
+    <section id="contact" className="py-24 px-6 border-t border-border max-w-3xl mx-auto">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">Get in Touch</h2>
+        <p className="text-muted">Have a project in mind or just want to say hi? Let's connect.</p>
+      </div>
 
       <form
         action="https://formspree.io/f/mkgvndga"
         method="POST"
-        className="max-w-3xl mx-auto glass p-10 rounded-3xl"
+        className="space-y-4"
       >
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
           <input
             type="text"
-            placeholder="Your Name"
-            className="w-full bg-black/30 p-5 rounded-xl"
+            name="name"
+            placeholder="Name"
+            required
+            className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors"
           />
-
           <input
             type="email"
-            placeholder="Your Email"
-            className="w-full bg-black/30 p-5 rounded-xl"
+            name="email"
+            placeholder="Email"
+            required
+            className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors"
           />
-
-          <textarea
-            rows="6"
-            placeholder="Your Message"
-            className="w-full bg-black/30 p-5 rounded-xl"
-          />
-
-          <button className="gradient px-10 py-4 rounded-full text-black font-bold">
-            Send Message
-          </button>
         </div>
+
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Message"
+          required
+          className="w-full bg-surface border border-border text-white px-4 py-3 rounded-md focus:outline-none focus:border-neutral-500 transition-colors resize-none"
+        />
+
+        <button 
+          type="submit"
+          className="w-full bg-white text-black font-medium py-3 rounded-md hover:bg-neutral-200 transition-colors"
+        >
+          Send Message
+        </button>
       </form>
 
-      <div className="flex justify-center gap-8 mt-12 text-4xl">
-        <a href="https://github.com/Anmol-Srivastava-073">
-          <FaGithub />
+      <div className="flex justify-center gap-6 mt-16">
+        <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
+          <FaGithub size={24} />
         </a>
-
-        <a href="https://linkedin.com/in/anmol-srivastava-46430727a">
-          <FaLinkedin />
+        <a href="https://linkedin.com/in/anmol-srivastava-46430727a" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
+          <FaLinkedin size={24} />
         </a>
-
-        <a href="https://instagram.com/anmol_sriv.073">
-          <FaInstagram />
+        <a href="https://instagram.com/anmol_sriv.073" target="_blank" rel="noreferrer" className="text-muted hover:text-white transition-colors">
+          <FaInstagram size={24} />
         </a>
       </div>
     </section>
