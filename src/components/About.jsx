@@ -26,10 +26,10 @@ function About() {
           <p className="font-handwritten text-3xl text-ink leading-relaxed">
             Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
             in programming, problem-solving, full stack development, and open source.
-            <br /><br />
+            <br />
             I enjoy building modern projects using Java, JavaScript, React, Python,
             MySQL, and cloud technologies.
-            <br /><br />
+            <br />
             My goal is to create products that are visually impressive, technically
             strong, and genuinely useful.
           </p>
