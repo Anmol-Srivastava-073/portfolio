@@ -2,38 +2,37 @@ import { motion } from 'framer-motion'
 
 function About() {
   return (
-    <section id="about" className="py-24 px-6 max-w-5xl mx-auto border-t border-border">
+    <section id="about" className="py-24 px-6 max-w-7xl mx-auto relative">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="grid md:grid-cols-5 gap-12 items-start"
+        transition={{ duration: 0.7 }}
+        className="grid md:grid-cols-2 gap-14 items-center"
       >
-        <div className="md:col-span-2">
-          <img
-            src="/photos/anmol.jpeg"
-            alt="Anmol Srivastava"
-            className="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-500 border border-border"
-          />
+        <div className="bg-white p-4 pb-12 sketch-border shadow-sketch relative rotate-2">
+          <div className="washi-tape bg-markerBlue/40 w-40"></div>
+          <div className="border-2 border-ink overflow-hidden">
+            <img
+              src="/photos/anmol.jpeg"
+              className="w-full h-full object-cover manga-image"
+              alt="Anmol Srivastava"
+            />
+          </div>
         </div>
 
-        <div className="md:col-span-3">
-          <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">About Me</h2>
+        <div className="bg-white p-8 sketch-border-alt shadow-sketch relative -rotate-1">
+          <h2 className="font-marker text-5xl text-ink mb-8">About Me</h2>
 
-          <div className="space-y-4 text-muted text-base leading-relaxed">
-            <p>
-              Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
-              in programming, problem-solving, and full stack development.
-            </p>
-            <p>
-              I enjoy building modern projects using Java, JavaScript, React, Python,
-              MySQL, and cloud technologies. Currently pursuing my BTech in Computer Science at Manipal University Jaipur.
-            </p>
-            <p>
-              My goal is to create products that are technically sound and genuinely useful, focusing on clean code and intuitive user experiences.
-            </p>
-          </div>
+          <p className="font-handwritten text-3xl text-ink leading-relaxed">
+            Hi, I’m Anmol Srivastava — a passionate developer with strong foundations
+            in programming, problem-solving, full stack development, and open source.
+            <br /><br />
+            I enjoy building modern projects using Java, JavaScript, React, Python,
+            MySQL, and cloud technologies.
+            <br /><br />
+            My goal is to create products that are visually impressive, technically
+            strong, and genuinely useful.
+          </p>
         </div>
       </motion.div>
     </section>
