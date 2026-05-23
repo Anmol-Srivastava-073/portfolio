@@ -1,7 +1,7 @@
 export const skills = [
   {
     category: "Languages",
-    items: ["Java", "C++", "Python", "JavaScript", "TypeScript" , "SQL"]
+    items: ["Java", "JavaScript", "TypeScript", "C++", "Python", "SQL"]
   },
   {
     category: "Frontend",
@@ -9,11 +9,11 @@ export const skills = [
   },
   {
     category: "Backend & Database",
-    items: ["Node.js", "Flask", "MySQL", "Supabase", "REST APIs"]
+    items: ["Node.js", "Spring Boot", "Flask", "MySQL", "Firebase", "REST APIs"]
   },
   {
     category: "Tools & Cloud",
-    items: ["Git/GitHub", "Render", "Google Cloud", "Looker Studio", "Vercel", "LLM APIs(Gemini/Claude)"]
+    items: ["Git/GitHub", "Render", "VS Code", "IntelliJ IDEA", "Google Cloud", "Vercel", "LLM APIs"]
   }
 ]
 
