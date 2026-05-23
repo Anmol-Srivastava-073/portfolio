@@ -19,21 +19,52 @@ body {
   overflow-x: hidden;
 }
 
+.gradient {
+  background: linear-gradient(
+    135deg,
+    #00e5ff,
+    #7c3aed
+  );
+}
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.blob1 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: rgba(0,229,255,0.15);
+  filter: blur(140px);
+  top: -100px;
+  left: -100px;
+  z-index: 0;
+}
+
+.blob2 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: rgba(124,58,237,0.15);
+  filter: blur(140px);
+  bottom: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #00e5ff;
-  border-radius: 20px;
+  border-radius: 999px;
 }
 
-.gradient {
-  background: linear-gradient(90deg, #00e5ff, #7c3aed);
-}
-
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+section {
+  position: relative;
+  z-index: 10;
 }
