@@ -21,7 +21,7 @@ function App() {
     setPlayAudio(withSound)
     setHasEntered(true)
   }
-/*
+
   // Show the landing page first
   if (!hasEntered) {
     return <WelcomeScreen onEnter={handleEnter} />
@@ -29,7 +29,6 @@ function App() {
 
   // Load the full site after they click a button
   return (
-    */
     <div className="min-h-screen overflow-hidden">
       <BackgroundMusic initialPlay={playAudio} />
       <Navbar />
@@ -44,6 +43,7 @@ function App() {
       <Contact />
       <Footer />
     </div>
+    }
 }
 
 export default App
