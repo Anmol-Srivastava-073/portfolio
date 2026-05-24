@@ -30,7 +30,7 @@ function Hero() {
             </a>
 
             <a
-              href="/photos/AnmolResume.pdf"
+              href="/photos/AnmolResume.docx"
               target="_blank"
               rel="noopener noreferrer"
               className="sketch-border bg-white text-ink px-8 py-4 font-bold text-lg cursor-pointer shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
