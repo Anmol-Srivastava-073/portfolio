@@ -7,21 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#f8fafc', // Light slate background
-        surface: '#ffffff',
-        primary: '#6366f1', // Indigo
-        secondary: '#8b5cf6', // Violet
-        textMain: '#1e293b', 
-        textMuted: '#64748b', 
+        base: '#050505',      // Deepest black
+        surface: '#121212',   // Solid dark gray for cards
+        border: '#262626',    // Sharp 1px borders
+        accent: '#6366f1',    // Sharp Indigo
+        accentHover: '#818cf8',
+        textMain: '#f5f5f5',
+        textMuted: '#a3a3a3',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        heading: ['Outfit', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'], // For tech-focused accents
       },
-      boxShadow: {
-        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-        'glow': '0 0 20px rgba(99, 102, 241, 0.4)',
-      }
     },
   },
   plugins: [],
