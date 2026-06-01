@@ -3,30 +3,38 @@ import { education } from '../data/portfolioData'
 
 function Education() {
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink text-center mb-16">Education</h2>
+    <section className="py-24 px-6 max-w-4xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Education</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      <div className="space-y-8">
+      <div className="relative border-l-2 border-primary/20 ml-6 md:ml-0 md:pl-0 space-y-12">
         {education.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-8 sketch-border shadow-sketch flex flex-col md:flex-row gap-8 items-center relative"
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            className="relative pl-8 md:pl-0 md:flex md:items-center md:justify-between group"
           >
-            <div className="border-2 border-ink rounded-full overflow-hidden w-24 h-24 shrink-0 bg-white">
-              <img
-                src={item.image}
-                className="w-full h-full object-cover manga-image"
-                alt={item.title}
-              />
-            </div>
+            {/* Timeline Dot */}
+            <div className="absolute left-[-9px] md:left-[50%] md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-background shadow-glow group-hover:scale-125 transition-transform duration-300"></div>
 
-            <div>
-              <h3 className="font-manga font-black text-2xl text-ink">{item.title}</h3>
-              <p className="font-handwritten text-2xl text-markerBlue mt-2 font-bold">{item.location}</p>
-              <p className="font-handwritten text-2xl text-ink mt-3">{item.desc}</p>
+            <div className={`md:w-[45%] glass-card p-6 ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-3">
+                <img 
+                  src={item.image} 
+                  className="w-12 h-12 rounded-full object-contain p-1 border border-primary/20 bg-white" 
+                  alt={item.title} 
+                />
+                <div>
+                  <h3 className="font-bold text-lg text-textMain leading-tight">{item.title}</h3>
+                  <p className="text-primary font-medium text-sm mt-1">{item.location}</p>
+                </div>
+              </div>
+              <p className="text-textMuted text-sm leading-relaxed">{item.desc}</p>
             </div>
           </motion.div>
         ))}
