@@ -27,7 +27,7 @@ function About() {
           <motion.img
             style={{ y: imageY }}
             src="/photos/anmol.jpeg"
-            className="absolute inset-0 w-full h-[120%] object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+            className="absolute inset-0 w-full h-[120%] object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
             alt="Anmol Srivastava"
           />
           {/* Technical overlay metrics */}
