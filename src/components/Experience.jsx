@@ -51,7 +51,7 @@ function Experience() {
                     <div className="hidden md:block absolute -left-[51px] top-8 w-2 h-2 bg-base border border-accent"></div>
                     
                     <div className="flex items-start gap-4">
-                      <img src={item.image} className="w-10 h-10 object-contain grayscale" alt={item.title} />
+                      <img src={item.image} className="w-10 h-10 object-contain" alt={item.title} />
                       <div>
                         <h3 className="font-bold text-lg text-textMain">{item.title}</h3>
                         <p className="font-mono text-accent text-sm mt-1">{item.role}</p>
