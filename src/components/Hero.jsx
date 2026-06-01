@@ -47,10 +47,10 @@ function Hero() {
         </motion.div>
         
         <motion.h1 variants={item} className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-2 text-textMain leading-none">
-          BUILDING
+          ANMOL
         </motion.h1>
         <motion.h1 variants={item} className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-textMuted leading-none">
-          SCALABLE LOGIC.
+          SRIVASTAVA.
         </motion.h1>
 
         <motion.p variants={item} className="text-lg md:text-xl text-textMuted max-w-2xl leading-relaxed mb-10 font-mono text-sm border-l border-border pl-4">
