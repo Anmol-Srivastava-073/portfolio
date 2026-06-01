@@ -3,28 +3,32 @@ import { experience } from '../data/portfolioData'
 
 function Experience() {
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink text-center mb-16">Experience</h2>
+    <section className="py-24 px-6 max-w-4xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Experience</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="relative border-l-2 border-primary/20 ml-6 md:ml-0 md:pl-0 space-y-12">
         {experience.map((item, index) => (
           <motion.div 
             key={index} 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-8 sketch-border shadow-sketch text-center"
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            className="relative pl-8 md:pl-0 md:flex md:items-center md:justify-between group"
           >
-            <div className="mx-auto w-24 h-24 border-2 border-ink rounded-full overflow-hidden mb-6 bg-white">
-              <img
-                src={item.image}
-                className="w-full h-full object-cover manga-image"
-                alt={item.title}
-              />
-            </div>
+            {/* Timeline Dot */}
+            <div className="absolute left-[-9px] md:left-[50%] md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-background shadow-glow group-hover:scale-125 transition-transform duration-300"></div>
 
-            <h3 className="font-manga font-black text-2xl text-ink">{item.title}</h3>
-            <p className="font-handwritten text-2xl text-markerRed mt-3 font-bold">{item.role}</p>
+            <div className={`md:w-[45%] glass-card p-6 ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}>
+              <div className="flex items-center gap-4 mb-3">
+                <img src={item.image} className="w-12 h-12 rounded-full object-cover border border-primary/20" alt={item.title} />
+                <h3 className="font-bold text-lg text-textMain">{item.title}</h3>
+              </div>
+              <p className="text-primary font-medium">{item.role}</p>
+            </div>
           </motion.div>
         ))}
       </div>
