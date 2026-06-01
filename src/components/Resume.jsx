@@ -1,48 +1,50 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FaDownload, FaEye, FaTimes } from 'react-icons/fa'
 
 function Resume() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <section className="py-24 px-6 text-center max-w-5xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink mb-12">Resume</h2>
+    <section className="py-24 px-6 text-center max-w-4xl mx-auto">
+      <div className="mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">My <span className="text-gradient">Resume</span></h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      {/* Minimized View */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-white p-4 sketch-border shadow-sketch relative transform -rotate-1 max-w-md mx-auto"
+        className="glass-card p-8 md:p-12 relative max-w-2xl mx-auto group"
       >
-        <div className="washi-tape bg-markerBlue/40 w-32 rotate-2"></div>
-        <div className="border-2 border-ink overflow-hidden h-64 relative">
-          <img
-            src="/photos/anmolfinalres.png"
-            className="w-full h-full object-cover object-top manga-image opacity-60"
-            alt="Resume Thumbnail"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90 flex items-end justify-center pb-6">
-             <span className="font-handwritten text-3xl font-bold text-ink">Confidential Stats</span>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
+        
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl mb-6 shadow-soft">
+            <FaEye />
+          </div>
+          <h3 className="text-2xl font-bold text-textMain mb-4">View My Full Profile</h3>
+          <p className="text-textMuted mb-10 max-w-sm">
+            Take a deeper dive into my academic background, technical skills, and professional experiences.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 w-full">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="btn-primary flex items-center gap-2 flex-1 justify-center min-w-[160px]"
+            >
+              <FaEye /> Preview 
+            </button>
+            <a
+              href="/photos/AnmolResume.docx"
+              className="btn-outline flex items-center gap-2 flex-1 justify-center min-w-[160px]"
+            >
+              <FaDownload /> Download
+            </a>
           </div>
         </div>
       </motion.div>
-
-      {/* Side-by-Side Buttons */}
-      <div className="flex flex-wrap justify-center gap-6 mt-12">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="sketch-border bg-markerBlue text-white px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
-        >
-          View Resume
-        </button>
-        <a
-          href="/photos/AnmolResume.docx"
-          className="sketch-border-alt bg-markerYellow text-ink px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
-        >
-          Download
-        </a>
-      </div>
 
       {/* Full Screen Expanded Modal */}
       <AnimatePresence>
@@ -51,27 +53,29 @@ function Resume() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-textMain/70 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-white p-4 sketch-border relative max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-sketch"
+              exit={{ scale: 0.95, y: 20 }}
+              className="glass-card p-2 relative max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()} // Prevents closing when clicking on the resume itself
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-6 right-6 font-marker text-2xl text-white bg-markerRed border-2 border-ink w-12 h-12 flex items-center justify-center rounded-full z-10 hover:scale-110 shadow-sketch transition-transform"
+                className="absolute top-4 right-4 text-textMuted bg-white hover:text-primary w-10 h-10 flex items-center justify-center rounded-full z-10 shadow-md transition-all border border-primary/10"
               >
-                X
+                <FaTimes />
               </button>
-              <img
-                src="/photos/anmolfinalres.png"
-                className="w-full h-auto manga-image"
-                alt="Full Resume"
-              />
+              <div className="bg-white rounded-2xl overflow-hidden p-2">
+                <img
+                  src="/photos/anmolfinalres.png"
+                  className="w-full h-auto rounded-xl"
+                  alt="Full Resume"
+                />
+              </div>
             </motion.div>
           </motion.div>
         )}
