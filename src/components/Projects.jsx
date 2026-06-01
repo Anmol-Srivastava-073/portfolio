@@ -8,40 +8,50 @@ function Projects() {
 
   return (
     <section id="projects" className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink text-center mb-16">Projects</h2>
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Featured <span className="text-gradient">Projects</span></h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleProjects.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-white p-4 sketch-border shadow-sketch group relative flex flex-col h-full hover:-translate-y-2 transition-transform duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="glass-card overflow-hidden group flex flex-col h-full"
           >
-            <div className="border-2 border-ink overflow-hidden h-56 bg-white">
+            <div className="overflow-hidden h-48 relative">
+              <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10"></div>
               <img 
                 src={project.image} 
-                className="w-full h-full object-cover manga-image" 
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
                 alt={project.title}
               />
             </div>
 
-            <div className="p-4 flex-grow flex flex-col justify-between">
+            <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
-                <h3 className="font-manga font-black text-2xl uppercase mb-4 text-ink">{project.title}</h3>
-                <p className="font-handwritten text-2xl text-ink/80 mb-6">
+                <h3 className="font-bold text-2xl mb-3 text-textMain">{project.title}</h3>
+                <p className="text-textMuted text-sm leading-relaxed mb-6">
                   {project.desc}
                 </p>
+                
+                {project.stack && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.stack.map((tech, i) => (
+                      <span key={i} className="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="self-start sketch-border-alt bg-markerRed text-white px-6 py-2 font-bold uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
-              >
-                View Project
+              <a href={project.link} target="_blank" rel="noreferrer" className="text-primary font-semibold hover:text-secondary flex items-center gap-2 transition-colors w-fit">
+                View Project &rarr;
               </a>
             </div>
           </motion.div>
@@ -49,12 +59,9 @@ function Projects() {
       </div>
 
       {projects.length > 3 && (
-        <div className="flex justify-center mt-16">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="sketch-border bg-markerBlue text-white px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
-          >
-            {showAll ? 'Show Less' : 'Show More'}
+        <div className="flex justify-center mt-12">
+          <button onClick={() => setShowAll(!showAll)} className="btn-outline">
+            {showAll ? 'Show Less' : 'View All Projects'}
           </button>
         </div>
       )}
