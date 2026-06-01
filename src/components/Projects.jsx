@@ -27,11 +27,11 @@ function ProjectCard({ project, index }) {
       <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-transparent group-hover:border-accent transition-colors duration-300 z-20"></div>
 
       <div className="relative overflow-hidden h-64 mb-6 border border-border bg-base z-10">
-        <div className="absolute inset-0 bg-base/60 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-base/40 z-10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
         <motion.img 
           style={{ y: imageY }}
           src={project.image} 
-          className="w-full h-[130%] object-cover grayscale group-hover:grayscale-0 transition-all duration-700 absolute top-[-15%]" 
+          className="w-full h-[130%] object-cover transition-all duration-700 absolute top-[-15%]" 
           alt={project.title}
         />
       </div>
