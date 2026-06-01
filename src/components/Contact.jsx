@@ -5,8 +5,11 @@ import { motion } from 'framer-motion'
 
 function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 text-center max-w-3xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink mb-16">Contact</h2>
+    <section id="contact" className="py-24 px-6 max-w-3xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Let's <span className="text-gradient">Connect</span></h2>
+        <p className="text-textMuted">Open for collaborations, opportunities, or just a quick chat.</p>
+      </div>
 
       <motion.form
         action="https://formspree.io/f/mkgvndga"
@@ -14,56 +17,48 @@ function Contact() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-white p-8 md:p-10 sketch-border shadow-sketch relative"
+        className="glass-card p-8 md:p-10 space-y-6"
       >
-        <div className="washi-tape bg-markerRed/40 w-32 -rotate-2"></div>
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
           <input
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="Name"
             required
-            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors"
+            className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-textMuted/60"
           />
-
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Email"
             required
-            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors"
+            className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-textMuted/60"
           />
-
-          <textarea
-            name="message"
-            rows="6"
-            placeholder="Your Message"
-            required
-            className="w-full bg-paper border-2 border-ink p-4 font-handwritten text-2xl text-ink focus:outline-none focus:bg-white transition-colors resize-none"
-          />
-
-          <button type="submit" className="sketch-border-alt bg-markerBlue text-white px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all w-full">
-            Send Message
-          </button>
         </div>
+        <textarea
+          name="message"
+          rows="5"
+          placeholder="Message"
+          required
+          className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-textMuted/60"
+        />
+        <button type="submit" className="btn-primary w-full py-4 text-lg">
+          Send Message
+        </button>
       </motion.form>
 
-      <div className="flex flex-wrap justify-center gap-6 md:gap-8 mt-12 text-4xl md:text-5xl text-ink">
-        <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="hover:text-markerRed hover:-translate-y-2 transition-all">
-          <FaGithub />
-        </a>
-        <a href="https://linkedin.com/in/anmol-srivastava-46430727a" target="_blank" rel="noreferrer" className="hover:text-markerBlue hover:-translate-y-2 transition-all">
-          <FaLinkedin />
-        </a>
-        <a href="https://x.com/anmol_sriv073" target="_blank" rel="noreferrer" className="hover:text-ink/60 hover:-translate-y-2 transition-all">
-          <FaXTwitter />
-        </a>
-        <a href="https://instagram.com/anmol_sriv.073" target="_blank" rel="noreferrer" className="hover:text-markerYellow hover:-translate-y-2 transition-all">
-          <FaInstagram />
-        </a>
-        <a href="https://substack.com/@anmolsriv073" target="_blank" rel="noreferrer" className="hover:text-[#ff6719] hover:-translate-y-2 transition-all">
-          <SiSubstack />
-        </a>
+      <div className="flex flex-wrap justify-center gap-8 mt-16 text-2xl text-textMuted">
+        {[
+          { icon: <FaGithub />, link: "https://github.com/Anmol-Srivastava-073", hover: "hover:text-[#333]" },
+          { icon: <FaLinkedin />, link: "https://linkedin.com/in/anmol-srivastava-46430727a", hover: "hover:text-[#0077b5]" },
+          { icon: <FaXTwitter />, link: "https://x.com/anmol_sriv073", hover: "hover:text-black" },
+          { icon: <FaInstagram />, link: "https://instagram.com/anmol_sriv.073", hover: "hover:text-[#e4405f]" },
+          { icon: <SiSubstack />, link: "https://substack.com/@anmolsriv073", hover: "hover:text-[#ff6719]" },
+        ].map((social, i) => (
+          <a key={i} href={social.link} target="_blank" rel="noreferrer" className={`${social.hover} transform hover:-translate-y-1 transition-all duration-300`}>
+            {social.icon}
+          </a>
+        ))}
       </div>
     </section>
   )
