@@ -1,35 +1,59 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/portfolioData'
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300 } }
+}
+
 function Skills() {
   return (
     <section id="skills" className="py-24 px-6 max-w-6xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink text-center mb-16">Skills</h2>
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Technical <span className="text-gradient">Arsenal</span></h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="grid md:grid-cols-2 gap-8">
         {skills.map((skillGroup, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-white p-6 md:p-8 sketch-border shadow-sketch relative"
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="glass-card p-8"
           >
-            <h3 className="font-marker text-3xl mb-6 text-markerBlue border-b-4 border-dashed border-ink/20 pb-2 inline-block">
+            <h3 className="text-xl font-bold mb-6 text-textMain flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-primary"></span>
               {skillGroup.category}
             </h3>
             
-            <div className="flex flex-wrap gap-4">
-              {skillGroup.items.map((item, i) => (
-                <div
+            <motion.div 
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="flex flex-wrap gap-3"
+            >
+              {skillGroup.items.map((skill, i) => (
+                <motion.span
+                  variants={item}
                   key={i}
-                  className="font-handwritten text-2xl font-bold bg-paper text-ink border-2 border-ink px-4 py-2 shadow-sketch hover:bg-markerYellow transition-colors cursor-default"
-                  style={{ transform: `rotate(${Math.random() * 6 - 3}deg)` }}
+                  className="px-4 py-2 bg-white text-textMuted border border-primary/10 rounded-lg text-sm font-medium hover:bg-primary/5 hover:text-primary hover:border-primary/30 transition-all cursor-default shadow-sm"
                 >
-                  {item}
-                </div>
+                  {skill}
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>
