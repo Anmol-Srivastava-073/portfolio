@@ -1,9 +1,13 @@
 function Footer() {
   return (
-    <footer className="text-center py-8 border-t border-primary/10 mt-auto bg-white/30 backdrop-blur-sm relative z-10">
-      <p className="text-sm text-textMuted font-medium">
-        © {new Date().getFullYear()} Anmol Srivastava. All Rights Reserved.
-      </p>
+    <footer className="border-t border-border bg-base py-8 text-center font-mono text-xs text-textMuted">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+        <span>&copy; {new Date().getFullYear()} ANMOL_SRIVASTAVA</span>
+        <span className="hidden md:inline">|</span>
+        <span>ALL_RIGHTS_RESERVED</span>
+        <span className="hidden md:inline">|</span>
+        <span className="text-accent animate-pulse">STATUS: DEPLOYED</span>
+      </div>
     </footer>
   )
 }
