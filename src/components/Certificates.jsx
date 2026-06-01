@@ -18,23 +18,27 @@ function Certificates() {
 
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="font-marker text-5xl md:text-7xl text-ink text-center mb-16">Certificates</h2>
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Certifications</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+      </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleCerts.map((cert, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white p-3 sketch-border shadow-sketch hover:-translate-y-2 hover:shadow-sketch-hover transition-all duration-300"
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="glass-card overflow-hidden group p-3 flex items-center justify-center cursor-pointer"
           >
-            <div className="border-2 border-ink overflow-hidden h-full bg-white">
+            <div className="relative w-full h-56 overflow-hidden rounded-2xl bg-white">
               <img
                 src={cert}
-                className="w-full h-full object-cover manga-image"
+                className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                 alt={`Certificate ${index + 1}`}
               />
+              <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors z-10 pointer-events-none"></div>
             </div>
           </motion.div>
         ))}
@@ -44,9 +48,9 @@ function Certificates() {
         <div className="flex justify-center mt-12">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="sketch-border-alt bg-markerYellow text-ink px-10 py-4 font-bold text-xl uppercase shadow-sketch hover:shadow-sketch-hover hover:translate-y-1 hover:translate-x-1 transition-all"
+            className="btn-outline"
           >
-            {showAll ? 'Show Less' : 'Show More'}
+            {showAll ? 'Show Less' : 'View All Certificates'}
           </button>
         </div>
       )}
