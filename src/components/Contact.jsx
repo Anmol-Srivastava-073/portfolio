@@ -1,64 +1,196 @@
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { SiSubstack } from 'react-icons/si'
-import { motion } from 'framer-motion'
 
 function Contact() {
+  const [focusedInput, setFocusedInput] = useState(null)
+
   return (
-    <section id="contact" className="py-24 px-6 max-w-3xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Let's <span className="text-gradient">Connect</span></h2>
-        <p className="text-textMuted">Open for collaborations, opportunities, or just a quick chat.</p>
-      </div>
+    <section id="contact" className="py-32 px-6 border-t border-border bg-base">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        
+        <div>
+          <h2 className="font-mono text-accent mb-2">06. // COMMUNICATION</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain mb-6">Initialize Connection</h3>
+          <p className="font-mono text-sm text-textMuted leading-relaxed mb-10 max-w-md">
+            The network is open. Whether it's a project collaboration, open-source discussion, or system inquiry, transmitting a message below will ping my server directly.
+          </p>
 
-      <motion.form
-        action="https://formspree.io/f/mkgvndga"
-        method="POST"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="glass-card p-8 md:p-10 space-y-6"
-      >
-        <div className="grid md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            required
-            className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-textMuted/60"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-textMuted/60"
-          />
+          <div className="flex gap-6">
+            {[
+              { icon: <FaGithub />, link: "https://github.com/Anmol-Srivastava-073" },
+              { icon: <FaLinkedin />, link: "https://linkedin.com/in/anmol-srivastava-46430727a" },
+              { icon: <FaXTwitter />, link: "https://x.com/anmol_sriv073" },
+              { icon: <FaInstagram />, link: "https://instagram.com/anmol_sriv.073" },
+              { icon: <SiSubstack />, link: "https://substack.com/@anmolsriv073" },
+            ].map((social, i) => (
+              <a 
+                key={i} 
+                href={social.link} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-textMuted hover:text-textMain text-xl border border-border p-3 hover:border-textMain transition-all duration-300"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Message"
-          required
-          className="w-full bg-white/50 border border-primary/20 rounded-xl p-4 text-textMain focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-textMuted/60"
-        />
-        <button type="submit" className="btn-primary w-full py-4 text-lg">
-          Send Message
-        </button>
-      </motion.form>
 
-      <div className="flex flex-wrap justify-center gap-8 mt-16 text-2xl text-textMuted">
-        {[
-          { icon: <FaGithub />, link: "https://github.com/Anmol-Srivastava-073", hover: "hover:text-[#333]" },
-          { icon: <FaLinkedin />, link: "https://linkedin.com/in/anmol-srivastava-46430727a", hover: "hover:text-[#0077b5]" },
-          { icon: <FaXTwitter />, link: "https://x.com/anmol_sriv073", hover: "hover:text-black" },
-          { icon: <FaInstagram />, link: "https://instagram.com/anmol_sriv.073", hover: "hover:text-[#e4405f]" },
-          { icon: <SiSubstack />, link: "https://substack.com/@anmolsriv073", hover: "hover:text-[#ff6719]" },
-        ].map((social, i) => (
-          <a key={i} href={social.link} target="_blank" rel="noreferrer" className={`${social.hover} transform hover:-translate-y-1 transition-all duration-300`}>
-            {social.icon}
-          </a>
-        ))}
+        <motion.form
+          action="https://formspree.io/f/mkgvndga"
+          method="POST"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="bg-surface border border-border p-8 flex flex-col gap-6 relative"
+        >
+          {/* Decorative Corner Brackets */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent"></div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'name' ? 'text-accent' : 'text-textMuted'}`}>&gt; string name;</label>
+            <input
+              type="text"
+              name="name"
+              required
+              onFocus={() => setFocusedInput('name')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'email' ? 'text-accent' : 'text-textMuted'}`}>&gt; string email;</label>
+            <input
+              type="email"
+              name="email"
+              required
+              onFocus={() => setFocusedInput('email')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'message' ? 'text-accent' : 'text-textMuted'}`}>&gt; string payload;</label>
+            <textarea
+              name="message"
+              rows="4"
+              required
+              onFocus={() => setFocusedInput('message')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors resize-none"
+            />
+          </div>
+
+          <button type="submit" className="bg-textMain text-base font-bold font-mono py-4 hover:bg-accent hover:text-white transition-colors uppercase tracking-widest mt-2">
+            [ POST_REQUEST ]
+          </button>
+        </motion.form>
+
+      </div>
+    </section>
+  )
+}
+
+export default Contactimport { useState } from 'react'
+import { motion } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import { SiSubstack } from 'react-icons/si'
+
+function Contact() {
+  const [focusedInput, setFocusedInput] = useState(null)
+
+  return (
+    <section id="contact" className="py-32 px-6 border-t border-border bg-base">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        
+        <div>
+          <h2 className="font-mono text-accent mb-2">06. // COMMUNICATION</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain mb-6">Initialize Connection</h3>
+          <p className="font-mono text-sm text-textMuted leading-relaxed mb-10 max-w-md">
+            The network is open. Whether it's a project collaboration, open-source discussion, or system inquiry, transmitting a message below will ping my server directly.
+          </p>
+
+          <div className="flex gap-6">
+            {[
+              { icon: <FaGithub />, link: "https://github.com/Anmol-Srivastava-073" },
+              { icon: <FaLinkedin />, link: "https://linkedin.com/in/anmol-srivastava-46430727a" },
+              { icon: <FaXTwitter />, link: "https://x.com/anmol_sriv073" },
+              { icon: <FaInstagram />, link: "https://instagram.com/anmol_sriv.073" },
+              { icon: <SiSubstack />, link: "https://substack.com/@anmolsriv073" },
+            ].map((social, i) => (
+              <a 
+                key={i} 
+                href={social.link} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-textMuted hover:text-textMain text-xl border border-border p-3 hover:border-textMain transition-all duration-300"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <motion.form
+          action="https://formspree.io/f/mkgvndga"
+          method="POST"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="bg-surface border border-border p-8 flex flex-col gap-6 relative"
+        >
+          {/* Decorative Corner Brackets */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent"></div>
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent"></div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'name' ? 'text-accent' : 'text-textMuted'}`}>&gt; string name;</label>
+            <input
+              type="text"
+              name="name"
+              required
+              onFocus={() => setFocusedInput('name')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'email' ? 'text-accent' : 'text-textMuted'}`}>&gt; string email;</label>
+            <input
+              type="email"
+              name="email"
+              required
+              onFocus={() => setFocusedInput('email')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className={`font-mono text-xs mb-2 transition-colors ${focusedInput === 'message' ? 'text-accent' : 'text-textMuted'}`}>&gt; string payload;</label>
+            <textarea
+              name="message"
+              rows="4"
+              required
+              onFocus={() => setFocusedInput('message')}
+              onBlur={() => setFocusedInput(null)}
+              className="bg-base border border-border text-textMain font-mono text-sm p-4 focus:outline-none focus:border-accent transition-colors resize-none"
+            />
+          </div>
+
+          <button type="submit" className="bg-textMain text-base font-bold font-mono py-4 hover:bg-accent hover:text-white transition-colors uppercase tracking-widest mt-2">
+            [ POST_REQUEST ]
+          </button>
+        </motion.form>
+
       </div>
     </section>
   )
