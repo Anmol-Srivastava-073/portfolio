@@ -49,7 +49,7 @@ export const projects = [
   {
     title: 'Manipal UniNav',
     image: '/photos/uninav.png',
-    link: 'https://mujnavigator.netlify.app',
+    link: 'https://manipalmap.vercel.app',
     desc: 'Interactive university navigation platform for Manipal University Jaipur with smart route discovery and location assistance.',
     stack: ['React', 'Maps', 'JavaScript'],
   },
