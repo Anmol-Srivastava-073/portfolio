@@ -1,80 +1,93 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaDownload, FaEye, FaTimes } from 'react-icons/fa'
 
 function Resume() {
   const [isOpen, setIsOpen] = useState(false)
 
-  return (
-    <section className="py-24 px-6 text-center max-w-4xl mx-auto">
-      <div className="mb-16">
-        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">My <span className="text-gradient">Resume</span></h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-      </div>
+  const certs = [
+    '/photos/jscert.png', '/photos/genai.png', '/photos/sqlcert.png',
+    '/photos/pythoncert.png', '/photos/javacert.png', '/photos/jvcert.png', '/photos/jvoops.png'
+  ]
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="glass-card p-8 md:p-12 relative max-w-2xl mx-auto group"
-      >
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
-        
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary text-3xl mb-6 shadow-soft">
-            <FaEye />
-          </div>
-          <h3 className="text-2xl font-bold text-textMain mb-4">View My Full Profile</h3>
-          <p className="text-textMuted mb-10 max-w-sm">
-            Take a deeper dive into my academic background, technical skills, and professional experiences.
-          </p>
+  return (
+    <section className="py-32 px-6 border-t border-border bg-base text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="font-mono text-accent mb-2">05. // CREDENTIALS</h2>
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain mb-12">Data Access</h3>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <button 
+            onClick={() => setIsOpen(true)}
+            className="dev-card bg-surface text-left group hover:bg-[#0a0a0a] transition-colors flex flex-col justify-between h-48"
+          >
+            <span className="font-mono text-textMuted text-xs mb-4 block">&gt; sudo view resume.pdf</span>
+            <div>
+              <h4 className="text-2xl font-bold text-textMain group-hover:text-accent transition-colors">Curriculum Vitae</h4>
+              <p className="font-mono text-sm text-textMuted mt-2">[ EXECUTE ]</p>
+            </div>
+          </button>
           
-          <div className="flex flex-wrap justify-center gap-4 w-full">
-            <button
-              onClick={() => setIsOpen(true)}
-              className="btn-primary flex items-center gap-2 flex-1 justify-center min-w-[160px]"
-            >
-              <FaEye /> Preview 
-            </button>
-            <a
-              href="/photos/AnmolResume.docx"
-              className="btn-outline flex items-center gap-2 flex-1 justify-center min-w-[160px]"
-            >
-              <FaDownload /> Download
-            </a>
+          <a 
+            href="/photos/AnmolResume.docx"
+            target="_blank"
+            rel="noreferrer"
+            className="dev-card bg-surface text-left group hover:bg-[#0a0a0a] transition-colors flex flex-col justify-between h-48"
+          >
+            <span className="font-mono text-textMuted text-xs mb-4 block">&gt; wget resume.docx</span>
+            <div>
+              <h4 className="text-2xl font-bold text-textMain group-hover:text-accent transition-colors">Download File</h4>
+              <p className="font-mono text-sm text-textMuted mt-2">[ DOWNLOAD ]</p>
+            </div>
+          </a>
+        </div>
+
+        {/* Certificate Micro-Grid */}
+        <div className="mt-16 text-left">
+          <h4 className="font-mono text-textMain border-b border-border pb-4 mb-6 text-sm">VERIFIED_CERTIFICATES</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
+             {certs.map((cert, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="border border-border aspect-square relative group overflow-hidden bg-white"
+                >
+                  <img src={cert} className="w-full h-full object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-300" alt={`Cert ${index}`} />
+                  <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity"></div>
+                </motion.div>
+             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Full Screen Expanded Modal */}
+      {/* Strict Solid Modal (No glassmorphism) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-textMain/70 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-base/95 flex items-center justify-center p-6"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 20 }}
-              className="glass-card p-2 relative max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()} // Prevents closing when clicking on the resume itself
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-surface border border-border w-full max-w-4xl max-h-[90vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 text-textMuted bg-white hover:text-primary w-10 h-10 flex items-center justify-center rounded-full z-10 shadow-md transition-all border border-primary/10"
-              >
-                <FaTimes />
-              </button>
-              <div className="bg-white rounded-2xl overflow-hidden p-2">
-                <img
-                  src="/photos/anmolfinalres.png"
-                  className="w-full h-auto rounded-xl"
-                  alt="Full Resume"
-                />
+              <div className="flex justify-between items-center p-4 border-b border-border bg-base">
+                <span className="font-mono text-xs text-textMuted">viewer://resume.pdf</span>
+                <button onClick={() => setIsOpen(false)} className="text-textMuted hover:text-accent font-mono text-sm uppercase">
+                  [ close ]
+                </button>
+              </div>
+              <div className="p-4 overflow-y-auto bg-[#0a0a0a]">
+                <img src="/photos/anmolfinalres.png" className="w-full h-auto filter contrast-125" alt="Full Resume" />
               </div>
             </motion.div>
           </motion.div>
