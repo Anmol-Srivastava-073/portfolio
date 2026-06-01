@@ -1,36 +1,102 @@
-import { motion } from 'framer-motion'
-import { experience } from '../data/portfolioData'
+import { useRef } from 'react'
+import { motion, useScroll } from 'framer-motion'
+import { experience, education } from '../data/portfolioData'
 
 function Experience() {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  })
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: 20 },
+    show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 200, damping: 20 } }
+  }
+
   return (
-    <section className="py-24 px-6 max-w-4xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Experience</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-      </div>
+    <section id="experience" ref={containerRef} className="py-32 px-6 border-t border-border bg-base relative">
+      <div className="max-w-5xl mx-auto">
+        
+        <div className="mb-20 text-center">
+          <h2 className="font-mono text-accent mb-2">04. // LOG</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain">Experience & Education</h3>
+        </div>
 
-      <div className="relative border-l-2 border-primary/20 ml-6 md:ml-0 md:pl-0 space-y-12">
-        {experience.map((item, index) => (
-          <motion.div 
-            key={index} 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="relative pl-8 md:pl-0 md:flex md:items-center md:justify-between group"
-          >
-            {/* Timeline Dot */}
-            <div className="absolute left-[-9px] md:left-[50%] md:-translate-x-1/2 top-0 md:top-1/2 md:-translate-y-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-background shadow-glow group-hover:scale-125 transition-transform duration-300"></div>
+        <div className="relative flex gap-12">
+          {/* Animated SVG Timeline Line */}
+          <div className="relative w-px hidden md:block">
+            <div className="absolute top-0 bottom-0 left-0 w-px bg-border"></div>
+            <motion.div 
+              style={{ scaleY: scrollYProgress, transformOrigin: "top" }} 
+              className="absolute top-0 bottom-0 left-0 w-px bg-accent"
+            />
+          </div>
 
-            <div className={`md:w-[45%] glass-card p-6 ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}>
-              <div className="flex items-center gap-4 mb-3">
-                <img src={item.image} className="w-12 h-12 rounded-full object-cover border border-primary/20" alt={item.title} />
-                <h3 className="font-bold text-lg text-textMain">{item.title}</h3>
+          <div className="flex-1 space-y-16">
+            {/* Map through Experience */}
+            <div>
+              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">INIT: EXPERIENCE</h4>
+              <div className="space-y-8">
+                {experience.map((item, index) => (
+                  <motion.div 
+                    key={`exp-${index}`}
+                    variants={itemVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="dev-card bg-surface relative"
+                  >
+                    {/* Connection dot */}
+                    <div className="hidden md:block absolute -left-[51px] top-8 w-2 h-2 bg-base border border-accent"></div>
+                    
+                    <div className="flex items-start gap-4">
+                      <img src={item.image} className="w-10 h-10 object-contain grayscale" alt={item.title} />
+                      <div>
+                        <h3 className="font-bold text-lg text-textMain">{item.title}</h3>
+                        <p className="font-mono text-accent text-sm mt-1">{item.role}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <p className="text-primary font-medium">{item.role}</p>
             </div>
-          </motion.div>
-        ))}
+
+            {/* Map through Education */}
+            <div>
+              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">INIT: EDUCATION</h4>
+              <div className="space-y-8">
+                {education.map((item, index) => (
+                  <motion.div 
+                    key={`edu-${index}`}
+                    variants={itemVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="dev-card bg-surface relative"
+                  >
+                     {/* Connection dot */}
+                     <div className="hidden md:block absolute -left-[51px] top-8 w-2 h-2 bg-base border border-textMuted"></div>
+
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <img src={item.image} className="w-10 h-10 bg-white object-contain p-1" alt={item.title} />
+                        <div>
+                          <h3 className="font-bold text-lg text-textMain">{item.title}</h3>
+                          <p className="font-mono text-textMuted text-sm mt-1">{item.location}</p>
+                        </div>
+                      </div>
+                      <p className="font-mono text-xs text-textMuted max-w-xs text-right hidden md:block">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
   )
