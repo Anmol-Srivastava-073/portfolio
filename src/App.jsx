@@ -1,32 +1,31 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Education from './components/Education'
-import Experience from './components/Experience'
-import Skills from './components/Skills'
-import Certificates from './components/Certificates'
 import Projects from './components/Projects'
+import Skills from './components/Skills'
+import Experience from './components/Experience'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
-      <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <div className="noise-bg"></div>
+      <div className="min-h-screen flex flex-col relative z-10">
+        <Navbar />
+        <main className="flex-grow">
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+          <Resume />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 
