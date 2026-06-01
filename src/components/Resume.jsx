@@ -2,12 +2,18 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 function Resume() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [viewerTitle, setViewerTitle] = useState("")
 
   const certs = [
     '/photos/jscert.png', '/photos/genai.png', '/photos/sqlcert.png',
     '/photos/pythoncert.png', '/photos/javacert.png', '/photos/jvcert.png', '/photos/jvoops.png'
   ]
+
+  const openModal = (imgSrc, title) => {
+    setSelectedImage(imgSrc)
+    setViewerTitle(title)
+  }
 
   return (
     <section className="py-32 px-6 border-t border-border bg-base text-center">
@@ -17,8 +23,8 @@ function Resume() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <button 
-            onClick={() => setIsOpen(true)}
-            className="dev-card bg-surface text-left group hover:bg-[#0a0a0a] transition-colors flex flex-col justify-between h-48"
+            onClick={() => openModal('/photos/anmolfinalres.png', 'viewer://resume.pdf')}
+            className="dev-card bg-surface text-left group hover:bg-[#0a0a0a] transition-colors flex flex-col justify-between h-48 cursor-pointer w-full"
           >
             <span className="font-mono text-textMuted text-xs mb-4 block">&gt; sudo view resume.pdf</span>
             <div>
@@ -46,17 +52,18 @@ function Resume() {
           <h4 className="font-mono text-textMain border-b border-border pb-4 mb-6 text-sm">VERIFIED_CERTIFICATES</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
              {certs.map((cert, index) => (
-                <motion.div
+                <motion.button
                   key={index}
+                  onClick={() => openModal(cert, `viewer://certificate_${index + 1}.png`)}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="border border-border aspect-square relative group overflow-hidden bg-white"
+                  className="border border-border aspect-square relative group overflow-hidden bg-white cursor-pointer w-full"
                 >
-                  <img src={cert} className="w-full h-full object-contain p-2 grayscale group-hover:grayscale-0 transition-all duration-300" alt={`Cert ${index}`} />
-                  <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity"></div>
-                </motion.div>
+                  <img src={cert} className="w-full h-full object-contain p-2 transition-all duration-300" alt={`Cert ${index}`} />
+                  <div className="absolute inset-0 bg-accent mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity pointer-events-none"></div>
+                </motion.button>
              ))}
           </div>
         </div>
@@ -64,13 +71,13 @@ function Resume() {
 
       {/* Strict Solid Modal (No glassmorphism) */}
       <AnimatePresence>
-        {isOpen && (
+        {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-base/95 flex items-center justify-center p-6"
-            onClick={() => setIsOpen(false)}
+            onClick={() => setSelectedImage(null)}
           >
             <motion.div
               initial={{ scale: 0.95, y: 20 }}
@@ -81,13 +88,13 @@ function Resume() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center p-4 border-b border-border bg-base">
-                <span className="font-mono text-xs text-textMuted">viewer://resume.pdf</span>
-                <button onClick={() => setIsOpen(false)} className="text-textMuted hover:text-accent font-mono text-sm uppercase">
+                <span className="font-mono text-xs text-textMuted">{viewerTitle}</span>
+                <button onClick={() => setSelectedImage(null)} className="text-textMuted hover:text-accent font-mono text-sm uppercase">
                   [ close ]
                 </button>
               </div>
-              <div className="p-4 overflow-y-auto bg-[#0a0a0a]">
-                <img src="/photos/anmolfinalres.png" className="w-full h-auto filter contrast-125" alt="Full Resume" />
+              <div className="p-4 overflow-y-auto bg-[#0a0a0a] flex justify-center items-center">
+                <img src={selectedImage} className="max-w-full h-auto filter contrast-125" alt="Expanded View" />
               </div>
             </motion.div>
           </motion.div>
