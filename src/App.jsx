@@ -12,17 +12,19 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
       <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Skills />
-      <Certificates />
-      <Projects />
-      <Resume />
-      <Contact />
+      <main className="flex-grow">
+        <Hero />
+        <About />
+        <Experience />
+        <Education />
+        <Skills />
+        <Projects />
+        <Certificates />
+        <Resume />
+        <Contact />
+      </main>
       <Footer />
     </div>
   )
