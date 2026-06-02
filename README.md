@@ -40,4 +40,4 @@ To run and modify this portfolio locally:
 
 ## 📫 Let's Connect
 
-Whether it's discussing full-stack architecture, large language model API integrations, or collaborating on new initiatives, I'm always open to connecting. Feel free to reach out or find me working with the GDG Tech team on campus!
+Whether it's discussing full-stack architecture, large language model API integrations, or collaborating on new initiatives, I'm always open to connecting. Feel free to reach out or find me working with the AWS Student Builder Group on campus!
