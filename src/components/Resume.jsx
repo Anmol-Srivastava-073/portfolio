@@ -93,9 +93,15 @@ function Resume() {
                   [ close ]
                 </button>
               </div>
-              <div className="p-4 overflow-y-auto bg-[#0a0a0a] flex justify-center items-center">
-                <img src={selectedImage} className="max-w-full h-auto filter contrast-125" alt="Expanded View" />
+              
+              <div className="flex-1 min-h-0 p-4 overflow-y-auto bg-[#0a0a0a] flex justify-center items-start">
+                <img 
+                  src={selectedImage} 
+                  className="max-w-full h-auto filter contrast-125" 
+                  alt="Expanded View" 
+                />
               </div>
+
             </motion.div>
           </motion.div>
         )}
