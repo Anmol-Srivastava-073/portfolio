@@ -54,18 +54,18 @@ function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="text-lg md:text-xl text-textMuted max-w-2xl leading-relaxed mb-10 font-mono text-sm border-l border-border pl-4">
-          &gt; Full Stack Developer & CS Undergrad.<br/>
-          &gt; Specializing in Java, React, and LLM API integrations.<br/>
-          &gt; Architecting tools from campus navigation to clinical health systems.
+          &gt; Full Stack Web Developer & CS Undergrad.<br/>
+          &gt; Specializing in Java Development and Data Structures.<br/>
+          &gt; Architecting tools for the people.
         </motion.p>
 
         <motion.div variants={item} className="flex gap-4 flex-wrap">
           <a href="#projects" className="bg-textMain text-base font-bold px-8 py-4 hover:bg-accent hover:text-white transition-colors uppercase tracking-widest text-sm flex items-center gap-2 group">
-            Deploy Projects
+            View Projects
             <span className="font-mono font-normal group-hover:translate-x-1 transition-transform">-&gt;</span>
           </a>
-          <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="border border-border text-textMain font-bold px-8 py-4 hover:border-textMain transition-colors uppercase tracking-widest text-sm">
-            View Source
+          <a href="https://github.com/Anmol-Srivastava-073/portfolio" target="_blank" rel="noreferrer" className="border border-border text-textMain font-bold px-8 py-4 hover:border-textMain transition-colors uppercase tracking-widest text-sm">
+            View Source Code
           </a>
         </motion.div>
       </motion.div>
