@@ -32,7 +32,7 @@ function About() {
           {/* Technical overlay metrics */}
           <div className="absolute bottom-4 left-4 z-30 font-mono text-xs text-textMain bg-base border border-border p-2">
             USER: ANMOL_SRIVASTAVA <br/>
-            STATUS: CURRENTLY ACTIVE
+            STATUS: OPEN TO WORK
           </div>
         </div>
 
