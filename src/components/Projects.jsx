@@ -76,7 +76,7 @@ function Projects() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 className="font-mono text-accent mb-2 tracking-widest text-sm">02. // WORK</h2>
+            <h2 className="font-mono text-accent mb-2 tracking-widest text-sm">04. // WORK</h2>
             <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain">Featured Projects</h3>
           </div>
           <a href="https://github.com/Anmol-Srivastava-073" target="_blank" rel="noreferrer" className="font-mono text-sm text-textMuted hover:text-textMain border-b border-border pb-1 transition-colors">
