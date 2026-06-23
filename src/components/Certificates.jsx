@@ -20,7 +20,6 @@ function Certificates() {
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-black text-textMain mb-4">Certifications</h2>
-        <h3 className="text-4xl md:text-5xl font-black text-textMain mb-4">Click to view</h3>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
       </div>
 
