@@ -43,7 +43,7 @@ function Hero() {
             transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
             className="w-3 h-3 bg-accent inline-block"
           />
-          System Status: Online // INIT_SEQUENCE
+          System Status: Online
         </motion.div>
         
         <motion.h1 variants={item} className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-2 text-textMain leading-none">
@@ -56,7 +56,7 @@ function Hero() {
         <motion.p variants={item} className="text-lg md:text-xl text-textMuted max-w-2xl leading-relaxed mb-10 font-mono text-sm border-l border-border pl-4">
           &gt; Full Stack Web Developer & CS Undergrad.<br/>
           &gt; Specializing in Java Development and Data Structures.<br/>
-          &gt; Architecting tools for the people.
+          &gt; Architecting tools which benefit people.
         </motion.p>
 
         <motion.div variants={item} className="flex gap-4 flex-wrap">
