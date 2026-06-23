@@ -58,7 +58,7 @@ function Skills() {
     <section id="skills" className="py-32 px-6 border-t border-border bg-base">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-mono text-accent mb-2 tracking-widest text-sm">03. // TECH_ARSENAL</h2>
+          <h2 className="font-mono text-accent mb-2 tracking-widest text-sm">03. // TECHNICAL_ARSENAL</h2>
           <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain">Technical Stack</h3>
         </div>
 
