@@ -16,7 +16,6 @@ function About() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 items-center">
         
         <div className="md:col-span-5 relative h-[600px] border border-border overflow-hidden bg-surface group">
-          {/* Animated reveal block */}
           <motion.div 
             initial={{ height: "100%" }}
             whileInView={{ height: "0%" }}
@@ -32,8 +31,8 @@ function About() {
           />
           {/* Technical overlay metrics */}
           <div className="absolute bottom-4 left-4 z-30 font-mono text-xs text-textMain bg-base border border-border p-2">
-            OBJ: ANMOL_SRIVASTAVA <br/>
-            STATUS: RENDERING
+            USER: ANMOL_SRIVASTAVA <br/>
+            STATUS: CURRENTLY ACTIVE
           </div>
         </div>
 
@@ -44,7 +43,7 @@ function About() {
             viewport={{ once: true }}
             className="font-mono text-accent mb-4 tracking-widest text-sm"
           >
-            03. // SYSTEM_ARCHITECTURE
+            01. // ABOUT_ME
           </motion.h2>
           
           <motion.h3 
@@ -67,7 +66,7 @@ function About() {
               I am a developer who views software engineering not just as writing syntax, but as solving complex architectural puzzles. Currently pursuing my BTech in Computer Science, my foundation is built on rigorous logic, multivariable calculus, and data structures.
             </p>
             <p>
-              My recent focus centers around integrating Large Language Models into production environments. Whether it is mitigating latency in clinical tools via the Claude API or architecting seamless PWA navigation systems, I build tools designed for genuine utility and performance.
+              I’ve recently been focused on developing web applications and software systems that solve meaningful real-world problems, with particular attention to performance, scalability, and user experience.
             </p>
           </motion.div>
         </div>
