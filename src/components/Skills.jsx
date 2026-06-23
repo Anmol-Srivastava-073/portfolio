@@ -1,5 +1,42 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/portfolioData'
+import { FaJava } from 'react-icons/fa'
+import {
+  SiJavascript, SiTypescript, SiCplusplus, SiPython, SiReact, SiHtml5, SiCss,
+  SiTailwindcss, SiFramer, SiNodedotjs, SiSpringboot, SiFlask, SiMysql, SiFirebase,
+  SiGithub, SiIntellijidea, SiGooglecloud, SiVercel, SiRender,
+} from 'react-icons/si'
+import { TbApi } from 'react-icons/tb'
+import { VscVscode } from 'react-icons/vsc'
+import { Database, Bot } from 'lucide-react'
+
+// Maps each skill label to its icon component. Falls back to a plain dash if unmatched.
+const skillIcons = {
+  Java: FaJava,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  'C++': SiCplusplus,
+  Python: SiPython,
+  SQL: Database,
+  React: SiReact,
+  HTML5: SiHtml5,
+  CSS3: SiCss,
+  'Tailwind CSS': SiTailwindcss,
+  'Framer Motion': SiFramer,
+  'Node.js': SiNodedotjs,
+  'Spring Boot': SiSpringboot,
+  Flask: SiFlask,
+  MySQL: SiMysql,
+  Firebase: SiFirebase,
+  'REST APIs': TbApi,
+  'Git/GitHub': SiGithub,
+  Render: SiRender,
+  'VS Code': VscVscode,
+  'IntelliJ IDEA': SiIntellijidea,
+  'Google Cloud': SiGooglecloud,
+  Vercel: SiVercel,
+  'LLM APIs': Bot,
+}
 
 const cardVariants = {
   rest: { borderColor: "#262626" },
@@ -50,16 +87,21 @@ function Skills() {
               </h4>
               
               <motion.ul variants={listContainer} className="space-y-3">
-                {skillGroup.items.map((skill, i) => (
-                  <motion.li 
-                    key={i} 
-                    variants={listItem}
-                    className="font-mono text-sm flex items-center gap-3"
-                  >
-                    <span className="text-border inline-block w-2">-</span>
-                    <span>{skill}</span>
-                  </motion.li>
-                ))}
+                {skillGroup.items.map((skill, i) => {
+                  const SkillIcon = skillIcons[skill]
+                  return (
+                    <motion.li 
+                      key={i} 
+                      variants={listItem}
+                      className="font-mono text-sm flex items-center gap-3"
+                    >
+                      <span className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
+                        {SkillIcon ? <SkillIcon size={15} /> : <span className="text-border inline-block w-2">-</span>}
+                      </span>
+                      <span>{skill}</span>
+                    </motion.li>
+                  )
+                })}
               </motion.ul>
             </motion.div>
           ))}
