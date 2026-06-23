@@ -10,7 +10,7 @@ import { TbApi } from 'react-icons/tb'
 import { VscVscode } from 'react-icons/vsc'
 import { Database, Bot } from 'lucide-react'
 
-// Maps each skill label to its icon component. Falls back to a plain dash if unmatched.
+
 const skillIcons = {
   Java: FaJava,
   JavaScript: SiJavascript,
