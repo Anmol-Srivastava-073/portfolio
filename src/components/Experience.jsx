@@ -19,7 +19,7 @@ function Experience() {
       <div className="max-w-5xl mx-auto">
         
         <div className="mb-20 text-center">
-          <h2 className="font-mono text-accent mb-2">04. // LOG</h2>
+          <h2 className="font-mono text-accent mb-2">02. //EXPERIENCE && EDUCATION</h2>
           <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-textMain">Experience & Education</h3>
         </div>
 
@@ -36,7 +36,7 @@ function Experience() {
           <div className="flex-1 space-y-16">
             {/* Map through Experience */}
             <div>
-              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">INIT: EXPERIENCE</h4>
+              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">SUBJECT: EXPERIENCE</h4>
               <div className="space-y-8">
                 {experience.map((item, index) => (
                   <motion.div 
@@ -64,7 +64,7 @@ function Experience() {
 
             {/* Map through Education */}
             <div>
-              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">INIT: EDUCATION</h4>
+              <h4 className="font-mono text-textMain border-b border-border pb-4 mb-8">SUBJECT: EDUCATION</h4>
               <div className="space-y-8">
                 {education.map((item, index) => (
                   <motion.div 
