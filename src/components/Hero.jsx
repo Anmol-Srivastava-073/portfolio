@@ -54,9 +54,11 @@ function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="text-lg md:text-xl text-textMuted max-w-2xl leading-relaxed mb-10 font-mono text-sm border-l border-border pl-4">
-          &gt; Full Stack Web Developer & CS Undergrad.<br/>
-          &gt; Specializing in Java Development and Data Structures.<br/>
-          &gt; Architecting tools which benefit people.
+          <span data-nosnippet>
+            &gt; Full Stack Web Developer & CS Undergrad.<br/>
+            &gt; Specializing in Java Development and Data Structures.<br/>
+            &gt; Architecting tools which benefit people.
+          </span>
         </motion.p>
 
         <motion.div variants={item} className="flex gap-4 flex-wrap">
